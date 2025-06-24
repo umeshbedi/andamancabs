@@ -29,9 +29,10 @@ export default function Slider({ sliderData = [] }) {
     useEffect(() => {
         setHeight(document.documentElement.clientHeight - 50)
     }, [])
+    
 
     const customData = [
-        { image: "/uploads/sliders/27283.jpg", heading: "Welcome to Andaman Cab", subHeading: "Explore the beauty of nature with us" },
+        { image: "/uploads/sliders/27283.jpg", heading: "Andaman Cab", subHeading: "Explore the beauty of nature with us" },
         { image: "/uploads/sliders/17768.png", heading: "See You Here", subHeading: "Explore the beauty of nature with us" },
     ]
 
@@ -115,7 +116,10 @@ export default function Slider({ sliderData = [] }) {
                                             >
                                                 {item.subHeading}
                                             </p>
-                                            <div style={{opacity:opacity, transition: 'all .5s ease',}}>
+                                            <div 
+                                            style={{opacity:opacity, transition: 'all .5s ease',}}
+                                            className='flex justify-center sm:justify-start -mt-4'
+                                            >
                                                 <MyButton name={"Contact Us"} slug={"/"}/>
                                             </div>
                                         </div>

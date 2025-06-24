@@ -74,7 +74,7 @@ export default function MobileNav() {
         <div className='sm:hidden bg-black w-full text-white z-[100] fixed top-0 left-0'>
             <header className='container mx-auto px-4 flex pt-2 justify-between items-center'>
                 <div className="h-10 relative w-[100px]">
-                    <Image src={"/img/logos/logo-yellow.png"} fill className='object-contain'/>
+                    <Image alt='andaman cab logo' src={"/img/logos/logo-yellow.png"} fill className='object-contain'/>
                 </div>
                 <IoIosMenu onClick={()=>setOpen(true)} className='text-3xl cursor-pointer' />                
             </header>

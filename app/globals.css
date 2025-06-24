@@ -10,7 +10,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-poppins: var(--font-poppins);
-  
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -29,37 +29,62 @@ body {
 }
 
 main {
- display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;  
   width: 100%;
+  padding:0 10%;
 }
 
-h1{
+h1 {
   font-size: 2.7rem;
   font-weight: 700;
 }
-h2{
+
+h2 {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 600;
 }
-p{
-  font-size: 1.2rem ;
-  font-weight: 400;
-  text-align: justify;
-}
-h4{
+
+
+h4 {
   font-size: 1.1rem;
   font-weight: bold;
 }
-h3{
+
+h3 {
   font-size: 1.2rem;
 }
 
-.navbar li{
+.navbar li {
   font-size: .9rem;
 }
+
+input {
+  width: 100%;
+  padding: 4px 11px;
+  line-height: 1.5;
+  font-size: 14px;
+  border: solid 1px #d9d9d9;
+  border-radius: 16px;
+}
+
+input:hover {
+  border: solid 1px var(--primary);
+  outline-style: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline-style: none;
+  box-shadow: none;
+  border: solid 1px var(--primary);
+}
+
+::placeholder {
+  color: #d9d9d9;
+}
+
 
 
 /* Change the background color of the active slide */
@@ -95,26 +120,26 @@ h3{
   font-size: 25px !important;
 }
 
-#hompagebigslider > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active{
+#hompagebigslider>div>div.swiper-wrapper>div.swiper-slide.swiper-slide-active {
   width: 60% !important;
 }
 
 @media (max-width:991px) {
-  #hompagebigslider > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active{
+  #hompagebigslider>div>div.swiper-wrapper>div.swiper-slide.swiper-slide-active {
     width: 100% !important;
     height: 70vh !important;
     margin-top: 0vh !important;
   }
 }
 
-#hompagebigslider > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active .paragraph{
+#hompagebigslider>div>div.swiper-wrapper>div.swiper-slide.swiper-slide-active .paragraph {
   display: block !important;
 }
 
-#hompagebigslider > div > div.swiper-wrapper > div.swiper-slide.swiper-slide-active  h1{
+#hompagebigslider>div>div.swiper-wrapper>div.swiper-slide.swiper-slide-active h1 {
   font-size: 2.5rem !important;
 }
 
-.ant-drawer .ant-drawer-body{
-  padding:0!important
+.ant-drawer .ant-drawer-body {
+  padding: 0 !important
 }
