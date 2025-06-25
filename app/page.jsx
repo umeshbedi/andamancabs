@@ -56,6 +56,10 @@ export default function Home() {
           starSize:14
         },
       },
+      token: {
+        /* here is your global tokens */
+        marginXS:2
+      },
     }}
     >
       <Navbar />
