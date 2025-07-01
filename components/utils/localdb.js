@@ -1,60 +1,60 @@
 export const menu = {
     "know": [
         {
-            "name": "About Us",
+            "title": "About Us",
             "slug": "/about-us"
         },
         
         {
-            "name": "About Andaman",
+            "title": "About Andaman",
             "slug": "/about-andaman"
         },
         
        
         {
-            "name": "Do's & Don't",
+            "title": "Do's & Don't",
             "slug": "/dos-and-dont"
         },
         {
-            "name": "General Information",
+            "title": "General Information",
             "slug": "/general-info"
         }
 
     ],
     "popularIslands": [
         {
-            "name": "Port Blair",
+            "title": "Port Blair",
             "slug": "/Portblair"
         },
         {
-            "name": "Havelock",
+            "title": "Havelock",
             "slug": "/Havelock"
         },
         {
-            "name": "Neil",
+            "title": "Neil",
             "slug": "/Neil"
         },
         {
-            "name": "Baratang",
+            "title": "Baratang",
             "slug": "/Baratang"
         },
         {
-            "name": "MayaBunder",
+            "title": "MayaBunder",
             "slug": "/MayaBunder"
         },
         {
-            "name": "Rangat Diglipur",
+            "title": "Rangat Diglipur",
             "slug": "/RangatDiglipur"
         }
         
     ],
     "packages": [
         {
-            "name": "Andaman",
+            "title": "Andaman",
             "slug": "/package/Andaman"
         },
         {
-            "name": "Bali",
+            "title": "Bali",
             "slug": "/package/Bali"
         },
         
@@ -62,30 +62,30 @@ export const menu = {
     ],
     "rentals": [
         {
-            "name": "Cab in Port Blair",
+            "title": "Cab in Port Blair",
             "slug": "/cabs/Cab-in-Port-Blair"
         },
         {
-            "name": "Cab in Havlock Island",
+            "title": "Cab in Havlock Island",
             "slug": "/cabs/Cab-in-Havlock-Island"
         },
         {
-            "name": "Cab in Neil Island",
+            "title": "Cab in Neil Island",
             "slug": "/cabs/Cab-in-Neil-Island"
         }
     ],
 
     "daytrips": [
         {
-            "name": "Car",
+            "title": "Car",
             "slug": "/trip/car"
         },
         {
-            "name": "Boat",
+            "title": "Boat",
             "slug": "/trip/boat"
         },
         {
-            "name": "Combo",
+            "title": "Combo",
             "slug": "/trip/combo"
         }
     ],
@@ -93,151 +93,151 @@ export const menu = {
 
     "hotels": [
         {
-            "name": "Budget",
+            "title": "Budget",
             "slug": "/hotels/budget"
         },
         {
-            "name": "Standard",
+            "title": "Standard",
             "slug": "/hotels/standard"
         },
         {
-            "name": "Premium",
+            "title": "Premium",
             "slug": "/hotels/Premium"
         },
         {
-            "name": "Luxury",
+            "title": "Luxury",
             "slug": "/hotels/Luxury"
         }
     ],
 
     "activity": [
         {
-            "name": "Scuba Diving",
-            "icon": "/activities/scuba-diving.png",
+            "title": "Scuba Diving",
+            "thumbnail": "/activities/scuba-diving.png",
             "items": [
                 {
-                    "name": "best scuba diving",
-                    "icon": "https://i.imgur.com/V8nl186.jpeg",
-                    "slug": "/abcd-go-there"
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "https://i.imgur.com/V8nl186.jpeg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 }
             ]
         },
         {
-            "name": "Scuba Diving",
-            "icon": "/activities/scuba-diving.png",
+            "title": "Scuba Diving",
+            "thumbnail": "/activities/scuba-diving.png",
             "items": [
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 }
             ]
         },
         {
-            "name": "Scuba Diving",
-            "icon": "/activities/scuba-diving.png",
+            "title": "Scuba Diving",
+            "thumbnail": "/activities/scuba-diving.png",
             "items": [
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 }
             ]
         },
         {
-            "name": "Scuba Diving",
-            "icon": "/activities/scuba-diving.png",
+            "title": "Scuba Diving",
+            "thumbnail": "/activities/scuba-diving.png",
             "items": [
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 }
             ]
         },
         {
-            "name": "Scuba Diving",
-            "icon": "/activities/scuba-diving.png",
+            "title": "Scuba Diving",
+            "thumbnail": "/activities/scuba-diving.png",
             "items": [
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 },
                 {
-                    "name": "abcd go there",
-                    "icon": "/activities/Boat dive hd.jpg",
-                    "slug": "/abcd-go-there"
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/activities/abcd-go-there"
                 }
             ]
         },
@@ -249,10 +249,10 @@ export const menu = {
 
 
 export const testimonials = [
-    {name:"Test Name", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
-    {name:"Test Name", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
-    {name:"Test Name", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
-    {name:"Test Name", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
-    {name:"Test Name", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
+    {title:"Test title", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
+    {title:"Test title", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
+    {title:"Test title", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
+    {title:"Test title", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
+    {title:"Test title", content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."},
 ]
 

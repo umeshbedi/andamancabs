@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/compat/app'
 import { db } from '@/firebase'
 
-export default function ImageUpload({ to, groupId, packageId, packageFor}) {
+export default function ImageUpload({ to, groupId, packageId, packageFor }) {
     const [imageObj, setImageObj] = useState(null)
     const [images, setImages] = useState([])
     const [messageApi, contextHolder] = message.useMessage()
@@ -29,53 +29,65 @@ export default function ImageUpload({ to, groupId, packageId, packageFor}) {
 
 
     useEffect(() => {
-        if (imageObj != null) {
-            messageApi.open({ key: 'updatable', type: 'loading', content: 'Loading...', duration: 0 })
-            var formdata = new FormData();
-            formdata.append("image", imageObj);
+        async function uploadImage() {
+            if (imageObj != null) {
+                messageApi.open({ key: 'updatable', type: 'loading', content: 'Loading...', duration: 0 })
+                var formdata = new FormData();
+                formdata.append("file", imageObj);
+                formdata.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET); // Replace with your preset
+                formdata.append('cloud_name', process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
-            var requestOptions = {
-                method: 'POST',
-                headers: { "Authorization": "Client-ID " + process.env.NEXT_PUBLIC_IMGUR_CLIENT_ID + "" },
-                body: formdata,
-                redirect: 'follow'
-            };
+                var requestOptions = {
+                    method: 'POST',
+                    body: formdata,
+                };
 
-            fetch("https://api.imgur.com/3/image", requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    if (result.success) {
-                        const data = result.data
+                await fetch("https://api.cloudinary.com/v1_1/"+process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME+"/image/upload", requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.asset_id != "") {
+                            const data = {link:result.secure_url, deletehash: result.public_id, id: result.asset_id, width: result.width, height: result.height}
 
-                        if (to == "Images") {
-                            packagedb.update({
-                                images: firebase.firestore.FieldValue.arrayUnion(data.link)
-                            }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
+                            if (to == "Images") {
+                                packagedb.update({
+                                    images: firebase.firestore.FieldValue.arrayUnion(data.link)
+                                }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
+                            }
+                            else if (to == "Photos") {
+                                db.collection("media").add({
+                                    deletehash: data.deletehash,
+                                    imageID: data.id,
+                                    link: data.link,
+                                    width: data.width,
+                                    height: data.height,
+                                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
+                            }
+                            else {
+                                packagedb.update({
+                                    thumbnail: data.link
+                                }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
+                            }
+
+
+                        } else {
+                            messageApi.error(result.data.error)
+                            console.log(result)
                         }
-                        else if (to == "Photos") {
-                            db.collection("media").add({
-                                deletehash: data.deletehash,
-                                imageID: data.id,
-                                link: data.link,
-                                width: data.width,
-                                height: data.height,
-                                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                            }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
-                        }
-                        else {
-                            packagedb.update({
-                                thumbnail: data.link
-                            }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
-                        }
-
-
-                    } else {
-                        messageApi.error(result.data.error)
+                        // console.log(result)
+                        messageApi.destroy()
+                        setImageObj(null)
+                    })
+                    .catch(error => {
+                        console.log('error', error);
+                        messageApi.error("Something went wrong")
+                        setImageObj(null)
                     }
-                    // console.log(result.data)
-                    setImageObj(null)
-                })
+                    );
+            }
         }
+
+        uploadImage();
 
     }, [imageObj])
 

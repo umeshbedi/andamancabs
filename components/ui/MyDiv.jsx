@@ -36,7 +36,7 @@ export default function MyDiv({isHeaderImage=true, image, title, children }) {
         <>
             <Navbar />
             {isHeaderImage && <HeaderImage image={image} title={title} /> } 
-            <main className='mt-10'>
+            <main className='-mt-10'>
                 {children}
             </main>
             <Footer />

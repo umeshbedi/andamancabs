@@ -11,6 +11,36 @@ export default function Media() {
 
   const mediadb = db.collection('media')
 
+  async function deleteImage({id, deletehash}){
+    const res = await fetch('/api/deleteImage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ public_id:deletehash }),
+    });
+  
+    await res.json().then((data) => {
+      if (data.error) {
+        msg.error(data.error);
+      } else {
+        msg.success('Image deleted successfully');
+        mediadb.doc(id).delete().then(() => {
+          console.log('Image document deleted successfully');
+        }
+        ).catch((error) => {
+          console.error('Error deleting image document:', error);
+          msg.error('Failed to delete image document');
+        });
+      }
+    }
+    ).catch((error) => {
+      console.error('Error deleting image:', error);
+      msg.error('Failed to delete image');
+    });
+    console.log('Delete result:', data);
+  }
+
   useEffect(() => {
     mediadb
       .orderBy('createdAt', 'desc')
@@ -68,16 +98,19 @@ export default function Media() {
 
                 <UploadedImage
                   key={index}
-                  image={newUrl}
-                  onDelete={() => {
-                    mediadb.doc(`${image.id}`).delete()
-                  }}
+                  image={image.link}
+                  onDelete={() => deleteImage({id: image.id, deletehash: image.deletehash})}
                 />
                 <Button block style={{ borderRadius: 0 }}
                   onClick={() => {
-                    navigator.clipboard.writeText(image.link).then(()=>{
-                      msg.success("Copied")
-                  })
+                    navigator.clipboard
+                      .writeText(image.link)
+                      .then(() => {
+                        msg.success("Copied");
+                      })
+                      .catch(() => {
+                        msg.error("Failed to copy");
+                      });
                   }}
                 >Copy Link</Button>
               </div>

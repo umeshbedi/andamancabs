@@ -28,6 +28,22 @@ const Activities = dynamic(() => import('@/components/layout/activity/Activities
   ssr: false, loading: () => <SHome/>
 });
 
+const OurStory = dynamic(() => import('@/components/layout/OurStory'), {
+  ssr: false, loading: () => <SHome/>
+});
+
+const TestiMonials = dynamic(() => import('@/components/layout/Testimonials'), {
+  ssr: false, loading: () => <SHome/>
+});
+
+const SocialMedia = dynamic(() => import('@/components/layout/SocialMedia'), {
+  ssr: false, loading: () => <SHome/>
+});
+
+const FAQ = dynamic(() => import('@/components/layout/FAQ'), {
+  ssr: false, loading: () => <SHome/>
+});
+
 const Footer = dynamic(() => import('@/components/layout/Footer'), {
   ssr: false, loading: () => <SHome/>
 });
@@ -67,6 +83,10 @@ export default function Home() {
       <Cabs/>
       <Cruize />
       <Activities />
+      <OurStory />
+      <TestiMonials />
+      <FAQ />
+      <SocialMedia />
       <Footer />
     </ConfigProvider>
   );

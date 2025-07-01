@@ -3,6 +3,7 @@ import { MegaMenu, SimpleMenu } from './Menu'
 import { menu } from '@/components/lib/data'
 import Image from 'next/image'
 import Dropdown from './Dropdown'
+import MegaDropDown from './MegaDropDown'
 
 export default function DesktopNav() {
     return (
@@ -13,9 +14,14 @@ export default function DesktopNav() {
                     <Dropdown menu={menu.knowItems} />
                 </MegaMenu>
                 <SimpleMenu title="LOCATION" url="#" />
-                <SimpleMenu title="PACKAGE" url="#" />
+                <MegaMenu title="PACKAGES">
+                    <MegaDropDown />
+                </MegaMenu>
 
-                <SimpleMenu title="ACTIVITIES" url="#" />
+                <MegaMenu title="ACTIVITIES">
+                    <MegaDropDown />
+                </MegaMenu>
+
                 <li>
                     <div className="h-10 relative w-[100px]">
                         <Image alt='andamancabs logo' src={"/img/logos/logo-yellow.png"} fill className='object-contain' />

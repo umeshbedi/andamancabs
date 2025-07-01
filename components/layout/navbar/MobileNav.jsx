@@ -1,14 +1,14 @@
 "use client"
 import { Drawer, Menu } from 'antd'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoIosMenu } from 'react-icons/io'
 import { RxCross2 } from "react-icons/rx";
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 export default function MobileNav() {
     const [open, setOpen] = useState(false)
-
+    const [Loading, setLoading] = useState(true)
     const items = [
         {
           key: 'sub1',
@@ -68,6 +68,10 @@ export default function MobileNav() {
       const onClick = e => {
         console.log('click', e);
       };
+
+      useEffect(() => {setLoading(false);}, [])
+      
+      if(Loading)return <></>
 
   return (
     <>

@@ -64,20 +64,32 @@ const items = [
       icon: <FaNewspaper />,
       children: [
         {
-          key: 'about-us',
-          label: 'About Us',
+          key: 'about-andamancabs',
+          label: 'About Andaman Cabs',
         },
         {
-          key: 'about-andman',
-          label: 'About Andaman',
+          key: 'how-to-reach-andaman',
+          label: 'How to reach Andaman Island',
         },
         {
           key: 'dos-and-dont',
           label: `${"Do's & Don't"}`,
         },
         {
-          key: 'generalInfo',
-          label: `General information`,
+          key: 'fun-facts',
+          label: `Fun Facts`,
+        },
+        {
+          key: 'cancellaction-policy',
+          label: `Cancellation Policy`,
+        },
+        {
+          key: 'privacy-policy',
+          label: `Privacy Policy`,
+        },
+        {
+          key: 'terms-and-conditions',
+          label: `Terms & Conditions`,
         },
       ],
     },
