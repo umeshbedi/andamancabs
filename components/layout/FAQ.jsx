@@ -33,9 +33,9 @@ export default function FAQ({isImage = true, padding = 'px-[5%]'}) {
     <div className={`w-full sm:flex justify-center items-center mb-12 ${padding}`}>
         {isImage && (
           <img
-            src="/uploads/header-bg/faq.jpg"
+            src="/img/icons/faq.avif"
             alt="FAQ Image"
-            className='w-full sm:w-[30%] rounded-lg mb-6 sm:mb-0'
+            className='w-full '
           />
         )}
       <Collapse
