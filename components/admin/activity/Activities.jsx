@@ -31,9 +31,9 @@ export default function Activities() {
 
     var orderRef = useRef(null)
     var nameRef = useRef(null)
-    var headerImageRef = useRef(null)
+    // var headerImageRef = useRef(null)
     var thumbnailRef = useRef(null)
-    var metaDescriptionRef = useRef(null)
+    // var metaDescriptionRef = useRef(null)
 
     useEffect(() => {
         activitydb.onSnapshot((snap) => {
@@ -48,12 +48,12 @@ export default function Activities() {
     }, [])
 
     function addNewactivity() {
-        if (name != "" && thumbnail != "" && headerImage != "" && metaDescription != "") {
+        if (name != "" && thumbnail != "") {
             activitydb.add({
                 name,
                 slug: `/activity/${name.split(" ").join("-")}`,
                 thumbnail,
-                headerImage, metaDescription,
+                // headerImage, metaDescription,
                 order,
                 data: []
 
@@ -64,19 +64,21 @@ export default function Activities() {
 
     function editactivity() {
         activitydb.doc(`${selectedactivity}`).update({
-            name, order, metaDescription, headerImage, thumbnail
+            name, order, 
+            // metaDescription, headerImage, 
+            thumbnail
         }).then(() => {
             msg.success("Updated")
             setname("")
             setthumbnail("")
-            setHeaderImage("")
-            setMetaDescription("")
+            // setHeaderImage("")
+            // setMetaDescription("")
             setOrder(0)
             nameRef.current.value = "";
             orderRef.current.value = 0;
-            headerImageRef.current.value = "";
+            // headerImageRef.current.value = "";
             thumbnailRef.current.value = "";
-            metaDescriptionRef.current.value = "";
+            // metaDescriptionRef.current.value = "";
             setEdit(false)
             setOpen(false)
         })
@@ -173,9 +175,9 @@ export default function Activities() {
                     setOrder(0)
                     nameRef.current.value = "";
                     orderRef.current.value = 0;
-                    headerImageRef.current.value = "";
+                    // headerImageRef.current.value = "";
                     thumbnailRef.current.value = "";
-                    metaDescriptionRef.current.value = "";
+                    // metaDescriptionRef.current.value = "";
                     setEdit(false)
                     setOpen(false)
                 }}
@@ -190,15 +192,15 @@ export default function Activities() {
                     <div>activity Name:
                         <input ref={nameRef} placeholder='Enter activity Name' onChange={(e) => setname(e.target.value)} />
                     </div>
-                    <div>Header Image Url:
+                    {/* <div>Header Image Url:
                         <input ref={headerImageRef} placeholder='Enter Header Image Url' onChange={(e) => setHeaderImage(e.target.value)} />
-                    </div>
+                    </div> */}
                     <div>Thumbnail Url:
                         <input ref={thumbnailRef} placeholder='Enter Thumbnail Url' onChange={(e) => setthumbnail(e.target.value)} />
                     </div>
-                    <div>Meta Description:
+                    {/* <div>Meta Description:
                         <input ref={metaDescriptionRef} placeholder='Enter Short Meta Description' onChange={(e) => setMetaDescription(e.target.value)} />
-                    </div>
+                    </div> */}
 
                 </div>
             </Modal>

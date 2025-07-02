@@ -163,4 +163,13 @@ input:focus {
 
 .jodit-container .jodit-workplace .jodit-wysiwyg {
   height: 400px !important;
+  ul li {
+    list-style-type: disc;
+    margin-left: 20px!important;
+  }
+  ol li {
+    list-style-type: decimal;
+    
+  }
 }
+
