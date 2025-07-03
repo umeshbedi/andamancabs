@@ -10,6 +10,44 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
     const [messageApi, contextHolder] = message.useMessage()
     const packagedb = db.collection(`${packageFor}`).doc(`${groupId}`).collection("singlePackage").doc(`${packageId}`)
 
+
+    async function deleteImage({ id, deletehash, image }) {
+        messageApi.open({ key: 'updatable', type: 'loading', content: 'Loading...', duration: 0 })
+        const res = await fetch('/api/deleteImage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ public_id: deletehash }),
+        });
+
+        await res.json().then((data) => {
+            if (data.error) {
+                messageApi.error(data.error);
+            } else {
+
+                if (to == "Images") {
+                    packagedb.update({
+                        images: firebase.firestore.FieldValue.arrayRemove(image)
+                    })
+                        .then(() => messageApi.success('Image deleted successfully'))
+                } else {
+                    packagedb.update({
+                        thumbnail: ""
+                    })
+                        .then(() => messageApi.success('Image deleted successfully'))
+                }
+
+            }
+        }
+        ).catch((error) => {
+            console.error('Error deleting image:', error);
+            msg.error('Failed to delete image');
+        });
+        // console.log('Delete result:', data);
+        messageApi.destroy()
+    }
+
     useEffect(() => {
         packagedb.onSnapshot((snap) => {
             if (to == "Thumbnails") {
@@ -25,7 +63,7 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
 
         })
     }, [])
-    //
+
 
 
     useEffect(() => {
@@ -42,15 +80,15 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
                     body: formdata,
                 };
 
-                await fetch("https://api.cloudinary.com/v1_1/"+process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME+"/image/upload", requestOptions)
+                await fetch("https://api.cloudinary.com/v1_1/" + process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME + "/image/upload", requestOptions)
                     .then(response => response.json())
                     .then(result => {
                         if (result.asset_id != "") {
-                            const data = {link:result.secure_url, deletehash: result.public_id, id: result.asset_id, width: result.width, height: result.height}
+                            const data = { link: result.secure_url, deletehash: result.public_id, id: result.asset_id, width: result.width, height: result.height }
 
                             if (to == "Images") {
                                 packagedb.update({
-                                    images: firebase.firestore.FieldValue.arrayUnion(data.link)
+                                    images: firebase.firestore.FieldValue.arrayUnion(data)
                                 }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
                             }
                             else if (to == "Photos") {
@@ -65,7 +103,7 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
                             }
                             else {
                                 packagedb.update({
-                                    thumbnail: data.link
+                                    thumbnail: data
                                 }).then(() => messageApi.open({ key: 'updatable', type: 'success', content: 'Uploaded' }))
                             }
 
@@ -134,22 +172,12 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
                 {images.map((image, index) => (
                     <UploadedImage
                         key={index}
-                        image={image}
-                        onDelete={() => {
-                            if (to == "Images") {
-                                packagedb.update({
-                                    images: firebase.firestore.FieldValue.arrayRemove(image)
-                                })
-                            } else {
-                                packagedb.update({
-                                    thumbnail: ""
-                                })
-                            }
-                        }}
+                        image={image.link}
+                        onDelete={() => deleteImage({ id: image.id, deletehash: image.deletehash, image: image })}
                     />
                 ))
                 }
-                <UploadButton />
+                {images.length < 1 && <UploadButton />}
             </div>
         </div>
     )

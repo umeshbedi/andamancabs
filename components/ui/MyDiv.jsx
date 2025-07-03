@@ -18,7 +18,7 @@ const Footer = dynamic(() => import('@/components/layout/Footer'), {
 });
 
 
-export default function MyDiv({isHeaderImage=true, image, title, children }) {
+export default function MyDiv({isHeaderImage=true, image, title, children, styles={} }) {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(false);
@@ -36,7 +36,7 @@ export default function MyDiv({isHeaderImage=true, image, title, children }) {
         <>
             <Navbar />
             {isHeaderImage && <HeaderImage image={image} title={title} /> } 
-            <main className='-mt-10'>
+            <main className='-mt-10' style={styles}>
                 {children}
             </main>
             <Footer />

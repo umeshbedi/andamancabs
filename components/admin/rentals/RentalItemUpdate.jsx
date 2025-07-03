@@ -3,6 +3,7 @@ import { Button, Divider, Form, Input, message } from 'antd';
 import React, { useEffect, useRef, useState } from 'react'
 
 import JoditEditor from 'jodit-react';
+import { Rate } from 'antd';
 
 
 export default function RentalsItemUpdate({ collection, data }) {
@@ -160,22 +161,7 @@ export default function RentalsItemUpdate({ collection, data }) {
                 </Form.Item>
 
                 <Form.Item label="Stars">
-                    <input ref={starRef} type='number' defaultValue={star} placeholder='Enter Star' 
-                    onChange={(e) => {
-                        const value = e.target.valueAsNumber;
-                        if (value > 0 && value <= 5) {
-                            setStar(value);
-                        } else {
-                        messageApi.error("Star rating must be between 0 and 5");
-                        }
-                    }} 
-                    onBlur={(e)=>{
-                        if (e.target.valueAsNumber <= 0 || e.target.valueAsNumber > 5) {
-                            e.target.value = 3; // Reset to default value if out of range
-                            setStar(3);
-                        }
-                    }}
-                    />
+                    <Rate ref={starRef} onChange={setStar} value={star} />
                 </Form.Item>
 
                 <Form.Item label="Vehicle Image">

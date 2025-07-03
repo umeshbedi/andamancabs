@@ -3,6 +3,7 @@ import ImageUpload from './ImageUpload'
 import { Button, Divider, Image, message } from 'antd'
 import { db } from '@/firebase'
 import { DeleteFilled } from '@ant-design/icons'
+import { updateCloudinaryWidth } from './urlUpdate'
 
 export default function Media() {
 
@@ -59,6 +60,7 @@ export default function Media() {
       <div
         style={{ height: 80, display: 'flex', justifyContent: 'center', border: 'solid .5px #d9d9d9', background: 'white' }} >
         <Image src={image} height={'100%'}
+
           placeholder={
             <Image
               preview={false}
@@ -89,16 +91,15 @@ export default function Media() {
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, transition: ".5s" }}>
         {media.map((image, index) => {
-          const splitedUrl = image.link.split(".");
-          splitedUrl[2] = splitedUrl[2] + "h";
-          const newUrl = splitedUrl.join('.')
+          const newUrl = updateCloudinaryWidth(image.link, 300);
+          console.log("image form media", newUrl)
           return (
             <>
               <div>
 
                 <UploadedImage
                   key={index}
-                  image={image.link}
+                  image={newUrl}
                   onDelete={() => deleteImage({id: image.id, deletehash: image.deletehash})}
                 />
                 <Button block style={{ borderRadius: 0 }}

@@ -1,10 +1,10 @@
 export const menu = {
     knowItems: [
-        { title: "About Andaman Cabs", url: "/know/about-andaman-cabs" },
-        { title: "How to Reach Andaman Island", url: "/know/how-to-reach-andaman" },
-        { title: `Do's & Dont's`, url: "/know/dos-and-donts" },
-        { title: "Fun Facts", url: "/know/fun-facts" },
-        { title: "Cancellation Policy", url: "/know/cancellation-policy" }
+        { title: "About Andaman Cabs", url: "/about-andamancabs" },
+        { title: "How to Reach Andaman Island", url: "/how-to-reach-andaman" },
+        { title: `Do's & Dont's`, url: "/dos-and-dont" },
+        { title: "Fun Facts", url: "/fun-facts" },
+        { title: "Cancellation Policy", url: "/cancellaction-policy" }
     ],
     cabRentals: [
         { title: "Cabs in Port Blair", url: "/cabs/cabs-in-port-blair" },

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import JoditEditor from 'jodit-react';
 import firebase from 'firebase/compat/app';
+import { Rate } from 'antd';
 
 export default function ActivityItemUpdate({ collection, data, allItemData, index }) {
 
@@ -18,6 +19,7 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     const [activityPlace, setActivityPlace] = useState('');
     const [price, setPrice] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [stars, setStars] = useState(0);
 
     const [messageApi, contextHolder] = message.useMessage();
     const [loading, setLoading] = useState(false)
@@ -32,6 +34,7 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     const activityPlaceRef = useRef(null);
     const priceRef = useRef(null);
     const durationRef = useRef(null);
+    const starsRef = useRef(null);
 
     function submit() {
         setLoading(true)
@@ -45,7 +48,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                 slug: `/activities/${slug}`,
                 activityPlace, // Add new state
                 price,          // Add new state
-                duration        // Add new state
+                duration,        // Add new state
+                stars
             })
         }).then((e) => {
             messageApi.success("Item Added Successfully!")
@@ -65,7 +69,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             slug: `/activities/${slug}`,
             activityPlace, // Add new state
             price,          // Add new state
-            duration        // Add new state
+            duration,
+            stars        // Add new state
         };
 
         setLoading(true)
@@ -91,6 +96,7 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             setActivityPlace(data.activityPlace);
             setPrice(data.price);
             setDuration(data.duration);
+            setStars(data.stars);
 
             console.log("Index from update", index)
             console.log("all items data", allItemData)
@@ -143,6 +149,10 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
 
                 <Form.Item label="Duration in Hours">
                     <input ref={durationRef} type='number' placeholder="Enter Duration" onChange={(e) => setDuration(e.target.valueAsNumber)} />
+                </Form.Item>
+
+                <Form.Item label="Stars">
+                    <Rate ref={starsRef} onChange={setStars} value={stars} />
                 </Form.Item>
 
                 <Form.Item label="Short Description">

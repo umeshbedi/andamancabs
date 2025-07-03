@@ -14,7 +14,7 @@ export default function MegaDropDown({ content = menu.activity }) {
             <div key={i} className="hover:bg-yellow-200">
               <a href={item.slug == undefined ? "javascript:void(0)" : item.slug} className="flex gap-2 bg-yellow-200 hover:bg-[var(--primary))] p-3">
                 <div className="relative h-[30px] w-[30px]">
-                  <Image src={item.thumbnail} fill className="object-cover" />
+                  <Image src={item.thumbnail} fill className="object-cover" alt={item.title}/>
                 </div>
                 <p className=" font-bold">{item.title}</p>
               </a>
