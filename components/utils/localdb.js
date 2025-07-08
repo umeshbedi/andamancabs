@@ -118,7 +118,7 @@ export const menu = {
                 {
                     "title": "best scuba diving",
                     "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
-                    "slug": "/activities/abcd-go-there"
+                    "slug": "/packages/abcd-go-there"
                 },
                 {
                     "title": "abcd go there",
@@ -241,6 +241,134 @@ export const menu = {
                 }
             ]
         },
+    ],
+    "packages": [
+        {
+            "title": "Family",
+            "items": [
+                {
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                }
+            ]
+        },
+        {
+            "title": "Family",
+            "items": [
+                {
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                }
+            ]
+        },
+        {
+            "title": "Family",
+            "items": [
+                {
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                }
+            ]
+        },
+        {
+            "title": "Family",
+            "items": [
+                {
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                }
+            ]
+        },
+        {
+            "title": "Family",
+            "items": [
+                {
+                    "title": "best scuba diving",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "https://i.imgur.com/V8nl186.jpeg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                },
+                {
+                    "title": "abcd go there",
+                    "thumbnail": "/activities/Boat dive hd.jpg",
+                    "slug": "/package/abcd-go-there"
+                }
+            ]
+        },
+        
     ]
 }
 

@@ -97,12 +97,14 @@ export default function AddPackageDetail({ packageFor = "" }) {
         });
 
         const groupSearch = packageItem.find(f => f.id == selectedGroup)
-        const slug = `${groupSearch.name.split(" ").join("-")}-${sSPD.name.split(" ").join("-")}-${val.packageTitle.split(" ").join("-")}`
+        const random = Math.floor(1000 + Math.random() * 9000)
+        const slug = `${groupSearch.name.split(" ").join("-")}/${random}-${sSPD.name.split(" ").join("-")}-${val.packageTitle.split(" ").join("-")}`
+        
 
         packagedb.doc(`${selectedGroup}`)
             .collection("singlePackage").doc(`${selectedSinglePackage}`)
             .update({
-                slug: `/package/${packageFor == 'packageBali' ? "Bali" : "Andaman"}/${slug}`,
+                slug: `/package/${slug}`,
                 title: val.packageTitle,
                 subtitle: val.packageSubTitle,
                 highlights: val.highlights,
@@ -205,21 +207,21 @@ export default function AddPackageDetail({ packageFor = "" }) {
                             />
                         </Form.Item>
 
-                        
+
                         <Form.Item name='overview' initialValue={sSPD.overview} label={"OverView"} >
-                        <JoditEditor />
+                            <JoditEditor />
                         </Form.Item>
 
                         <TravelJourney data={sSPD.travelJourney} groupId={selectedGroup} packageId={selectedSinglePackage} packageFor={packageFor} />
 
                         <Form.Item name='highlights' initialValue={sSPD.highlights} label={"Highlights"} >
-                        <JoditEditor />
+                            <JoditEditor />
                         </Form.Item>
                         <Form.Item name='inclusion' initialValue={sSPD.inclusion} label={"Inclusion"} >
-                        <JoditEditor />
+                            <JoditEditor />
                         </Form.Item>
                         <Form.Item name='exclusion' initialValue={sSPD.exclusion} label={"Exclusion"} >
-                        <JoditEditor />
+                            <JoditEditor />
                         </Form.Item>
 
 
