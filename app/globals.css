@@ -63,7 +63,10 @@ h3 {
 .navbar li {
   font-size: .9rem;
 }
-
+.faqclass p{
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
 input {
   width: 100%;
   padding: 4px 11px;

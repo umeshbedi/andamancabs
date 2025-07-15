@@ -14,7 +14,7 @@ const MyTitle = dynamic(() => import('@/components/ui/MyTitle'))
 
 export default function CabPage() {
   return (
-    <MyDiv title={"Cabs in Port Blair"}>
+    <MyDiv title={"Cabs in Port Blair"} styles={{marginTop:"3rem"}}>
       <MyTitle heading="Enjoy Hassle Free Ride Service" subheading="Choose the best service for your travel" />
 
       <div className='w-full mt-10'>

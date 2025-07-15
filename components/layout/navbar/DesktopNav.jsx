@@ -5,6 +5,7 @@ import { menu as localMenu } from '@/components/utils/localdb'
 import Image from 'next/image'
 import Dropdown from './Dropdown'
 import MegaDropDown from './MegaDropDown'
+import { getAllActivities } from '@/components/utils/actions/activityAction'
 
 export default function DesktopNav() {
     return (
@@ -20,7 +21,7 @@ export default function DesktopNav() {
                 </MegaMenu>
 
                 <MegaMenu title="ACTIVITIES">
-                    <MegaDropDown content={localMenu.activity}/>
+                    <MegaDropDown content={"activity"}/>
                 </MegaMenu>
 
                 <li>

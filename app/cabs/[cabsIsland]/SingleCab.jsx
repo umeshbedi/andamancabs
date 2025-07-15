@@ -3,8 +3,9 @@ import Image from 'next/image'
 import { FaMap, FaUser } from 'react-icons/fa'
 import { CarFilled } from '@ant-design/icons'
 import { boxShadow, mobile } from "@/components/utils/variables";
-import { Divider, Modal } from "antd";
+import { Button, Divider, Modal } from "antd";
 import React, { useState } from "react";
+import { getAllActivities } from '@/components/utils/actions/activityAction';
 
 
 
@@ -68,6 +69,8 @@ export default function SingleCab({ thumbnail, title, price, distance }) {
                     >
                         <p style={{ fontSize: "1.2rem", color: "black" }}>Book Now</p>
                     </div>
+
+                    <Button onClick={getAllActivities}>click</Button>
 
                 </div>
             </div>

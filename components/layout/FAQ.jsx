@@ -30,7 +30,7 @@ const items = [
 ];
 export default function FAQ({isImage = true, padding = 'px-[5%]'}) {
   return (
-    <div className={`w-full sm:flex justify-center items-center mb-12 ${padding}`}>
+    <div className={`faqclass w-full sm:flex justify-center items-center mb-12 ${padding}`}>
         {isImage && (
           <img
             src="/img/icons/faq.avif"
