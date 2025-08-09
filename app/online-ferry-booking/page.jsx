@@ -1,8 +1,6 @@
-import MyDiv from '@/components/ui/MyDiv'
 import React from 'react'
+import BookingPage from './BookingPage'
 
 export default function OnlineBooking() {
-  return (
-    <MyDiv isHeaderImage={true}/>
-  )
+  return <BookingPage/>
 }

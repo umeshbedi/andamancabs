@@ -68,12 +68,16 @@ export default function Home() {
     theme={{
       components: {
         Rate: {
-          /* here is your component tokens */
           starSize:14
+        },
+        Select: {
+          optionFontSize:16,
         },
       },
       token: {
+
         /* here is your global tokens */
+        fontSize:16,
         marginXS:2
       },
     }}
