@@ -33,9 +33,7 @@ export default function StepsBooking({tripData}) {
     ];
 
     useEffect(()=>{
-        if(!tripData){
-            setCurrent(0)
-        }else{
+        if(tripData){
             setCurrent(1)
         }
     },[tripData])

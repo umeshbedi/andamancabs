@@ -44,17 +44,12 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                 <Divider type="vertical" style={{ height: 60 }} />
 
                 <Departure getDeparture={(value) => {
-                    if (index === 1) {
-                        setTripData(prev => ({
-                            ...prev,
-                            trip1: { ...prev.trip1, departure: value }
-                        }))
-                    } else {
-                        setTripData(prev => ({
-                            ...prev,
-                            trip2: { ...prev.trip2, departure: value }
-                        }))
-                    }
+
+                    setTripData(prev => ({
+                        ...prev,
+                        [`trip${index}`]: { ...prev[`trip${index}`], departure: value }
+                    }))
+
                 }}
                 />
             </div>
@@ -67,6 +62,9 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
             return;
         }
         setTripArray([...tripArray, <TripDiv key={tripArray.length} index={tripArray.length + 1} />])
+
+        // console.log(tripArray.length)
+
         setTripData((prev) => ({
             ...prev,
             [`trip${tripArray.length + 1}`]: {
@@ -77,6 +75,8 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
     }
 
     function handleRemoveTrip(index) {
+        if (index == 0 && tripArray.length == 2) return messageApi.error("Remove Last Trip First");
+        
         const newTripArray = tripArray.filter((_, i) => i !== index);
         setTripArray(newTripArray);
         setTripData((prev) => ({

@@ -73,6 +73,10 @@ export default function Home() {
         Select: {
           optionFontSize:16,
         },
+        Segmented:{
+          itemActiveBg:"rgba(0,0,0,2)",
+          trackPadding:4
+        }
       },
       token: {
 

@@ -17,7 +17,7 @@ export default function Departure({ getDeparture = (e) => { } }) {
       <p className='text-sm text-gray-500 mb-2'>Departure</p>
       <DatePicker
         size='large'
-        format="DD-MM-YYYY"
+        format="YYYY-MM-DD"
         onChange={(date, dateString) => {
           getDeparture(dateString);
           // console.log(dateString); // Log the selected date in DD-MM-YYYY format
