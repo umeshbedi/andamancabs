@@ -13,11 +13,12 @@ const disabledDate = current => {
 
 export default function Departure({ getDeparture = (e) => { } }) {
   return (
-    <div>
+    <div className='w-full'>
       <p className='text-sm text-gray-500 mb-2'>Departure</p>
       <DatePicker
         size='large'
         format="YYYY-MM-DD"
+        className='w-full'
         onChange={(date, dateString) => {
           getDeparture(dateString);
           // console.log(dateString); // Log the selected date in DD-MM-YYYY format

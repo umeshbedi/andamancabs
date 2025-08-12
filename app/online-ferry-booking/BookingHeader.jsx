@@ -4,14 +4,10 @@ import React, { useState } from 'react'
 import FromToDiv from './FromToDiv';
 import Departure from './Departure';
 import AdultInfant from './AdultInfant';
-import { useRouter } from 'next/navigation'
-
-
 
 
 export default function BookingHeader({ getTripData = (e) => { } }) {
 
-    const router = useRouter()
     const [messageApi, contextHolder] = message.useMessage();
 
     const [tripArray, setTripArray] = useState([])
@@ -23,7 +19,7 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
 
     function TripDiv({ index = 1 }) {
         return (
-            <div className='flex justify-center items-center lg:flex-row flex-col gap-5'>
+            <div className='flex justify-center items-center sm:flex-row flex-col gap-5'>
                 <FromToDiv
                     getFromIsland={(value) => {
                         setTripData((prev) => ({
@@ -41,7 +37,8 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                     }}
                 />
 
-                <Divider type="vertical" style={{ height: 60 }} />
+                <div className='hidden sm:block'><Divider type="vertical" style={{ height: 60 }} /></div>
+                <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
 
                 <Departure getDeparture={(value) => {
 
@@ -76,7 +73,7 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
 
     function handleRemoveTrip(index) {
         if (index == 0 && tripArray.length == 2) return messageApi.error("Remove Last Trip First");
-        
+
         const newTripArray = tripArray.filter((_, i) => i !== index);
         setTripArray(newTripArray);
         setTripData((prev) => ({
@@ -132,7 +129,8 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                                 }))}
                             />
 
-                            <Divider type="vertical" style={{ height: 60 }} />
+                            <div className='hidden sm:block'><Divider type="vertical" style={{ height: 60 }} /></div>
+                            <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
 
                             <Departure getDeparture={(value) => setTripData(prev => ({
                                 ...prev,
@@ -140,7 +138,8 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                             }))}
                             />
 
-                            <Divider type="vertical" style={{ height: 60 }} />
+                            <div className='hidden sm:block'><Divider type="vertical" style={{ height: 60 }} /></div>
+                            <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
 
                             <AdultInfant
                                 getAdult={(value) => setTripData((prev) => ({
@@ -156,7 +155,8 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                         </div>
 
                         {tripArray.map((trip, index) => (
-                            <div key={index} className='w-full mt-5 flex justify-between items-center'>
+                            <div key={index} className='w-full mt-5 flex sm:flex-row flex-col justify-between items-center'>
+                                <div className='w-full sm:hidden'><Divider style={{width:2}}/></div>
                                 {trip}
                                 <Button
                                     type="primary"
@@ -165,7 +165,7 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                                     icon={<DeleteFilled />}
                                     className='mt-6'
                                 >
-
+                                    Remove Trip
                                 </Button>
                             </div>
                         ))}

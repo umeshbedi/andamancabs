@@ -97,7 +97,8 @@ export default function DayTripList() {
             <div >
 
                 <Button style={{ margin: "15px 0" }} type='dashed' onClick={() => {
-                    setUpdateDiv(<DayTripItemUpdate data={undefined} />)                }}
+                    setUpdateDiv(<DayTripItemUpdate data={undefined} />)                
+                }}
                 >
                     <PlusOutlined /> Add Trip
                 </Button>

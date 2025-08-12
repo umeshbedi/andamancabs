@@ -4,7 +4,7 @@ import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
 
-export default function FerryDiv({ ticketClass = [] }) {
+export default function MakruzzDiv({ ticketClass = [] }) {
 
   const onChange = key => {
     console.log(key);
@@ -74,7 +74,7 @@ export default function FerryDiv({ ticketClass = [] }) {
 
         </div>
 
-        <div className='flex gap-2 flex-wrap'>
+        <div className='flex gap-2 flex-wrap mt-3'>
           {amenties.map((item, i) => (
             <p className='bg-gray-200 px-2 py-1 rounded-full' key={i}><span>{item.icon}</span> {item.label}</p>
           ))}

@@ -22,7 +22,7 @@ export default function ChooseFerry({ tripData }) {
 
     function SegMentSingleData({ name, value, imageSrc, count }) {
         return {
-            label: (
+            label: (    
                 <div className='flex justify-center items-center p-1 gap-1.5'>
                     <div className='relative w-[50px] h-[50px]'>
                         <Image src={imageSrc} alt={name} fill className='object-contain' />
@@ -44,10 +44,36 @@ export default function ChooseFerry({ tripData }) {
     //     // return sectors;
     // }
 
+    useEffect(() => {
+        if (!tripData) return;
+
+        const location = { "portblair": "Port Blair", "havelock": "Swaraj Dweep", "neilisland": "Shaheed Dweep" }
+
+        const { trip0 } = tripData;
+
+        const dateParts = trip0.departure.split("-");
+        const formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+
+        async function fetchNautikaTickets() {
+            const res = await fetch("/api/nautika", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    date: formattedDate,
+                    from: location[trip0.fromIsland],
+                    to: location[trip0.toIsland]
+                })
+            });
+
+            const data = await res.json();
+            console.log(data);
+        }
+        fetchNautikaTickets();
+    }, [tripData])
+
 
     useEffect(() => {
-
-        // getMakruzzData();
+        // fetch makruzz data;
         if (!tripData) return;
 
         const location = { "portblair": "1", "havelock": "2", "neilisland": "3" }
@@ -63,7 +89,7 @@ export default function ChooseFerry({ tripData }) {
 
             const data = await res.json();
             setMakruzzTickets(data?.data || []);
-            console.log("Tickets:", data);
+            // console.log("Tickets:", data);
         }
 
         fetchCruiseTickets();

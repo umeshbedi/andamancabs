@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import FerryDiv from './FerryDiv'
+import FerryDiv from './MakruzzDiv'
 
 export default function Makruzz({ makruzzTickets }) {
   const [filteredClass, setFilteredClass] = useState([])

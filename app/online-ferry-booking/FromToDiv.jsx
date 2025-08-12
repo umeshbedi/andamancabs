@@ -45,6 +45,11 @@ export default function FromToDiv({ getFromIsland = (e) => { }, getToIsland = (e
                 <SwapOutlined onClick={handleSwap} style={{ fontSize: 20, position: 'absolute' }} className='bg-white shadow-sm p-2 rounded-full cursor-pointer' />
             </div>
 
+            <div className='items-center justify-center sm:hidden flex relative mx-3 w-full my-3'>
+                <Divider style={{margin:0}}/>
+                <SwapOutlined onClick={handleSwap} style={{ fontSize: 20, position: 'absolute', rotate:'90deg' }} className='bg-white shadow-sm p-2 rounded-full cursor-pointer' />
+            </div>
+
 
             {/* To div */}
             <div>

@@ -5,16 +5,16 @@ import PlusMinus from './PlusMinus'
 
 export default function AdultInfant({ getAdult = (e) => { }, getInfant = (e) => { } }) {
     return (
-        <div className='flex mb-4 gap-5'>
+        <div className='flex mb-4 gap-5 items-center'>
             <div>
-                <p className='text-sm text-gray-500 mb-2'>Adults (2+ years)</p>
+                <p className='text-sm text-nowrap text-gray-500 mb-2'>Adults (2+ years)</p>
                 <PlusMinus number={1} getValue={(e) => { getAdult(e) }} />
             </div>
 
             <Divider type="vertical" style={{ height: 60 }} />
 
             <div>
-                <p className='text-sm text-gray-500 mb-2'>Infants (0-2 years)</p>
+                <p className='text-sm text-gray-500 text-nowrap mb-2'>Infants (0-2 years)</p>
                 <PlusMinus number={0} getValue={(e) => { getInfant(e) }} />
             </div>
 
