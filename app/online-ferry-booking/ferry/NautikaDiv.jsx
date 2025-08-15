@@ -1,14 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tabs, Carousel, Divider, Image, Button } from 'antd';
 import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
+import LuxurySeatSelectionModal from './LuxurySeatSelectionModal';
 
-export default function MakruzzDiv({ ticketClass = [] }) {
+export default function NautikaDiv({ singleFerry = {} }) {
+
+  const [ticketClass, setTicketClass] = useState([])
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // Function to convert 24-hour time to AM/PM format
+  function toAmPm(timeStr) {
+    let [hour, minute, second] = timeStr.split(":");
+    hour = parseInt(hour);
+    const ampm = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12 || 12;
+    return `${hour}:${minute} ${ampm}`;
+  }
 
   const onChange = key => {
     console.log(key);
   };
+
+  function onSeatConfirm(selectedSeats) {
+    console.log("Selected Seats:", selectedSeats);  
+    setIsModalOpen(false);
+  }
+
+  useEffect(() => {
+    const luxury = {
+      shipClass: "Luxury",
+      price: singleFerry.fares.pBaseFare,
+      arrivalTime: `${singleFerry.aTime.hour}:${singleFerry.aTime.minute}`,
+      departureTime: `${singleFerry.dTime.hour}:${singleFerry.dTime.minute}`,
+      sourceName: singleFerry.from,
+      destinationName: singleFerry.to,
+      shipTitle: "Nautika",
+      seatClassData: singleFerry.pClass,
+    }
+    const royal = {
+      shipClass: "Royal",
+      price: singleFerry.fares.bBaseFare,
+      arrivalTime: `${singleFerry.aTime.hour}:${singleFerry.aTime.minute}`,
+      departureTime: `${singleFerry.dTime.hour}:${singleFerry.dTime.minute}`,
+      sourceName: singleFerry.from,
+      destinationName: singleFerry.to,
+      shipTitle: "Nautika",
+      seatClassData: singleFerry.bClass,
+    }
+
+    const tempClass = [luxury, royal];
+    setTicketClass(tempClass);
+
+
+  },[singleFerry])
 
 
   const customData = [
@@ -30,7 +76,7 @@ export default function MakruzzDiv({ ticketClass = [] }) {
     )
   }
 
-  function FerryContent({ amenties = [], price, arrivalTime, departureTime, source, destination, ferryName }) {
+  function FerryContent({ amenties = [], price, arrivalTime, departureTime, source, destination, ferryName, seatData={} }) {
     return (
       <div>
         <div className='flex flex-col sm:flex-row justify-between items-center w-full mb-2'>
@@ -41,14 +87,14 @@ export default function MakruzzDiv({ ticketClass = [] }) {
 
           {/* Ferry name div */}
           <div className='flex flex-col justify-center items-center'>
-            <Image src='/img/ferry logo/makruzz-logo.png' alt="makruzz logo" height={30} width={40}/>
+            <Image src='/img/ferry logo/Nautika-Logo-v2-768x223.png' alt="Nautika logo" height={30} width={60} className='object-contain'/>
             <h4>{ferryName}</h4>
           </div>
 
           {/* timing div */}
           <div className='flex gap-10'>
             <div>
-              <h4>{arrivalTime}</h4>
+              <h4>{toAmPm(arrivalTime)}</h4>
               <p>{source}</p>
             </div>
 
@@ -59,7 +105,7 @@ export default function MakruzzDiv({ ticketClass = [] }) {
             </div>
 
             <div>
-              <h4>{departureTime}</h4>
+              <h4>{toAmPm(departureTime)}</h4>
               <p>{destination}</p>
             </div>
 
@@ -68,7 +114,7 @@ export default function MakruzzDiv({ ticketClass = [] }) {
           <div>
             {/* Price div */}
             <p className='text-2xl font-bold'><span className='line-through text-[1rem] font-normal'>₹{price + 150}</span> ₹{price}</p>
-            <button className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
+            <button onClick={()=>{setIsModalOpen(true); console.log(seatData)}} className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
 
           </div>
 
@@ -79,6 +125,8 @@ export default function MakruzzDiv({ ticketClass = [] }) {
             <p className='bg-gray-200 px-2 py-1 rounded-full' key={i}><span>{item.icon}</span> {item.label}</p>
           ))}
         </div>
+
+        <LuxurySeatSelectionModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} onConfirm={onSeatConfirm} seatData={seatData}/>
       </div>
     );
   }
@@ -90,7 +138,7 @@ export default function MakruzzDiv({ ticketClass = [] }) {
       { icon: <SafetyOutlined />, label: "Air Conditioned" },
     ],
 
-    "Deluxe": [
+    "Luxury": [
       { icon: <SafetyOutlined />, label: "Premium Seating" },
       { icon: <SafetyOutlined />, label: "Onboard Cafe" },
       { icon: <SafetyOutlined />, label: "Air Conditioned" },
@@ -114,18 +162,19 @@ export default function MakruzzDiv({ ticketClass = [] }) {
       <Tabs
         onChange={onChange}
         type="card"
-        items={ticketClass.ship_classes.map((item, i) => {
+        items={ticketClass.map((item, i) => {
           return {
             label: item.shipClass,
             key: `${item.shipTitle}-${item.shipClass}-${i}`,
             children: <FerryContent 
-            amenties={amenties[item.shipClass]} 
-            price={item.price} 
-            arrivalTime={item.arrivalTime}
-            departureTime={item.departureTime}
-            source={item.sourceName}
-            destination={item.destinationName}
-            ferryName={item.shipTitle}
+            amenties={amenties[item.shipClass] || amenties["Royal"]} 
+            price={item.price || 500} 
+            arrivalTime={item.arrivalTime || "10:00 AM"}
+            departureTime={item.departureTime || "11:00 AM"}
+            source={item.sourceName || "Port Blair"}
+            destination={item.destinationName || "Havelock"}
+            ferryName={item.shipTitle || "Nautika Ferry"}
+            seatData={item.seatClassData || {}}
             />,
           };
         })}

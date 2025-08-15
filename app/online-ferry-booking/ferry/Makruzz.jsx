@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import FerryDiv from './MakruzzDiv'
+import MakruzzDiv from './MakruzzDiv'
 
 export default function Makruzz({ makruzzTickets }) {
   const [filteredClass, setFilteredClass] = useState([])
@@ -14,6 +14,11 @@ export default function Makruzz({ makruzzTickets }) {
   }
 
   useEffect(() => {
+
+    //initialize empty class
+    
+    setFilteredClass([])
+
     const grouped = Object.values(
       makruzzTickets.reduce((acc, item) => {
         const arrivalFormatted = toAmPm(item.arrival_time);
@@ -45,7 +50,7 @@ export default function Makruzz({ makruzzTickets }) {
   return (
     <div>
       {filteredClass.map((fClass, index) => (
-        <FerryDiv key={index} ticketClass={fClass}/>
+        <MakruzzDiv key={index} ticketClass={fClass}/>
       ))}
     </div>
   )

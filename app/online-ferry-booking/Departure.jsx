@@ -16,6 +16,7 @@ export default function Departure({ getDeparture = (e) => { } }) {
     <div className='w-full'>
       <p className='text-sm text-gray-500 mb-2'>Departure</p>
       <DatePicker
+        block
         size='large'
         format="YYYY-MM-DD"
         className='w-full'

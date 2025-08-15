@@ -1,0 +1,554 @@
+{
+    "1A": {
+        "tier": "B",
+        "number": "1A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "1B": {
+        "tier": "B",
+        "number": "1B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "1I": {
+        "tier": "B",
+        "number": "1I",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "1J": {
+        "tier": "B",
+        "number": "1J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "1K": {
+        "tier": "B",
+        "number": "1K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "2A": {
+        "tier": "B",
+        "number": "2A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "2B": {
+        "tier": "B",
+        "number": "2B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "2I": {
+        "tier": "B",
+        "number": "2I",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "2J": {
+        "tier": "B",
+        "number": "2J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "2K": {
+        "tier": "B",
+        "number": "2K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "3A": {
+        "tier": "B",
+        "number": "3A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "3B": {
+        "tier": "B",
+        "number": "3B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "3J": {
+        "tier": "B",
+        "number": "3J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "3K": {
+        "tier": "B",
+        "number": "3K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "4A": {
+        "tier": "B",
+        "number": "4A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "4B": {
+        "tier": "B",
+        "number": "4B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "4J": {
+        "tier": "B",
+        "number": "4J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "4K": {
+        "tier": "B",
+        "number": "4K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5A": {
+        "tier": "B",
+        "number": "5A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5B": {
+        "tier": "B",
+        "number": "5B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5C": {
+        "tier": "B",
+        "number": "5C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5D": {
+        "tier": "B",
+        "number": "5D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5E": {
+        "tier": "B",
+        "number": "5E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5F": {
+        "tier": "B",
+        "number": "5F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5G": {
+        "tier": "B",
+        "number": "5G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5H": {
+        "tier": "B",
+        "number": "5H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5J": {
+        "tier": "B",
+        "number": "5J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "5K": {
+        "tier": "B",
+        "number": "5K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6A": {
+        "tier": "B",
+        "number": "6A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6B": {
+        "tier": "B",
+        "number": "6B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6C": {
+        "tier": "B",
+        "number": "6C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6D": {
+        "tier": "B",
+        "number": "6D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6E": {
+        "tier": "B",
+        "number": "6E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6F": {
+        "tier": "B",
+        "number": "6F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6G": {
+        "tier": "B",
+        "number": "6G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6H": {
+        "tier": "B",
+        "number": "6H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6J": {
+        "tier": "B",
+        "number": "6J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "6K": {
+        "tier": "B",
+        "number": "6K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7A": {
+        "tier": "B",
+        "number": "7A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7B": {
+        "tier": "B",
+        "number": "7B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7C": {
+        "tier": "B",
+        "number": "7C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7D": {
+        "tier": "B",
+        "number": "7D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7E": {
+        "tier": "B",
+        "number": "7E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7F": {
+        "tier": "B",
+        "number": "7F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7G": {
+        "tier": "B",
+        "number": "7G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7H": {
+        "tier": "B",
+        "number": "7H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7J": {
+        "tier": "B",
+        "number": "7J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "7K": {
+        "tier": "B",
+        "number": "7K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8A": {
+        "tier": "B",
+        "number": "8A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8B": {
+        "tier": "B",
+        "number": "8B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8C": {
+        "tier": "B",
+        "number": "8C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8D": {
+        "tier": "B",
+        "number": "8D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8E": {
+        "tier": "B",
+        "number": "8E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8F": {
+        "tier": "B",
+        "number": "8F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8G": {
+        "tier": "B",
+        "number": "8G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8H": {
+        "tier": "B",
+        "number": "8H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8J": {
+        "tier": "B",
+        "number": "8J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "8K": {
+        "tier": "B",
+        "number": "8K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9A": {
+        "tier": "B",
+        "number": "9A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9B": {
+        "tier": "B",
+        "number": "9B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9C": {
+        "tier": "B",
+        "number": "9C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9D": {
+        "tier": "B",
+        "number": "9D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9E": {
+        "tier": "B",
+        "number": "9E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9F": {
+        "tier": "B",
+        "number": "9F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9G": {
+        "tier": "B",
+        "number": "9G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9H": {
+        "tier": "B",
+        "number": "9H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9J": {
+        "tier": "B",
+        "number": "9J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "9K": {
+        "tier": "B",
+        "number": "9K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10A": {
+        "tier": "B",
+        "number": "10A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10B": {
+        "tier": "B",
+        "number": "10B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10C": {
+        "tier": "B",
+        "number": "10C",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10D": {
+        "tier": "B",
+        "number": "10D",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10E": {
+        "tier": "B",
+        "number": "10E",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10F": {
+        "tier": "B",
+        "number": "10F",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10G": {
+        "tier": "B",
+        "number": "10G",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10H": {
+        "tier": "B",
+        "number": "10H",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10J": {
+        "tier": "B",
+        "number": "10J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "10K": {
+        "tier": "B",
+        "number": "10K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "11A": {
+        "tier": "B",
+        "number": "11A",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "11B": {
+        "tier": "B",
+        "number": "11B",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "11C": {
+        "tier": "B",
+        "number": "11C",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11D": {
+        "tier": "B",
+        "number": "11D",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11E": {
+        "tier": "B",
+        "number": "11E",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11F": {
+        "tier": "B",
+        "number": "11F",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11G": {
+        "tier": "B",
+        "number": "11G",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11H": {
+        "tier": "B",
+        "number": "11H",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "11J": {
+        "tier": "B",
+        "number": "11J",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "11K": {
+        "tier": "B",
+        "number": "11K",
+        "isBooked": 0,
+        "isBlocked": 0
+    },
+    "12A": {
+        "tier": "B",
+        "number": "12A",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "12B": {
+        "tier": "B",
+        "number": "12B",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "12J": {
+        "tier": "B",
+        "number": "12J",
+        "isBooked": 1,
+        "isBlocked": 0
+    },
+    "12K": {
+        "tier": "B",
+        "number": "12K",
+        "isBooked": 1,
+        "isBlocked": 0
+    }
+}

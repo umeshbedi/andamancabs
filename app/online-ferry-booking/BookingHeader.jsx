@@ -117,7 +117,7 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                 <div className='w-full -mt-10 flex justify-center items-center'>
                     <div className='w-[90%] flex flex-col items-center bg-white rounded-xl shadow-lg p-5 pb-10 border border-gray-200 relative'>
 
-                        <div className='flex justify-center items-center lg:flex-row flex-col gap-5'>
+                        <div className='flex justify-center items-center lg:flex-row flex-col gap-5 flex-wrap'>
                             <FromToDiv
                                 getFromIsland={(value) => setTripData((prev) => ({
                                     ...prev,
@@ -128,35 +128,37 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                                     trip0: { ...prev.trip0, toIsland: value }
                                 }))}
                             />
+                            <div className='flex justify-center items-center lg:flex-row flex-col gap-5'>
 
-                            <div className='hidden sm:block'><Divider type="vertical" style={{ height: 60 }} /></div>
-                            <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
+                                <div className='hidden md:hidden lg:block'><Divider type="vertical" style={{ height: 60 }} /></div>
+                                <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
 
-                            <Departure getDeparture={(value) => setTripData(prev => ({
-                                ...prev,
-                                trip0: { ...prev.trip0, departure: value }
-                            }))}
-                            />
-
-                            <div className='hidden sm:block'><Divider type="vertical" style={{ height: 60 }} /></div>
-                            <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
-
-                            <AdultInfant
-                                getAdult={(value) => setTripData((prev) => ({
+                                <Departure getDeparture={(value) => setTripData(prev => ({
                                     ...prev,
-                                    trip0: { ...prev.trip0, adults: value }
+                                    trip0: { ...prev.trip0, departure: value }
                                 }))}
-                                getInfant={(value) => setTripData((prev) => ({
-                                    ...prev,
-                                    trip0: { ...prev.trip0, infants: value }
-                                }))}
-                            />
+                                />
+
+                                <div className='hidden md:hidden lg:block'><Divider type="vertical" style={{ height: 60 }} /></div>
+                                <div className='sm:hidden block w-full'><Divider style={{ margin: 0 }} /></div>
+
+                                <AdultInfant
+                                    getAdult={(value) => setTripData((prev) => ({
+                                        ...prev,
+                                        trip0: { ...prev.trip0, adults: value }
+                                    }))}
+                                    getInfant={(value) => setTripData((prev) => ({
+                                        ...prev,
+                                        trip0: { ...prev.trip0, infants: value }
+                                    }))}
+                                />
+                            </div>
 
                         </div>
 
                         {tripArray.map((trip, index) => (
-                            <div key={index} className='w-full mt-5 flex sm:flex-row flex-col justify-between items-center'>
-                                <div className='w-full sm:hidden'><Divider style={{width:2}}/></div>
+                            <div key={index} className='w-full mt-5 flex sm:flex-row flex-col justify-between items-center flex-wrap'>
+                                <div className='w-full sm:hidden'><Divider style={{ width: 2 }} /></div>
                                 {trip}
                                 <Button
                                     type="primary"
