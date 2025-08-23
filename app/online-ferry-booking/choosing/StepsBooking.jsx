@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import SHome from '@/components/skeleton/SHome';
 const ChooseFerry = dynamic(() => import("./ChooseFerry"), { ssr: false, loading: () => <><SHome /></> })
+const ReviewCheckout = dynamic(() => import("./ReviewCheckout"), { ssr: false, loading: () => <><SHome /></> })
 
 export default function StepsBooking({ tripData }) {
     const { token } = theme.useToken();
@@ -14,6 +15,7 @@ export default function StepsBooking({ tripData }) {
         setCurrent(value);
         if (value == 0) {
             window.scrollTo({ top: document.getElementById('select-ferry').offsetTop, behavior: 'smooth' });
+            tripData = null; // Reset tripData when going back to the first step
         }
     };
 
@@ -28,7 +30,7 @@ export default function StepsBooking({ tripData }) {
         },
         {
             title: 'Review & Checkout',
-            content: 'Last-content',
+            content: <ReviewCheckout tripData={tripData} />,
         },
     ];
 
@@ -44,8 +46,8 @@ export default function StepsBooking({ tripData }) {
         <>  
         {tripData && tripData.trip0.departure &&
             <>
-                <h1 className='text-2xl font-bold mb-5'>Book Your Ferry Trip</h1>
-                <p className='text-gray-600 mb-5'>Select your departure and arrival islands, choose the date and time, and book your ferry trip.</p>
+                <h1 className='text-2xl text-center font-bold mb-5'>Book Your Ferry Trip</h1>
+                <p className='text-gray-600 mb-5 text-center'>Select your departure and arrival islands, choose the date and time, and book your ferry trip.</p>
                 <Steps onChange={onChange} current={current} items={items} />
                 <div>{steps[current].content}</div>
             </>

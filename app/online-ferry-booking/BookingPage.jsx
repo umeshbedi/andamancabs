@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import SHome from '@/components/skeleton/SHome'
 import SHeader from '@/components/skeleton/SHeader';
 import StepsBooking from './choosing/StepsBooking';
+import PaymentBtn from './payment/Payment';
 const Navbar = dynamic(() => import('@/components/layout/navbar/Navbar'), {
     ssr: false, loading: () => <SHeader />
 });
@@ -45,6 +46,7 @@ export default function BookingPage() {
                 // Add logic to navigate or handle the event
                 window.scrollTo({ top: document.getElementById('booking-page').offsetTop, behavior: 'smooth' });
             }} />
+            
             <br /><br />
             <div className='w-full mt-10 h-full flex flex-col items-center'>
                 <div className='w-[80%]'>

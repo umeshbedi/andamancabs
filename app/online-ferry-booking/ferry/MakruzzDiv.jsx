@@ -3,6 +3,7 @@ import { Tabs, Carousel, Divider, Image, Button } from 'antd';
 import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
+import PaymentBtn from '../payment/Payment';
 
 export default function MakruzzDiv({ ticketClass = [] }) {
 
@@ -41,7 +42,7 @@ export default function MakruzzDiv({ ticketClass = [] }) {
 
           {/* Ferry name div */}
           <div className='flex flex-col justify-center items-center'>
-            <Image src='/img/ferry logo/makruzz-logo.png' alt="makruzz logo" height={30} width={40}/>
+            <Image src='/img/ferry logo/makruzz-logo.png' alt="makruzz logo" height={30} width={40} />
             <h4>{ferryName}</h4>
           </div>
 
@@ -68,7 +69,12 @@ export default function MakruzzDiv({ ticketClass = [] }) {
           <div>
             {/* Price div */}
             <p className='text-2xl font-bold'><span className='line-through text-[1rem] font-normal'>₹{price + 150}</span> ₹{price}</p>
-            <button className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
+            <PaymentBtn className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'
+              paymentFor={"makruzz"}
+              amount={price}
+              title={"Book Now"}
+            />
+            {/* <button className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button> */}
 
           </div>
 
@@ -118,14 +124,14 @@ export default function MakruzzDiv({ ticketClass = [] }) {
           return {
             label: item.shipClass,
             key: `${item.shipTitle}-${item.shipClass}-${i}`,
-            children: <FerryContent 
-            amenties={amenties[item.shipClass]} 
-            price={item.price} 
-            arrivalTime={item.arrivalTime}
-            departureTime={item.departureTime}
-            source={item.sourceName}
-            destination={item.destinationName}
-            ferryName={item.shipTitle}
+            children: <FerryContent
+              amenties={amenties[item.shipClass]}
+              price={item.price}
+              arrivalTime={item.arrivalTime}
+              departureTime={item.departureTime}
+              source={item.sourceName}
+              destination={item.destinationName}
+              ferryName={item.shipTitle}
             />,
           };
         })}

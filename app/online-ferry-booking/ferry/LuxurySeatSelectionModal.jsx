@@ -8,8 +8,9 @@ import seatGrey from "@/public/seat-grey.webp";
 import seatBlue from "@/public/seat-blue.webp";
 import boatSvg from "@/public/Nautika-luxury-mobile.svg";
 import { Modal } from "antd";
+import PaymentBtn from "../payment/Payment";
 
-export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, onConfirm }) {
+export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, onConfirm, price }) {
     const [selected, setSelected] = useState([]);
     const [zoom, setZoom] = useState(1);
 
@@ -70,12 +71,19 @@ export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, on
             </div>
             <div className={styles.footer}>
                 <span>Selected: {selected.join(", ") || "None"}</span>
-                <button
+                <PaymentBtn className={`${!selected.length ? 'bg-gray-400' : 'bg-[var(--primary)]'} mt-5 py-3 px-10 rounded-full cursor-pointer`}
+                    paymentFor={"nautika"}
+                    amount={price}
+                    title={"Confirm Booking"}
+                    disabled={!selected.length}
+                    clickEvent={() => onConfirm(selected)}
+                />
+                {/* <button
                     disabled={!selected.length}
                     onClick={() => onConfirm(selected)}
                 >
                     Confirm Booking
-                </button>
+                </button> */}
                 <button onClick={() => onConfirm(selected)} className='bg-[var(--primary)] py-3 px-10 rounded-full cursor-pointer'>Search</button>
             </div>
         </Modal>

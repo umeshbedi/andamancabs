@@ -4,6 +4,7 @@ import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
 import LuxurySeatSelectionModal from './LuxurySeatSelectionModal';
+import PaymentBtn from '../payment/Payment';
 
 export default function NautikaDiv({ singleFerry = {} }) {
 
@@ -115,7 +116,7 @@ export default function NautikaDiv({ singleFerry = {} }) {
             {/* Price div */}
             <p className='text-2xl font-bold'><span className='line-through text-[1rem] font-normal'>₹{price + 150}</span> ₹{price}</p>
             <button onClick={()=>{setIsModalOpen(true); console.log(seatData)}} className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
-
+            
           </div>
 
         </div>
@@ -126,7 +127,7 @@ export default function NautikaDiv({ singleFerry = {} }) {
           ))}
         </div>
 
-        <LuxurySeatSelectionModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} onConfirm={onSeatConfirm} seatData={seatData}/>
+        <LuxurySeatSelectionModal isOpen={isModalOpen} price={price} onClose={()=>setIsModalOpen(false)} onConfirm={onSeatConfirm} seatData={seatData}/>
       </div>
     );
   }

@@ -1,0 +1,14 @@
+[
+  { "label": "Passport", "value": "passport" },
+  { "label": "Aadhaar Card", "value": "aadhaar" },
+  { "label": "PAN Card", "value": "pan" },
+  { "label": "Driving License", "value": "driving_license" },
+  { "label": "Voter ID", "value": "voter_id" },
+  { "label": "Ration Card", "value": "ration_card" },
+  { "label": "Residence Permit", "value": "residence_permit" },
+  { "label": "Social Security Number", "value": "ssn" },
+  { "label": "National ID Card", "value": "national_id" },
+  { "label": "Work Permit", "value": "work_permit" },
+  { "label": "Student ID", "value": "student_id" },
+  { "label": "Employee ID", "value": "employee_id" }
+]

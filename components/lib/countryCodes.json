@@ -1,0 +1,486 @@
+[
+  {
+    "label": "+93 AF",
+    "value": "+93"
+  },
+  {
+    "label": "+355 AL",
+    "value": "+355"
+  },
+  {
+    "label": "+213 DZ",
+    "value": "+213"
+  },
+  {
+    "label": "+376 AD",
+    "value": "+376"
+  },
+  {
+    "label": "+244 AO",
+    "value": "+244"
+  },
+  {
+    "label": "+54 AR",
+    "value": "+54"
+  },
+  {
+    "label": "+374 AM",
+    "value": "+374"
+  },
+  {
+    "label": "+61 AU",
+    "value": "+61"
+  },
+  {
+    "label": "+43 AT",
+    "value": "+43"
+  },
+  {
+    "label": "+994 AZ",
+    "value": "+994"
+  },
+  {
+    "label": "+973 BH",
+    "value": "+973"
+  },
+  {
+    "label": "+880 BD",
+    "value": "+880"
+  },
+  {
+    "label": "+375 BY",
+    "value": "+375"
+  },
+  {
+    "label": "+32 BE",
+    "value": "+32"
+  },
+  {
+    "label": "+591 BO",
+    "value": "+591"
+  },
+  {
+    "label": "+387 BA",
+    "value": "+387"
+  },
+  {
+    "label": "+267 BW",
+    "value": "+267"
+  },
+  {
+    "label": "+55 BR",
+    "value": "+55"
+  },
+  {
+    "label": "+359 BG",
+    "value": "+359"
+  },
+  {
+    "label": "+855 KH",
+    "value": "+855"
+  },
+  {
+    "label": "+237 CM",
+    "value": "+237"
+  },
+  {
+    "label": "+1 CA",
+    "value": "+1"
+  },
+  {
+    "label": "+56 CL",
+    "value": "+56"
+  },
+  {
+    "label": "+86 CN",
+    "value": "+86"
+  },
+  {
+    "label": "+57 CO",
+    "value": "+57"
+  },
+  {
+    "label": "+506 CR",
+    "value": "+506"
+  },
+  {
+    "label": "+385 HR",
+    "value": "+385"
+  },
+  {
+    "label": "+53 CU",
+    "value": "+53"
+  },
+  {
+    "label": "+357 CY",
+    "value": "+357"
+  },
+  {
+    "label": "+420 CZ",
+    "value": "+420"
+  },
+  {
+    "label": "+45 DK",
+    "value": "+45"
+  },
+  {
+    "label": "+20 EG",
+    "value": "+20"
+  },
+  {
+    "label": "+372 EE",
+    "value": "+372"
+  },
+  {
+    "label": "+251 ET",
+    "value": "+251"
+  },
+  {
+    "label": "+679 FJ",
+    "value": "+679"
+  },
+  {
+    "label": "+358 FI",
+    "value": "+358"
+  },
+  {
+    "label": "+33 FR",
+    "value": "+33"
+  },
+  {
+    "label": "+995 GE",
+    "value": "+995"
+  },
+  {
+    "label": "+49 DE",
+    "value": "+49"
+  },
+  {
+    "label": "+30 GR",
+    "value": "+30"
+  },
+  {
+    "label": "+502 GT",
+    "value": "+502"
+  },
+  {
+    "label": "+852 HK",
+    "value": "+852"
+  },
+  {
+    "label": "+36 HU",
+    "value": "+36"
+  },
+  {
+    "label": "+354 IS",
+    "value": "+354"
+  },
+  {
+    "label": "+91 IN",
+    "value": "+91"
+  },
+  {
+    "label": "+62 ID",
+    "value": "+62"
+  },
+  {
+    "label": "+98 IR",
+    "value": "+98"
+  },
+  {
+    "label": "+964 IQ",
+    "value": "+964"
+  },
+  {
+    "label": "+353 IE",
+    "value": "+353"
+  },
+  {
+    "label": "+972 IL",
+    "value": "+972"
+  },
+  {
+    "label": "+39 IT",
+    "value": "+39"
+  },
+  {
+    "label": "+81 JP",
+    "value": "+81"
+  },
+  {
+    "label": "+962 JO",
+    "value": "+962"
+  },
+  {
+    "label": "+7 KZ",
+    "value": "+7"
+  },
+  {
+    "label": "+254 KE",
+    "value": "+254"
+  },
+  {
+    "label": "+82 KR",
+    "value": "+82"
+  },
+  {
+    "label": "+965 KW",
+    "value": "+965"
+  },
+  {
+    "label": "+856 LA",
+    "value": "+856"
+  },
+  {
+    "label": "+371 LV",
+    "value": "+371"
+  },
+  {
+    "label": "+961 LB",
+    "value": "+961"
+  },
+  {
+    "label": "+218 LY",
+    "value": "+218"
+  },
+  {
+    "label": "+423 LI",
+    "value": "+423"
+  },
+  {
+    "label": "+370 LT",
+    "value": "+370"
+  },
+  {
+    "label": "+352 LU",
+    "value": "+352"
+  },
+  {
+    "label": "+853 MO",
+    "value": "+853"
+  },
+  {
+    "label": "+389 MK",
+    "value": "+389"
+  },
+  {
+    "label": "+60 MY",
+    "value": "+60"
+  },
+  {
+    "label": "+960 MV",
+    "value": "+960"
+  },
+  {
+    "label": "+356 MT",
+    "value": "+356"
+  },
+  {
+    "label": "+230 MU",
+    "value": "+230"
+  },
+  {
+    "label": "+52 MX",
+    "value": "+52"
+  },
+  {
+    "label": "+377 MC",
+    "value": "+377"
+  },
+  {
+    "label": "+976 MN",
+    "value": "+976"
+  },
+  {
+    "label": "+382 ME",
+    "value": "+382"
+  },
+  {
+    "label": "+212 MA",
+    "value": "+212"
+  },
+  {
+    "label": "+95 MM",
+    "value": "+95"
+  },
+  {
+    "label": "+264 NA",
+    "value": "+264"
+  },
+  {
+    "label": "+977 NP",
+    "value": "+977"
+  },
+  {
+    "label": "+31 NL",
+    "value": "+31"
+  },
+  {
+    "label": "+64 NZ",
+    "value": "+64"
+  },
+  {
+    "label": "+234 NG",
+    "value": "+234"
+  },
+  {
+    "label": "+47 NO",
+    "value": "+47"
+  },
+  {
+    "label": "+968 OM",
+    "value": "+968"
+  },
+  {
+    "label": "+92 PK",
+    "value": "+92"
+  },
+  {
+    "label": "+970 PS",
+    "value": "+970"
+  },
+  {
+    "label": "+507 PA",
+    "value": "+507"
+  },
+  {
+    "label": "+595 PY",
+    "value": "+595"
+  },
+  {
+    "label": "+51 PE",
+    "value": "+51"
+  },
+  {
+    "label": "+63 PH",
+    "value": "+63"
+  },
+  {
+    "label": "+48 PL",
+    "value": "+48"
+  },
+  {
+    "label": "+351 PT",
+    "value": "+351"
+  },
+  {
+    "label": "+974 QA",
+    "value": "+974"
+  },
+  {
+    "label": "+40 RO",
+    "value": "+40"
+  },
+  {
+    "label": "+7 RU",
+    "value": "+7"
+  },
+  {
+    "label": "+966 SA",
+    "value": "+966"
+  },
+  {
+    "label": "+381 RS",
+    "value": "+381"
+  },
+  {
+    "label": "+65 SG",
+    "value": "+65"
+  },
+  {
+    "label": "+421 SK",
+    "value": "+421"
+  },
+  {
+    "label": "+386 SI",
+    "value": "+386"
+  },
+  {
+    "label": "+27 ZA",
+    "value": "+27"
+  },
+  {
+    "label": "+34 ES",
+    "value": "+34"
+  },
+  {
+    "label": "+94 LK",
+    "value": "+94"
+  },
+  {
+    "label": "+46 SE",
+    "value": "+46"
+  },
+  {
+    "label": "+41 CH",
+    "value": "+41"
+  },
+  {
+    "label": "+886 TW",
+    "value": "+886"
+  },
+  {
+    "label": "+992 TJ",
+    "value": "+992"
+  },
+  {
+    "label": "+66 TH",
+    "value": "+66"
+  },
+  {
+    "label": "+216 TN",
+    "value": "+216"
+  },
+  {
+    "label": "+90 TR",
+    "value": "+90"
+  },
+  {
+    "label": "+256 UG",
+    "value": "+256"
+  },
+  {
+    "label": "+380 UA",
+    "value": "+380"
+  },
+  {
+    "label": "+971 AE",
+    "value": "+971"
+  },
+  {
+    "label": "+44 GB",
+    "value": "+44"
+  },
+  {
+    "label": "+1 US",
+    "value": "+1"
+  },
+  {
+    "label": "+598 UY",
+    "value": "+598"
+  },
+  {
+    "label": "+998 UZ",
+    "value": "+998"
+  },
+  {
+    "label": "+58 VE",
+    "value": "+58"
+  },
+  {
+    "label": "+84 VN",
+    "value": "+84"
+  },
+  {
+    "label": "+967 YE",
+    "value": "+967"
+  },
+  {
+    "label": "+260 ZM",
+    "value": "+260"
+  },
+  {
+    "label": "+263 ZW",
+    "value": "+263"
+  }
+]
