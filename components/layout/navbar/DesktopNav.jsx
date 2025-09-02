@@ -4,7 +4,8 @@ import { menu } from '@/components/lib/data'
 import { menu as localMenu } from '@/components/utils/localdb'
 import Image from 'next/image'
 import Dropdown from './Dropdown'
-import MegaDropDown from './MegaDropDown'
+import MegaActivityDropDown from './MegaActivityDropDown'
+import MegaPackageDropDown from './MegaPackageDropDown'
 import { getAllActivities } from '@/components/utils/actions/activityAction'
 
 export default function DesktopNav() {
@@ -17,11 +18,11 @@ export default function DesktopNav() {
                 </MegaMenu>
                 <SimpleMenu title="LOCATION" url="#" />
                 <MegaMenu title="PACKAGES">
-                    <MegaDropDown content={localMenu.packages}/>
+                    <MegaPackageDropDown/>
                 </MegaMenu>
 
                 <MegaMenu title="ACTIVITIES">
-                    <MegaDropDown content={"activity"}/>
+                    <MegaActivityDropDown/>
                 </MegaMenu>
 
                 <li>

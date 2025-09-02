@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --primary: #ffd000;
-  --lightGreyColor:#f6f6f6;
+  --lightGreyColor: #f6f6f6;
 }
 
 @theme inline {
@@ -16,20 +16,20 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
     --primary: #ffd000;
     --lightGreyColor:#f6f6f6;
   }
-}
+} */
 
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-poppins);
+  font-family: var(--font-poppins) !important;
 }
 
 main {
@@ -37,7 +37,7 @@ main {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding:0 5%;
+  padding: 0 5%;
 }
 
 h1 {
@@ -63,10 +63,12 @@ h3 {
 .navbar li {
   font-size: .9rem;
 }
-.faqclass p{
+
+.faqclass p {
   font-size: 1.2rem;
   line-height: 1.5;
 }
+
 input {
   width: 100%;
   padding: 4px 11px;
@@ -92,6 +94,9 @@ input:focus {
   color: #d9d9d9;
 }
 
+.packageSection p {
+  font-size: 1rem !important;
+}
 
 
 /* Change the background color of the active slide */
@@ -156,25 +161,29 @@ input:focus {
 .auto-columns {
   width: 100%;
   padding: 1rem;
-  overflow: hidden; /* No vertical scrollbar */
-  
+  overflow: hidden;
+  /* No vertical scrollbar */
+
 }
 
 .content {
-  column-count: 4; /* Default number of columns */
-  column-gap: 20px; /* Space between columns */
+  column-count: 4;
+  /* Default number of columns */
+  column-gap: 20px;
+  /* Space between columns */
   height: 100%;
 }
 
 .jodit-container .jodit-workplace .jodit-wysiwyg {
   height: 400px !important;
+
   ul li {
     list-style-type: disc;
-    margin-left: 20px!important;
+    margin-left: 20px !important;
   }
+
   ol li {
     list-style-type: decimal;
-    
+
   }
 }
-

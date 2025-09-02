@@ -1,18 +1,10 @@
 
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { getAllActivities } from '@/components/utils/actions/activityAction'
+import { getAllPackage, getAllPackageGroup } from "@/components/utils/actions/packageAction";
 
-export default function MegaDropDown({ content = "activity" }) {
-  const [megaMenuData, setMegaMenuData] = useState([])
-  useEffect(() => {
-    if (content === "activity") {
-      let tempdata = []
-      const activityRes = getAllActivities();
-      activityRes.then(data => { tempdata.push(...data); setMegaMenuData(tempdata) })
-        .catch((error) => { console.error("Error fetching activity data:", error) })
-    }
-  }, [content])
+export default async function MegaActivityDropDown({ content = "activity" }) {
+  const megaMenuData = await getAllActivities();
 
   return (
     <div className="w-[820px]">
