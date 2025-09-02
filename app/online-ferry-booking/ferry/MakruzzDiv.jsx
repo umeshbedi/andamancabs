@@ -5,11 +5,16 @@ import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
 import PaymentBtn from '../payment/Payment';
 
-export default function MakruzzDiv({ ticketClass = [] }) {
+import { useGlobalFerryContext } from '../GlobalFerryContext';
+
+export default function MakruzzDiv({ ticketClass = [], tripName }) {
+
+  const { setTrip0Selected, setTrip1Selected, setTrip2Selected, tripData } = useGlobalFerryContext();
 
   const onChange = key => {
     console.log(key);
   };
+
 
 
   const customData = [
@@ -31,7 +36,32 @@ export default function MakruzzDiv({ ticketClass = [] }) {
     )
   }
 
-  function FerryContent({ amenties = [], price, arrivalTime, departureTime, source, destination, ferryName }) {
+  function FerryContent({ amenties = [], price, arrivalTime, departureTime, source, 
+    destination, ferryName, sheduleId, classId, className }) {
+
+    const selectedTripData = {
+      ferry: "makruzz",
+      schedule_id: sheduleId,
+      class_id: classId,
+      className,
+      timing:`${arrivalTime}-${departureTime}`,
+      fare: price,
+      no_of_passenger: tripData.trip0.adults + tripData.trip0.infants,
+      travel_date: tripData.trip0.departure,
+    }
+
+    function onSelectTicket() {
+      if (tripName === "trip 1") {
+        setTrip0Selected(selectedTripData);
+      } else if (tripName === "trip 2") {
+        setTrip1Selected(selectedTripData);
+      } else if (tripName === "trip 3") {
+        setTrip2Selected(selectedTripData);
+      }
+      else { setTrip0Selected(selectedTripData); }
+      window.scrollTo({ top: document.getElementById('booking-page').offsetTop, behavior: 'smooth' });
+    }
+
     return (
       <div>
         <div className='flex flex-col sm:flex-row justify-between items-center w-full mb-2'>
@@ -69,12 +99,12 @@ export default function MakruzzDiv({ ticketClass = [] }) {
           <div>
             {/* Price div */}
             <p className='text-2xl font-bold'><span className='line-through text-[1rem] font-normal'>₹{price + 150}</span> ₹{price}</p>
-            <PaymentBtn className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'
+            {/* <PaymentBtn className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'
               paymentFor={"makruzz"}
               amount={price}
               title={"Book Now"}
-            />
-            {/* <button className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button> */}
+            /> */}
+            <button onClick={onSelectTicket} className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Select Ticket</button>
 
           </div>
 
@@ -132,6 +162,9 @@ export default function MakruzzDiv({ ticketClass = [] }) {
               source={item.sourceName}
               destination={item.destinationName}
               ferryName={item.shipTitle}
+              sheduleId={item.sheduleId}
+              classId={item.classId}
+              className={item.shipClass}
             />,
           };
         })}

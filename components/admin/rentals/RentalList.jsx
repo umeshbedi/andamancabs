@@ -102,8 +102,9 @@ export default function RentalsList({ pageName }) {
                         key: k,
                         name: item.title,
                         id: item.id,
-                        thumb:item.thumbnail,
-                        itemData:item
+                        thumb:item.headerImage,
+                        itemData:item,
+                        island:item.island
                     })
                 })} />
             </div>

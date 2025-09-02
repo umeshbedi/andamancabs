@@ -7,8 +7,8 @@ export const menu = {
         { title: "Cancellation Policy", url: "/cancellaction-policy" }
     ],
     cabRentals: [
-        { title: "Cabs in Port Blair", url: "/cabs/cabs-in-port-blair" },
-        { title: "Cabs in Havelock Island", url: "/cabs/cabs-in-havelock" },
-        { title: "Cabs in  Neil Island", url: "/cabs/cabs-in-neil" }
+        { title: "Cabs in Port Blair", url: "/cabs/Cabs-In-Port-Blair" },
+        { title: "Cabs in Havelock Island", url: "/cabs/Cabs-In-Havelock" },
+        { title: "Cabs in  Neil Island", url: "/cabs/Cabs-In-Neil" }
     ],
 }

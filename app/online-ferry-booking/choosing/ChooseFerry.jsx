@@ -9,17 +9,24 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { Empty } from 'antd'
 import { Spin } from 'antd'
 import { countMakruzzFerry } from '../ferry/countMakruzz.js'
+import { useGlobalFerryContext } from '../GlobalFerryContext.jsx'
+import { message } from 'antd'
+
+
 
 const Makruzz = dynamic(() => import('../ferry/Makruzz'), { ssr: false, loading: () => <><SHome /></> })
 const Nautika = dynamic(() => import('../ferry/Nautika'), { ssr: false, loading: () => <><SHome /></> })
 
-export default function ChooseFerry({ tripData }) {
+export default function ChooseFerry({ tripData, tripName }) {
+
+    const context = useGlobalFerryContext();
+
     const [ferry, setFerry] = useState([])
     const [ferryDiv, setFerryDiv] = useState(<></>)
 
     const [makruzzTickets, setMakruzzTickets] = useState([])
     const [nautikaTickets, setNautikaTickets] = useState([])
-
+    const [messageApi, contextHolder] = message.useMessage();
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -44,13 +51,11 @@ export default function ChooseFerry({ tripData }) {
         setNautikaTickets([]);
         setIsLoading(true);
         setFerryDiv(<></>)
-        if (!tripData) return;
+        if (!tripData.departure) return;
 
         const location = { "portblair": "Port Blair", "havelock": "Swaraj Dweep", "neilisland": "Shaheed Dweep" }
 
-        const { trip0 } = tripData;
-
-        const dateParts = trip0.departure.split("-");
+        const dateParts = tripData.departure.split("-");
         const formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
 
         async function fetchNautikaTickets() {
@@ -59,15 +64,16 @@ export default function ChooseFerry({ tripData }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     date: formattedDate,
-                    from: location[trip0.fromIsland],
-                    to: location[trip0.toIsland]
+                    from: location[tripData.fromIsland],
+                    to: location[tripData.toIsland]
                 })
             });
 
             const data = await res.json();
             if (data.err == null) setNautikaTickets(data?.data || []);
-            console.log("Nautika:", data.data);
+            console.log("Nautika:", data);
             setIsLoading(false);
+            if (data.error) messageApi.error(data.error)
         }
         fetchNautikaTickets();
     }, [tripData])
@@ -79,23 +85,22 @@ export default function ChooseFerry({ tripData }) {
         setMakruzzTickets([]);
         setIsLoading(true);
         setFerryDiv(<></>)
-        if (!tripData) return;
+        if (!tripData.departure) return;
 
         const location = { "portblair": "1", "havelock": "2", "neilisland": "3" }
-
-        const { trip0 } = tripData;
 
         async function fetchCruiseTickets() {
             const res = await fetch("/api/makruzz/schedule_search", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ fromLocation: location[trip0.fromIsland], toLocation: location[trip0.toIsland], travelDate: trip0.departure, numAdult: trip0.adults })
+                body: JSON.stringify({ fromLocation: location[tripData.fromIsland], toLocation: location[tripData.toIsland], travelDate: tripData.departure, numAdult: context.tripData.trip0.adults })
             });
 
             const data = await res.json();
             setMakruzzTickets(data?.data || []);
             console.log("Makruzz:", data);
             setIsLoading(false);
+            if (data.error) messageApi.error(data.error)
         }
 
         fetchCruiseTickets();
@@ -120,15 +125,15 @@ export default function ChooseFerry({ tripData }) {
         })]);
     }, [makruzzTickets, nautikaTickets])
 
-
+    // console.log(makruzzTickets, nautikaTickets)
 
 
     function onFerryChange(value) {
 
         if (value === "makruzz") {
-            setFerryDiv(<Makruzz makruzzTickets={makruzzTickets} />)
+            setFerryDiv(<Makruzz makruzzTickets={makruzzTickets} tripName={tripName} />)
         } else if (value === "nautika") {
-            setFerryDiv(<Nautika nautikaTickets={nautikaTickets} />)
+            setFerryDiv(<Nautika nautikaTickets={nautikaTickets} tripName={tripName} />)
         } else {
             setFerryDiv(
                 <div className='flex justify-center items-center h-[200px]'>
@@ -142,13 +147,14 @@ export default function ChooseFerry({ tripData }) {
 
     if (isLoading) return <div className='mt-10'><Spin size="large" className='w-full' /></div>
 
-    setTimeout(() => {
-        if (makruzzTickets.length === 0 && nautikaTickets.length === 0) return <Empty description="No ferries available for the selected route." className='mt-10' image={Empty.PRESENTED_IMAGE_SIMPLE} />
-    }, 500);
+    if (makruzzTickets.length === 0 && nautikaTickets.length === 0) return <>{contextHolder} <Empty description="No ferries available for the selected route." className='mt-10' image={Empty.PRESENTED_IMAGE_SIMPLE} /></>
+    // setTimeout(() => {
+    // }, 100);
 
     return (
         <div className='mt-10'>
-            <h2>Choose a Ferry</h2>
+            {contextHolder}
+            <h2>Choose a Ferry {(context.tripData.trip1.added || context.tripData.trip2.added)?`for ${tripName}`: ''}</h2>
             <p className='text-gray-600'>Select a ferry from the available options below.</p>
             <Segmented shape='round' block style={{ marginTop: 20 }} options={ferry} onChange={(e) => onFerryChange(e)} />
 

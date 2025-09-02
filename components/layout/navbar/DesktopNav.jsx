@@ -36,7 +36,7 @@ export default function DesktopNav() {
 
                 {/* <SimpleMenu title="VEHICLE TYPES" url="/admin" /> */}
                 <SimpleMenu title="BOOK FERRIES ONLINE" url="/online-ferry-booking" />
-                <SimpleMenu title="HOTELS" url="/contact-us" />
+                <SimpleMenu title="HOTELS" url="/hotels" />
                 <SimpleMenu title="CONTACT US" url="/contact-us" />
             </ul>
         </nav>

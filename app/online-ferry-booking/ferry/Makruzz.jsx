@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MakruzzDiv from './MakruzzDiv'
 
-export default function Makruzz({ makruzzTickets }) {
+export default function Makruzz({ makruzzTickets, tripName }) {
   const [filteredClass, setFilteredClass] = useState([])
 
   // Function to convert 24-hour time to AM/PM format
@@ -32,6 +32,8 @@ export default function Makruzz({ makruzzTickets }) {
 
         acc[arrivalFormatted].ship_classes.push({
           shipClass: item.ship_class_title,
+          classId: item.ship_class_id,
+          sheduleId: item.id, 
           price: item.ship_class_price,
           shipTitle: item.ship_title,
           sourceName: item.source_name,
@@ -50,7 +52,7 @@ export default function Makruzz({ makruzzTickets }) {
   return (
     <div>
       {filteredClass.map((fClass, index) => (
-        <MakruzzDiv key={index} ticketClass={fClass}/>
+        <MakruzzDiv key={index} ticketClass={fClass} tripName={tripName}/>
       ))}
     </div>
   )

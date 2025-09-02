@@ -1,18 +1,21 @@
 import { DeleteFilled, PlusCircleOutlined, SwapOutlined } from '@ant-design/icons'
 import { Divider, message, Button } from 'antd';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FromToDiv from './FromToDiv';
 import Departure from './Departure';
 import AdultInfant from './AdultInfant';
-
+import { useGlobalFerryContext } from './GlobalFerryContext';
 
 export default function BookingHeader({ getTripData = (e) => { } }) {
 
     const [messageApi, contextHolder] = message.useMessage();
 
+    const context = useGlobalFerryContext();
+
+
     const [tripArray, setTripArray] = useState([])
     const [tripData, setTripData] = useState({
-        trip0: { fromIsland: "portblair", toIsland: "neilisland", departure: undefined, adults: 1, infants: 0 },
+        trip0: { fromIsland: "portblair", toIsland: "neilisland", departure: undefined, adults: 1, infants: 0, added: true },
         trip1: { fromIsland: "portblair", toIsland: "neilisland", departure: undefined, added: false },
         trip2: { fromIsland: "portblair", toIsland: "neilisland", departure: undefined, added: false }
     })
@@ -86,16 +89,24 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
     }
 
     const goToDetails = () => {
-        // localStorage.setItem('tripData', JSON.stringify(tripData));
-        // router.push('/online-ferry-booking/details');
+
         if (tripArray.length > 2) return;
 
         if (!tripData.trip0.departure || tripData.trip1.added && !tripData.trip1.departure || tripData.trip2.added && !tripData.trip2.departure) {
             messageApi.error("Please select a departure date for the first trip.");
             return;
         }
-        getTripData(tripData);
+        context.updateTripData(null);
+        context.setTrip0Selected(null);
+        context.setTrip1Selected(null);
+        context.setTrip2Selected(null);
+        getTripData();
+        context.updateTripData(tripData);
     };
+
+    // useEffect(() => {
+    //     context.updateTripData(tripData);
+    // }, [tripData])
 
     return (
         <>

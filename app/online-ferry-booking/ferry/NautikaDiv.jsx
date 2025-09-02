@@ -3,13 +3,14 @@ import { Tabs, Carousel, Divider, Image, Button } from 'antd';
 import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
-import LuxurySeatSelectionModal from './LuxurySeatSelectionModal';
+import LuxurySeatSelectionModal from './LuxuryRoyalSeatSelectionModal';
 import PaymentBtn from '../payment/Payment';
 
-export default function NautikaDiv({ singleFerry = {} }) {
+export default function NautikaDiv({ singleFerry = {}, tripName }) {
 
   const [ticketClass, setTicketClass] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [seatDataModal, setSeatDataModal] = useState({})
 
   // Function to convert 24-hour time to AM/PM format
   function toAmPm(timeStr) {
@@ -25,7 +26,7 @@ export default function NautikaDiv({ singleFerry = {} }) {
   };
 
   function onSeatConfirm(selectedSeats) {
-    console.log("Selected Seats:", selectedSeats);  
+    console.log("Selected Seats:", selectedSeats);
     setIsModalOpen(false);
   }
 
@@ -55,7 +56,7 @@ export default function NautikaDiv({ singleFerry = {} }) {
     setTicketClass(tempClass);
 
 
-  },[singleFerry])
+  }, [singleFerry])
 
 
   const customData = [
@@ -77,7 +78,8 @@ export default function NautikaDiv({ singleFerry = {} }) {
     )
   }
 
-  function FerryContent({ amenties = [], price, arrivalTime, departureTime, source, destination, ferryName, seatData={} }) {
+  function FerryContent({ amenties = [], price, arrivalTime, departureTime, 
+    source, destination, ferryName, seatData = {}, className }) {
     return (
       <div>
         <div className='flex flex-col sm:flex-row justify-between items-center w-full mb-2'>
@@ -88,14 +90,14 @@ export default function NautikaDiv({ singleFerry = {} }) {
 
           {/* Ferry name div */}
           <div className='flex flex-col justify-center items-center'>
-            <Image src='/img/ferry logo/Nautika-Logo-v2-768x223.png' alt="Nautika logo" height={30} width={60} className='object-contain'/>
+            <Image src='/img/ferry logo/Nautika-Logo-v2-768x223.png' alt="Nautika logo" height={30} width={60} className='object-contain' />
             <h4>{ferryName}</h4>
           </div>
 
           {/* timing div */}
           <div className='flex gap-10'>
             <div>
-              <h4>{toAmPm(arrivalTime)}</h4>
+              <h4>{arrivalTime}</h4>
               <p>{source}</p>
             </div>
 
@@ -106,7 +108,7 @@ export default function NautikaDiv({ singleFerry = {} }) {
             </div>
 
             <div>
-              <h4>{toAmPm(departureTime)}</h4>
+              <h4>{departureTime}</h4>
               <p>{destination}</p>
             </div>
 
@@ -115,8 +117,8 @@ export default function NautikaDiv({ singleFerry = {} }) {
           <div>
             {/* Price div */}
             <p className='text-2xl font-bold'><span className='line-through text-[1rem] font-normal'>₹{price + 150}</span> ₹{price}</p>
-            <button onClick={()=>{setIsModalOpen(true); console.log(seatData)}} className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
-            
+            <button onClick={() => { setSeatDataModal(seatData) ;setIsModalOpen(true); console.log(seatData) }} className='bg-[var(--primary)] mt-5 py-3 px-10 rounded-full cursor-pointer'>Book Now</button>
+
           </div>
 
         </div>
@@ -127,7 +129,16 @@ export default function NautikaDiv({ singleFerry = {} }) {
           ))}
         </div>
 
-        <LuxurySeatSelectionModal isOpen={isModalOpen} price={price} onClose={()=>setIsModalOpen(false)} onConfirm={onSeatConfirm} seatData={seatData}/>
+        <LuxurySeatSelectionModal
+          isOpen={isModalOpen}
+          price={price}
+          onClose={() => setIsModalOpen(false)}
+          onConfirm={onSeatConfirm}
+          seatData={seatDataModal}
+          arrivalTime={arrivalTime}
+          departureTime={departureTime}
+          className={className}
+        />
       </div>
     );
   }
@@ -167,15 +178,16 @@ export default function NautikaDiv({ singleFerry = {} }) {
           return {
             label: item.shipClass,
             key: `${item.shipTitle}-${item.shipClass}-${i}`,
-            children: <FerryContent 
-            amenties={amenties[item.shipClass] || amenties["Royal"]} 
-            price={item.price || 500} 
-            arrivalTime={item.arrivalTime || "10:00 AM"}
-            departureTime={item.departureTime || "11:00 AM"}
-            source={item.sourceName || "Port Blair"}
-            destination={item.destinationName || "Havelock"}
-            ferryName={item.shipTitle || "Nautika Ferry"}
-            seatData={item.seatClassData || {}}
+            children: <FerryContent
+              amenties={amenties[item.shipClass] || amenties["Royal"]}
+              price={item.price || 500}
+              arrivalTime={toAmPm(item.arrivalTime) || "10:00 AM"}
+              departureTime={toAmPm(item.departureTime) || "11:00 AM"}
+              source={item.sourceName || "Port Blair"}
+              destination={item.destinationName || "Havelock"}
+              ferryName={item.shipTitle || "Nautika Ferry"}
+              seatData={item.seatClassData || {}}
+              className={item.shipClass}
             />,
           };
         })}

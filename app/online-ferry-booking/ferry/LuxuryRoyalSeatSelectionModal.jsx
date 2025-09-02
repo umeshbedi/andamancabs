@@ -10,9 +10,12 @@ import boatSvg from "@/public/Nautika-luxury-mobile.svg";
 import { Modal } from "antd";
 import PaymentBtn from "../payment/Payment";
 
-export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, onConfirm, price }) {
+import { useGlobalFerryContext } from "../GlobalFerryContext";
+
+export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatData, price, tripName, arrivalTime, departureTime, className }) {
     const [selected, setSelected] = useState([]);
     const [zoom, setZoom] = useState(1);
+    const { setTrip0Selected, setTrip1Selected, setTrip2Selected, tripData } = useGlobalFerryContext();
 
     const yMap = 15;
     const xMap = 35
@@ -30,10 +33,37 @@ export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, on
     const toggleSeat = (seatId) => {
         const seat = seatData[seatId];
         if (!seat || seat.isBooked) return;
-        setSelected((prev) =>
-            prev.includes(seatId) ? prev.filter(s => s !== seatId) : [...prev, seatId]
-        );
+        console.log(tripData.trip0.adults)
+        if (selected.length < tripData.trip0.adults){
+            setSelected((prev) => [...prev, seatId]);
+        }else{
+            setSelected((prev)=>prev.includes(seatId) ? prev.filter(s => s !== seatId) : [...prev])
+        }
     };
+
+    const selectedTripData = {
+        ferry: "nautika",
+        // class_id: classId,
+        className,
+        timing: `${arrivalTime}-${departureTime}`,
+        seats: selected,
+        fare: price,
+        no_of_passenger: tripData.trip0.adults + tripData.trip0.infants,
+        travel_date: tripData.trip0.departure,
+    }
+
+    function onConfirm() {
+        if (tripName === "trip 1") {
+            setTrip0Selected(selectedTripData);
+        } else if (tripName === "trip 2") {
+            setTrip1Selected(selectedTripData);
+        } else if (tripName === "trip 3") {
+            setTrip2Selected(selectedTripData);
+        }
+        else { setTrip0Selected(selectedTripData); }
+
+        window.scrollTo({ top: document.getElementById('booking-page').offsetTop, behavior: 'smooth' });
+    }
 
     if (!isOpen) return null;
 
@@ -69,22 +99,37 @@ export default function LuxurySeatSelectionModal({ isOpen, onClose, seatData, on
                 </div>
 
             </div>
-            <div className={styles.footer}>
-                <span>Selected: {selected.join(", ") || "None"}</span>
-                <PaymentBtn className={`${!selected.length ? 'bg-gray-400' : 'bg-[var(--primary)]'} mt-5 py-3 px-10 rounded-full cursor-pointer`}
+            <div className='flex sm:flex-row flex-col mt-4 w-full justify-between items-center gap-4'>
+                <div>
+                    Selected:
+
+                    {selected.length > 0
+                        ?
+                        (<div className="flex gap-0.5 flex-wrap">
+                            {selected.map((item, i) => (
+                                <span key={i} className="bg-gray-300 px-1.5 py-0.5">{item}</span>
+                            ))}
+                        </div>)
+                        :
+                        ("None")
+                    }
+
+                </div>
+                {/* <PaymentBtn className={`${!selected.length ? 'bg-gray-400' : 'bg-[var(--primary)]'} mt-5 py-3 px-10 rounded-full cursor-pointer`}
                     paymentFor={"nautika"}
                     amount={price}
                     title={"Confirm Booking"}
                     disabled={!selected.length}
                     clickEvent={() => onConfirm(selected)}
-                />
-                {/* <button
-                    disabled={!selected.length}
-                    onClick={() => onConfirm(selected)}
+                /> */}
+                <button
+                    disabled={selected.length < tripData.trip0.adults}
+                    onClick={onConfirm}
+                    className={`${selected.length < tripData.trip0.adults ? "bg-gray-300" : "bg-[var(--primary)]"} py-3 px-10 rounded-full cursor-pointer`}
                 >
                     Confirm Booking
-                </button> */}
-                <button onClick={() => onConfirm(selected)} className='bg-[var(--primary)] py-3 px-10 rounded-full cursor-pointer'>Search</button>
+                </button>
+
             </div>
         </Modal>
     );

@@ -22,11 +22,9 @@ const BookingHeader = dynamic(() => import('./BookingHeader'), {
 export default function BookingPage() {
     const [loading, setLoading] = useState(true);
 
-    const [tripData, setTripData] = useState(null)
-
     useEffect(() => {
         setLoading(false);
-        setTripData(null)
+        
     }, [])
 
     if (loading) {
@@ -41,19 +39,17 @@ export default function BookingPage() {
         <>
             <Navbar />
             <BookingHeader getTripData={(e) => {
-                console.log(e);
-                setTripData(e);
+                // console.log(e);
+                
                 // Add logic to navigate or handle the event
                 window.scrollTo({ top: document.getElementById('booking-page').offsetTop, behavior: 'smooth' });
             }} />
-            
+
             <br /><br />
             <div className='w-full mt-10 h-full flex flex-col items-center'>
                 <div className='w-[80%]'>
-                <StepsBooking tripData={tripData}/>
-
+                    <StepsBooking />
                 </div>
-
             </div>
             <Footer />
         </>

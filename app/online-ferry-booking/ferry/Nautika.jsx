@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import LuxurySeatSelectionModal from './LuxurySeatSelectionModal'
+import LuxurySeatSelectionModal from './LuxuryRoyalSeatSelectionModal'
 import seatDataJson from './seatDataJson.json'
 
 import luxuryClass from './luxuryClass.json';
 import NautikaDiv from './NautikaDiv';
 
-export default function Nautika({ nautikaTickets = [] }) {
+export default function Nautika({ nautikaTickets = [], tripName }) {
   const [isLuxuryModalOpen, setIsLuxuryModalOpen] = useState(false);
   const [ticketClass, setTicketClass] = useState([])
  useEffect(() => {
@@ -18,7 +18,7 @@ export default function Nautika({ nautikaTickets = [] }) {
     <div>
 
       {nautikaTickets.map((ferry, index) => (
-        <NautikaDiv key={index} singleFerry={ferry}/>
+        <NautikaDiv key={index} singleFerry={ferry} tripName={tripName}/>
       ))}
       
       <LuxurySeatSelectionModal

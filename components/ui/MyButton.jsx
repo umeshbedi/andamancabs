@@ -1,3 +1,4 @@
+"use client"
 import { ArrowRightOutlined } from '@ant-design/icons';
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
@@ -27,7 +28,10 @@ export default function MyButton({ name, slug }) {
                 alignItems: 'center',
                 width: 'fit-content',
             }}
-            href={slug}>
+            href={slug}
+            target='blank'
+            >
+                
             {name} <ArrowRightOutlined style={{ display: display, position: 'absolute', right: 10 }} />
         </Link>
     )
