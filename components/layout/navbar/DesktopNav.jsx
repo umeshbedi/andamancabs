@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Dropdown from './Dropdown'
 import MegaActivityDropDown from './MegaActivityDropDown'
 import MegaPackageDropDown from './MegaPackageDropDown'
-import { getAllActivities } from '@/components/utils/actions/activityAction'
+import MegaLocationDropDown from './MegaLocationDropDown'
 
 export default function DesktopNav() {
     return (
@@ -16,7 +16,9 @@ export default function DesktopNav() {
                 <MegaMenu title="KNOW">
                     <Dropdown menu={menu.knowItems} />
                 </MegaMenu>
-                <SimpleMenu title="LOCATION" url="#" />
+                <MegaMenu title="LOCATION">
+                    <MegaLocationDropDown/>
+                </MegaMenu>
                 <MegaMenu title="PACKAGES">
                     <MegaPackageDropDown/>
                 </MegaMenu>

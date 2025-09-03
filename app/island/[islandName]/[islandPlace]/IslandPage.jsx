@@ -7,22 +7,22 @@ import React from 'react'
 
 const String2Html = dynamic(() => import('@/components/ui/String2Html'), { ssr: true, loading: () => <SHome /> })
 
-export default function ActivityPage({ data }) {
+export default function IslandPage({ data }) {
   
-  const newHeaderImage = data.headerImage != ""? updateCloudinaryWidth(data.headerImage, 800) : "/uploads/header-bg/86851.jpg"
+  // const newHeaderImage = data.headerImage != ""? updateCloudinaryWidth(data.thumbnail, 800) : "/uploads/header-bg/86851.jpg"
 
   return (
-    <MyDiv title={""} image={newHeaderImage}>
+    <MyDiv title={""} image={data.thumbnail}>
       <section className="w-full flex flex-col sm:flex-row justify-center gap-4 p-4 sm:p-8">
         <div className="w-[70%] sm:w-full bg-white p-[3%] flex flex-col gap-4">
-          <h1>{data.title}</h1>
+          <h1>{data.name}</h1>
           <Divider style={{ margin: "0", backgroundColor: "var(--lightGreyColor)", height: 1 }} />
           <String2Html id="aboutIsland" string={data.about} />
           {/* <FAQ isImage={true} padding='' /> */}
         </div>
 
         <div className={` w-full sm:w-[30%] flex flex-col items-center mt-10`}>
-          <h2 className="text-center">Visit Other Activities</h2>
+          <h2 className="text-center">Visit Other Place</h2>
           <Divider style={{ backgroundColor: "var(--lightGreyColor)", height: 1 }} />
           {/* {sortedData.map((item, i) => (
             <Link

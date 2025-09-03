@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import dynamic from 'next/dynamic'
 
@@ -7,7 +6,7 @@ import MyDiv from '@/components/ui/MyDiv';
 
 
 const SingleCab = dynamic(() => import('./SingleCab'), {
-  ssr: false, loading: () => <Skeleton.Button active={true} block style={{ width: '100%', height: '200px', marginBottom: '16px' }} />
+  ssr: true, loading: () => <Skeleton.Button active={true} block style={{ width: '100%', height: '200px', marginBottom: '16px' }} />
 });
 
 const MyTitle = dynamic(() => import('@/components/ui/MyTitle'))

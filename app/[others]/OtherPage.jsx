@@ -1,11 +1,10 @@
-"use client"
 import SHome from '@/components/skeleton/SHome'
 import MyDiv from '@/components/ui/MyDiv'
 import MyTitle from '@/components/ui/MyTitle'
 
 import dynamic from 'next/dynamic'
 import React from 'react'
-const String2Html = dynamic(() => import('@/components/ui/String2Html'), { ssr: false, loading:()=> <SHome /> })
+const String2Html = dynamic(() => import('@/components/ui/String2Html'), { ssr: true, loading:()=> <SHome /> })
 
 export default function OtherPage({data}) {
     return (

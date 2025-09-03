@@ -63,7 +63,7 @@ export default function AddIslandDetails({ IslandId, IslandSlug, SIPD, action, u
             <Divider />
             <div style={{ flexDirection: 'column', display: 'flex', gap: 10 }}>
                 {SIPD!=null&&
-                    <h2 style={{color:style.secondaryColor, marginBottom:15}}><i> Edit {SIPD.name}</i></h2>
+                    <h2 style={{color:"var(--primary)", marginBottom:15}}><i> Edit {SIPD.name}</i></h2>
                 }
                 <div>
                     <Space>
