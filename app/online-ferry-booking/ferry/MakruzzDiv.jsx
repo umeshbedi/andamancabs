@@ -5,7 +5,7 @@ import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
 import PaymentBtn from '../payment/Payment';
 
-import { useGlobalFerryContext } from '../GlobalFerryContext';
+import { useGlobalFerryContext } from '../components/GlobalFerryContext';
 
 export default function MakruzzDiv({ ticketClass = [], tripName }) {
 

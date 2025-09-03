@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useGlobalFerryContext } from '../GlobalFerryContext';
+import { useGlobalFerryContext } from '../components/GlobalFerryContext';
 import ChooseFerry from './ChooseFerry';
 import { Spin } from 'antd';
 

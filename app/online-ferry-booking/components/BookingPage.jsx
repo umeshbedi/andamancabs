@@ -1,18 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-
 import dynamic from 'next/dynamic'
 import SHome from '@/components/skeleton/SHome'
-import SHeader from '@/components/skeleton/SHeader';
-import StepsBooking from './choosing/StepsBooking';
-import PaymentBtn from './payment/Payment';
-const Navbar = dynamic(() => import('@/components/layout/navbar/Navbar'), {
-    ssr: false, loading: () => <SHeader />
-});
+import StepsBooking from '../choosing/StepsBooking';
 
-const Footer = dynamic(() => import('@/components/layout/Footer'), {
-    ssr: false, loading: () => <SHome />
-});
+
+
 
 const BookingHeader = dynamic(() => import('./BookingHeader'), {
     ssr: false,
@@ -37,11 +30,7 @@ export default function BookingPage() {
 
     return (
         <>
-            <Navbar />
             <BookingHeader getTripData={(e) => {
-                // console.log(e);
-                
-                // Add logic to navigate or handle the event
                 window.scrollTo({ top: document.getElementById('booking-page').offsetTop, behavior: 'smooth' });
             }} />
 
@@ -51,7 +40,7 @@ export default function BookingPage() {
                     <StepsBooking />
                 </div>
             </div>
-            <Footer />
+
         </>
     )
 }

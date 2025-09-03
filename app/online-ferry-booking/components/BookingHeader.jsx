@@ -126,9 +126,9 @@ export default function BookingHeader({ getTripData = (e) => { } }) {
                 </div>
 
                 <div className='w-full -mt-10 flex justify-center items-center'>
-                    <div className='w-[90%] flex flex-col items-center bg-white rounded-xl shadow-lg p-5 pb-10 border border-gray-200 relative'>
+                    <div className='w-[90%] flex flex-col items-center bg-white rounded-xl shadow-lg p-5 pb-10 border border-gray-200 relative max-w-[1210px]'>
 
-                        <div className='flex justify-center items-center lg:flex-row flex-col gap-5 flex-wrap'>
+                        <div className='flex items-center lg:flex-row flex-col gap-5 flex-wrap justify-between'>
                             <FromToDiv
                                 getFromIsland={(value) => setTripData((prev) => ({
                                     ...prev,

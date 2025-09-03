@@ -6,7 +6,7 @@ import SHome from '@/components/skeleton/SHome';
 import ChooseMultipleFerry from './ChooseMultipleFerry';
 const ChooseFerry = dynamic(() => import("./ChooseFerry"), { ssr: false, loading: () => <><SHome /></> })
 const ReviewCheckout = dynamic(() => import("./ReviewCheckout"), { ssr: false, loading: () => <><SHome /></> })
-import { useGlobalFerryContext } from '../GlobalFerryContext';
+import { useGlobalFerryContext } from '../components/GlobalFerryContext';
 
 export default function StepsBooking() {
     const { token } = theme.useToken();

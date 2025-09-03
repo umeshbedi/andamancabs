@@ -9,7 +9,7 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import { Empty } from 'antd'
 import { Spin } from 'antd'
 import { countMakruzzFerry } from '../ferry/countMakruzz.js'
-import { useGlobalFerryContext } from '../GlobalFerryContext.jsx'
+import { useGlobalFerryContext } from '../components/GlobalFerryContext.jsx'
 import { message } from 'antd'
 
 

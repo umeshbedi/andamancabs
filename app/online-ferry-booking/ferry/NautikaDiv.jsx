@@ -3,7 +3,7 @@ import { Tabs, Carousel, Divider, Image, Button } from 'antd';
 import { SafetyOutlined } from '@ant-design/icons';
 import { mobile } from '@/components/utils/variables';
 import { Avatar } from 'antd';
-import LuxurySeatSelectionModal from './LuxuryRoyalSeatSelectionModal';
+import LuxuryRoyalSeatSelectionModal from './LuxuryRoyalSeatSelectionModal';
 import PaymentBtn from '../payment/Payment';
 
 export default function NautikaDiv({ singleFerry = {}, tripName }) {
@@ -129,7 +129,7 @@ export default function NautikaDiv({ singleFerry = {}, tripName }) {
           ))}
         </div>
 
-        <LuxurySeatSelectionModal
+        <LuxuryRoyalSeatSelectionModal
           isOpen={isModalOpen}
           price={price}
           onClose={() => setIsModalOpen(false)}
@@ -138,6 +138,7 @@ export default function NautikaDiv({ singleFerry = {}, tripName }) {
           arrivalTime={arrivalTime}
           departureTime={departureTime}
           className={className}
+          shipID={singleFerry.id}
         />
       </div>
     );

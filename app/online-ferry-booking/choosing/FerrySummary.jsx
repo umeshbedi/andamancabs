@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useGlobalFerryContext } from '../GlobalFerryContext'
+import { useGlobalFerryContext } from '../components/GlobalFerryContext'
 import { Avatar } from 'antd';
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 
@@ -7,6 +7,8 @@ import { IoTimeOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { Checkbox } from 'antd';
 import { message } from 'antd';
+import { checkMakruzzSeat, checkNautikaSeat } from '@/components/utils/actions/checkRealTimeSeat';
+import { handlePayment } from '../payment/pamentAction';
 
 export default function FerrySummary() {
 
@@ -28,6 +30,59 @@ export default function FerrySummary() {
     )
 
     const [isChecked, setIsChecked] = useState(false)
+
+    async function checkSeatAvailability() {
+
+        if (trip0Selected) {
+            messageApi.loading("Checking Realtime Seat Availability Before Processing...", 0)
+            let available;
+            if (trip0Selected.ferry == "nautika") {
+                await checkNautikaSeat({ selectedSeatData: trip0Selected, tripData: tripData.trip0 })
+                    .then(d => { available = d })
+            }
+            else if (trip0Selected.ferry = "makruzz") {
+                await checkMakruzzSeat({ selectedSeatData: trip0Selected, tripData: tripData.trip0, adults: tripData.trip0.adults })
+                    .then(d => { available = d })
+            }
+            messageApi.destroy()
+            if (!available) return alert(`Oops! Your selected seat of ${trip0Selected.ferry} has been booked by someone. Please Try to book another seat As Soon As Possible.`)
+        }
+        if (trip1Selected) {
+            messageApi.loading("Checking Realtime Seat Availability Before Processing...", 0)
+            let available;
+            if (trip1Selected.ferry == "nautika") {
+                await checkNautikaSeat({ selectedSeatData: trip1Selected, tripData: tripData.trip1 })
+                    .then(d => { available = d })
+            }
+            else if (trip1Selected.ferry = "makruzz") {
+                await checkMakruzzSeat({ selectedSeatData: trip1Selected, tripData: tripData.trip1, adults: tripData.trip0.adults })
+                    .then(d => { available = d })
+            }
+            messageApi.destroy()
+            if (!available) return alert(`Oops! Your selected seat of ${trip1Selected.ferry} has been booked by someone. Please Try to book another seat As Soon As Possible.`)
+        }
+        if (trip2Selected) {
+            messageApi.loading("Checking Realtime Seat Availability Before Processing...", 0)
+            let available;
+            if (trip2Selected.ferry == "nautika") {
+                await checkNautikaSeat({ selectedSeatData: trip2Selected, tripData: tripData.trip2 })
+                    .then(d => { available = d })
+            }
+            else if (trip2Selected.ferry = "makruzz") {
+                await checkMakruzzSeat({ selectedSeatData: trip2Selected, tripData: tripData.trip2, adults: tripData.trip0.adults })
+                    .then(d => { available = d })
+            }
+            messageApi.destroy()
+            if (!available) return alert(`Oops! Your selected seat of ${trip2Selected.ferry} has been booked by someone. Please Try to book another seat As Soon As Possible.`)
+        }
+        handlePayment({
+            amount: grandTotal,
+            paymentFor: "booking ferry",
+            email: billingData.email,
+            name: billingData.name,
+            clickEvent: (e) => { e == "loading" ? messageApi.loading("Payment gateway is loading...", 0) : messageApi.destroy() }
+        })
+    }
 
     function checkPassegners() {
         let isAdultCheck = false;
@@ -54,8 +109,7 @@ export default function FerrySummary() {
             return messageApi.error("Some Fields are missing in billing data. All fields are required")
         else { isBillingcheck = true }
 
-        if(isAdultCheck&&isInfantCheck&&isBillingcheck)
-            alert("working fine")
+        if (isAdultCheck && isInfantCheck && isBillingcheck) checkSeatAvailability()
     }
 
     function SingleFare({ tripName }) {
@@ -214,6 +268,7 @@ export default function FerrySummary() {
             >
                 Proceed to Checkout
             </button>
+            <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
         </div>
     )
 }

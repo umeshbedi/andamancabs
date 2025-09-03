@@ -6,7 +6,7 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io'
 import countryCode from "@/components/lib/countryCodes.json"
 import nationality from "@/components/lib/nationality.json"
 import idType from "@/components/lib/idTypes.json"
-import { useGlobalFerryContext } from '../GlobalFerryContext'
+import { useGlobalFerryContext } from '../components/GlobalFerryContext'
 import FerrySummary from './FerrySummary'
 
 export default function ReviewCheckout() {
@@ -213,7 +213,7 @@ export default function ReviewCheckout() {
     setInfantData(infants)
   }, [tripData.trip0.adults, tripData.trip0.infants])
 
-  console.log("Review", adultData, infantData)
+  // console.log("Review", adultData, infantData)
 
   function CancelText({ text }) {
     return <span className='flex gap-2 mb-2'><IoMdCheckmarkCircleOutline className='mt-.5' size={20} color='green' />{text}</span>

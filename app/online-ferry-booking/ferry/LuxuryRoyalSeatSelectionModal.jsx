@@ -10,9 +10,9 @@ import boatSvg from "@/public/Nautika-luxury-mobile.svg";
 import { Modal } from "antd";
 import PaymentBtn from "../payment/Payment";
 
-import { useGlobalFerryContext } from "../GlobalFerryContext";
+import { useGlobalFerryContext } from "../components/GlobalFerryContext";
 
-export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatData, price, tripName, arrivalTime, departureTime, className }) {
+export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatData, price, tripName, arrivalTime, departureTime, className, shipID }) {
     const [selected, setSelected] = useState([]);
     const [zoom, setZoom] = useState(1);
     const { setTrip0Selected, setTrip1Selected, setTrip2Selected, tripData } = useGlobalFerryContext();
@@ -44,6 +44,7 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
     const selectedTripData = {
         ferry: "nautika",
         // class_id: classId,
+        shipID,
         className,
         timing: `${arrivalTime}-${departureTime}`,
         seats: selected,
