@@ -1,9 +1,8 @@
-
+export const dynamic = "force-dynamic";
 import Image from "next/image";
 import { getAllActivities } from '@/components/utils/actions/activityAction'
-import { getAllPackage, getAllPackageGroup } from "@/components/utils/actions/packageAction";
 
-export default async function MegaActivityDropDown({ content = "activity" }) {
+export default async function MegaActivityDropDown() {
   const megaMenuData = await getAllActivities();
 
   return (

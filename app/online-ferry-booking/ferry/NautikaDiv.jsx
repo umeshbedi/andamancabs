@@ -139,6 +139,8 @@ export default function NautikaDiv({ singleFerry = {}, tripName }) {
           departureTime={departureTime}
           className={className}
           shipID={singleFerry.id}
+          tripId={singleFerry.tripId}
+          vesselID={singleFerry.vesselID}
         />
       </div>
     );

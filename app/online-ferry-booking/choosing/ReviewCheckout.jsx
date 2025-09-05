@@ -202,11 +202,11 @@ export default function ReviewCheckout() {
     setInfantData([])
 
     Array(tripData.trip0.adults).fill(0).map((_, i) => (
-      adults.push({ name: '', age: '', gender: '', nationality: "Indian" })
+      adults.push({ name: '', age: '', gender: 'male', nationality: "Indian" })
     ))
 
     Array(tripData.trip0.infants).fill(0).map((_, i) => (
-      infants.push({ name: '', age: '', gender: '', nationality: "Indian" })
+      infants.push({ name: '', age: '', gender: 'male', nationality: "Indian" })
     ))
 
     setAdultData(adults)

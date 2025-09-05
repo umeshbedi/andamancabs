@@ -12,7 +12,7 @@ import PaymentBtn from "../payment/Payment";
 
 import { useGlobalFerryContext } from "../components/GlobalFerryContext";
 
-export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatData, price, tripName, arrivalTime, departureTime, className, shipID }) {
+export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatData, price, tripName, arrivalTime, departureTime, className, shipID, tripId, vesselID }) {
     const [selected, setSelected] = useState([]);
     const [zoom, setZoom] = useState(1);
     const { setTrip0Selected, setTrip1Selected, setTrip2Selected, tripData } = useGlobalFerryContext();
@@ -34,16 +34,18 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
         const seat = seatData[seatId];
         if (!seat || seat.isBooked) return;
         console.log(tripData.trip0.adults)
-        if (selected.length < tripData.trip0.adults){
+        if (selected.length < tripData.trip0.adults) {
             setSelected((prev) => [...prev, seatId]);
-        }else{
-            setSelected((prev)=>prev.includes(seatId) ? prev.filter(s => s !== seatId) : [...prev])
+        } else {
+            setSelected((prev) => prev.includes(seatId) ? prev.filter(s => s !== seatId) : [...prev])
         }
     };
 
     const selectedTripData = {
         ferry: "nautika",
         // class_id: classId,
+        vesselID,
+        tripId,
         shipID,
         className,
         timing: `${arrivalTime}-${departureTime}`,

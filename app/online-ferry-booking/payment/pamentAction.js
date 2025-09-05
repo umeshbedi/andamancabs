@@ -42,6 +42,7 @@ export const handlePayment = async ({ email, name, amount, paymentFor, title, de
 
                 if (verifyData.success) {
                     // alert("Payment Verified ✅");
+                    clickEvent("sending email");
                     sendPaymentReceivedEmail({
                         toEmail: email,
                         toName: name,
@@ -49,6 +50,7 @@ export const handlePayment = async ({ email, name, amount, paymentFor, title, de
                         paymentId: response.razorpay_payment_id,
                     }).then(() => {
                         // alert("Payment Successful! A confirmation email has been sent.");
+                        clickEvent("payment success")
                         alert("Payment Successful! A confirmation email has been sent.");
                         
                     }).catch((error) => {

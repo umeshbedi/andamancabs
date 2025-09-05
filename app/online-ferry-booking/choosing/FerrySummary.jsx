@@ -9,6 +9,8 @@ import { Checkbox } from 'antd';
 import { message } from 'antd';
 import { checkMakruzzSeat, checkNautikaSeat } from '@/components/utils/actions/checkRealTimeSeat';
 import { handlePayment } from '../payment/pamentAction';
+import { bookMakruzzTicket } from '@/app/online-ferry-booking/payment/makruzzSeatBooking';
+import { nautikaSeatBooking } from '../payment/nautikaSeatBooking';
 
 export default function FerrySummary() {
 
@@ -20,7 +22,6 @@ export default function FerrySummary() {
     }
 
     const [messageApi, contextHolder] = message.useMessage()
-
     const [grandTotal, setGrandTotal] = useState(
         (trip0Selected ? ((trip0Selected.fare * tripData.trip0.adults) + (selectedItems[trip0Selected.ferry].infantPrice * tripData.trip0.infants) + 50) : 0)
         +
@@ -30,6 +31,35 @@ export default function FerrySummary() {
     )
 
     const [isChecked, setIsChecked] = useState(false)
+
+    async function bookTicket() {
+        if (trip0Selected) {
+            if (trip0Selected.ferry = "makruzz") {
+                messageApi.loading("confirming ticket...", 0)
+                await bookMakruzzTicket({
+                    selectedSeatData: trip0Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                })
+                .then(res=>confirmSeats.push(res))
+                messageApi.destroy()
+            }
+            else if (trip0Selected.ferry = "nautika") {
+                messageApi.loading("confirming ticket...", 0)
+                await nautikaSeatBooking({
+                    selectedSeatData:trip0Selected,
+                    adultDetails:adultData,
+                    infantDetails:infantData,
+                    billingData:billingData,
+                    toIsland:tripData.trip0.toIsland,
+                    fromIsland:tripData.trip0.fromIsland
+                })
+                messageApi.destroy()
+            }
+        }
+       
+    }
 
     async function checkSeatAvailability() {
 
@@ -80,7 +110,15 @@ export default function FerrySummary() {
             paymentFor: "booking ferry",
             email: billingData.email,
             name: billingData.name,
-            clickEvent: (e) => { e == "loading" ? messageApi.loading("Payment gateway is loading...", 0) : messageApi.destroy() }
+            clickEvent: (e) => {
+                if (e == "loading") messageApi.loading("Payment gateway is loading...", 0)
+                else if (e == "not loading") messageApi.destroy()
+                else if (e == "sending email") messageApi.loading("Sending payment confirmation email...", 0)
+                else if (e == "payment success"){
+                    messageApi.destroy()
+                    bookTicket()
+                } 
+            }
         })
     }
 
