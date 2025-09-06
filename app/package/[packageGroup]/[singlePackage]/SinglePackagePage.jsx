@@ -109,7 +109,7 @@ export default function SinglePackagePage({ data }) {
 
     return (
         <MyDiv image={data.images[0].link}>
-            <div className='w-full flex sm:flex-row flex-col mt-15' id='packageSection'>
+            <div className='w-full flex sm:flex-row flex-col mt-15 packageSection'>
                 <div className='w-full sm:w-[65%]'>
                     <h1>{data.title}</h1>
                     <h3 id='packageDetail' ><ClockCircleFilled /> {data.subtitle}</h3>

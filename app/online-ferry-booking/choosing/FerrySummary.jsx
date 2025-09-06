@@ -11,6 +11,9 @@ import { checkMakruzzSeat, checkNautikaSeat } from '@/components/utils/actions/c
 import { handlePayment } from '../payment/pamentAction';
 import { bookMakruzzTicket } from '@/app/online-ferry-booking/payment/makruzzSeatBooking';
 import { nautikaSeatBooking } from '../payment/nautikaSeatBooking';
+import { convertTripsToTable } from '@/components/utils/actions/emailHtmlConvert';
+import { sendSeatConfirmationEmail } from '../payment/confirmTicketEmail';
+import { sendTicketNotConfirmedEmail } from '../payment/notConfirmEmail';
 
 export default function FerrySummary() {
 
@@ -20,6 +23,8 @@ export default function FerrySummary() {
         "makruzz": { src: "/img/ferry logo/makruzz-logo.png", name: "Makruzz", infantPrice: 0 },
         "nautika": { src: "/img/ferry logo/Nautika-Logo-square.PNG", name: "Nautika", infantPrice: 105 }
     }
+
+
 
     const [messageApi, contextHolder] = message.useMessage()
     const [grandTotal, setGrandTotal] = useState(
@@ -34,31 +39,103 @@ export default function FerrySummary() {
 
     async function bookTicket() {
         if (trip0Selected) {
-            if (trip0Selected.ferry = "makruzz") {
+            if (trip0Selected.ferry == "makruzz") {
                 messageApi.loading("confirming ticket...", 0)
                 await bookMakruzzTicket({
                     selectedSeatData: trip0Selected,
                     adultDetails: adultData,
                     infantDetails: infantData,
                     billingData: billingData,
+                    tripData: tripData.trip0
                 })
-                .then(res=>confirmSeats.push(res))
+                    .then(res => {
+                        if (!res) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
                 messageApi.destroy()
             }
-            else if (trip0Selected.ferry = "nautika") {
+            else if (trip0Selected.ferry == "nautika") {
                 messageApi.loading("confirming ticket...", 0)
                 await nautikaSeatBooking({
-                    selectedSeatData:trip0Selected,
-                    adultDetails:adultData,
-                    infantDetails:infantData,
-                    billingData:billingData,
-                    toIsland:tripData.trip0.toIsland,
-                    fromIsland:tripData.trip0.fromIsland
+                    selectedSeatData: trip0Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                    toIsland: tripData.trip0.toIsland,
+                    fromIsland: tripData.trip0.fromIsland
                 })
+                    .then(res => {
+                        if (res && res[0].seatStatus) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
                 messageApi.destroy()
             }
         }
-       
+        if (trip1Selected) {
+            if (trip1Selected.ferry == "makruzz") {
+                messageApi.loading("confirming ticket...", 0)
+                await bookMakruzzTicket({
+                    selectedSeatData: trip1Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                })
+                    .then(res => {
+                        if (!res) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
+                messageApi.destroy()
+            }
+            else if (trip1Selected.ferry == "nautika") {
+                messageApi.loading("confirming ticket...", 0)
+                await nautikaSeatBooking({
+                    selectedSeatData: trip1Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                    toIsland: tripData.trip1.toIsland,
+                    fromIsland: tripData.trip1.fromIsland
+                })
+                    .then(res => {
+                        if (res && res[0].seatStatus) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
+                messageApi.destroy()
+            }
+        }
+        if (trip2Selected) {
+            if (trip2Selected.ferry == "makruzz") {
+                messageApi.loading("confirming ticket...", 0)
+                await bookMakruzzTicket({
+                    selectedSeatData: trip2Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                })
+                    .then(res => {
+                        if (!res) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
+                messageApi.destroy()
+            }
+            else if (trip2Selected.ferry == "nautika") {
+                messageApi.loading("confirming ticket...", 0)
+                await nautikaSeatBooking({
+                    selectedSeatData: trip2Selected,
+                    adultDetails: adultData,
+                    infantDetails: infantData,
+                    billingData: billingData,
+                    toIsland: tripData.trip2.toIsland,
+                    fromIsland: tripData.trip2.fromIsland
+                })
+                    .then(res => {
+                        if (res && res[0].seatStatus) messageApi.success("Congratulation! Your Seat is Confirmed. Confirmation Email has been sent to your provided email.")
+                        console.log('After confirming', res)
+                    })
+                messageApi.destroy()
+            }
+        }
+
     }
 
     async function checkSeatAvailability() {
@@ -70,7 +147,7 @@ export default function FerrySummary() {
                 await checkNautikaSeat({ selectedSeatData: trip0Selected, tripData: tripData.trip0 })
                     .then(d => { available = d })
             }
-            else if (trip0Selected.ferry = "makruzz") {
+            else if (trip0Selected.ferry == "makruzz") {
                 await checkMakruzzSeat({ selectedSeatData: trip0Selected, tripData: tripData.trip0, adults: tripData.trip0.adults })
                     .then(d => { available = d })
             }
@@ -84,7 +161,7 @@ export default function FerrySummary() {
                 await checkNautikaSeat({ selectedSeatData: trip1Selected, tripData: tripData.trip1 })
                     .then(d => { available = d })
             }
-            else if (trip1Selected.ferry = "makruzz") {
+            else if (trip1Selected.ferry == "makruzz") {
                 await checkMakruzzSeat({ selectedSeatData: trip1Selected, tripData: tripData.trip1, adults: tripData.trip0.adults })
                     .then(d => { available = d })
             }
@@ -98,26 +175,28 @@ export default function FerrySummary() {
                 await checkNautikaSeat({ selectedSeatData: trip2Selected, tripData: tripData.trip2 })
                     .then(d => { available = d })
             }
-            else if (trip2Selected.ferry = "makruzz") {
+            else if (trip2Selected.ferry == "makruzz") {
                 await checkMakruzzSeat({ selectedSeatData: trip2Selected, tripData: tripData.trip2, adults: tripData.trip0.adults })
                     .then(d => { available = d })
             }
             messageApi.destroy()
             if (!available) return alert(`Oops! Your selected seat of ${trip2Selected.ferry} has been booked by someone. Please Try to book another seat As Soon As Possible.`)
         }
+        const { allTripsTable } = convertTripsToTable(document.getElementById('allTripsDiv').innerHTML)
         handlePayment({
             amount: grandTotal,
             paymentFor: "booking ferry",
             email: billingData.email,
             name: billingData.name,
+            innerHtml: allTripsTable,
             clickEvent: (e) => {
                 if (e == "loading") messageApi.loading("Payment gateway is loading...", 0)
                 else if (e == "not loading") messageApi.destroy()
                 else if (e == "sending email") messageApi.loading("Sending payment confirmation email...", 0)
-                else if (e == "payment success"){
-                    messageApi.destroy()
+                else if (e == "payment success") {
+                    messageApi.success("Payment Successful! A confirmation email has been sent.")
                     bookTicket()
-                } 
+                }
             }
         })
     }
@@ -289,14 +368,19 @@ export default function FerrySummary() {
         <div>
             {contextHolder}
 
-            {trip0Selected && <SingleFare tripName={"trip 1"} />}
-            {trip1Selected && <SingleFare tripName={"trip 2"} />}
-            {trip2Selected && <SingleFare tripName={"trip 3"} />}
+            <div id="allTripsDiv">
 
-            <span className='flex justify-between mb-5'>
-                <span className='font-bold'>Grand Total</span>
-                <span>₹ {grandTotal}</span>
-            </span>
+                <div id='trip1Div'>{trip0Selected && <SingleFare tripName={"trip 1"} />}</div>
+                <div id='trip2Div'>{trip1Selected && <SingleFare tripName={"trip 2"} />}</div>
+                <div id='trip3Div'>{trip2Selected && <SingleFare tripName={"trip 3"} />}</div>
+
+
+                <span className='flex justify-between mb-5'>
+                    <span className='font-bold'>Grand Total</span>
+                    <span>₹ {grandTotal}</span>
+                </span>
+
+            </div>
 
             <span><Checkbox onChange={(e) => setIsChecked(e.target.checked)} /> I agree with the <a className='text-blue-900' href='/terms-and-condition'>Terms & Conditions</a></span>
 

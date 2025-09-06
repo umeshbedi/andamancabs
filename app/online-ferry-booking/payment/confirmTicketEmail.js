@@ -12,8 +12,7 @@ function getCurrentISTTimestamp() {
     return `${istTime.getFullYear()}-${pad(istTime.getMonth() + 1)}-${pad(istTime.getDate())} ${pad(istTime.getHours())}:${pad(istTime.getMinutes())}:${pad(istTime.getSeconds())}`;
 }
 
-// Pass toEmail and toName as arguments
-export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymentId, innerHtml }) {
+export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryName, date, fromLocation, toLocation }) {
     const htmlContent = `
         <html>
         <head>
@@ -32,7 +31,6 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                     padding: 32px 24px;
                 }
-                
                 .header {
                     text-align: center;
                     padding-bottom: 16px;
@@ -41,18 +39,13 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                 .header h2 {
                     color: #1a73e8;
                     margin: 0;
-                    font-size: 28px;
+                    font-size: 26px;
                     letter-spacing: 1px;
                 }
                 .content {
                     margin-top: 24px;
                     color: #333;
                     font-size: 16px;
-                }
-                .amount {
-                    color: #388e3c;
-                    font-weight: bold;
-                    font-size: 18px;
                 }
                 .booking-id {
                     background: #f1f8e9;
@@ -62,6 +55,15 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                     font-weight: 500;
                     display: inline-block;
                     margin: 8px 0;
+                }
+                table {
+                    width: 100%;
+                    margin-top: 16px;
+                    border-collapse: collapse;
+                }
+                td {
+                    padding: 8px;
+                    border-bottom: 1px solid #e0e7ef;
                 }
                 .footer {
                     margin-top: 32px;
@@ -77,13 +79,19 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                     <img src="https://www.shutterstock.com/image-vector/taxi-service-logo-design-set-260nw-2330988463.jpg" alt="Andaman Cabs Logo" style="height:50px;" />
                 </center>
                 <div class="header">
-                    <h2>Payment Received</h2>
+                    <h2>Seat Confirmation</h2>
                 </div>
                 <div class="content">
                     <p>Dear ${toName},</p>
-                    <p>We have received your payment of <span class="amount">₹${(amount / 100).toFixed(2)}</span> with payment ID <span class="booking-id">${paymentId}</span>.</p>
-                    <p>Time of payment: <strong>${getCurrentISTTimestamp()}</strong></p>
-                    ${innerHtml}
+                    <p>Your seat has been successfully confirmed. Here are your booking details:</p>
+                    <p><strong>PNR:</strong> <span class="booking-id">${pnr}</span></p>
+                    <table>
+                        <tr><td><strong>Ferry Name</strong></td><td>${ferryName}</td></tr>
+                        <tr><td><strong>Date</strong></td><td>${date}</td></tr>
+                        <tr><td><strong>From</strong></td><td>${fromLocation}</td></tr>
+                        <tr><td><strong>To</strong></td><td>${toLocation}</td></tr>
+                    </table>
+                    <p>Booking time: <strong>${getCurrentISTTimestamp()}</strong></p>
                     <hr/>
                     <p>If you have any questions, feel free to contact us at <a href='mailto:contact@andamancab.in'>contact@andamancab.in</a>.</p>
                     <p>Thank you for choosing <strong>Andaman Cabs</strong>!</p>
@@ -96,100 +104,19 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
         </html>
     `;
 
-    const adminHtmlContent = `
-        <html>
-        <head>
-            <style>
-                body {
-                    font-family: 'Segoe UI', Arial, sans-serif;
-                    background: #f9fafb;
-                    margin: 0;
-                    padding: 0;
-                }
-                .container {
-                    background: #fff;
-                    max-width: 500px;
-                    margin: 40px auto;
-                    border-radius: 10px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-                    padding: 32px 24px;
-                }
-                .header {
-                    text-align: center;
-                    padding-bottom: 16px;
-                    border-bottom: 1px solid #e0e7ef;
-                }
-                .header h2 {
-                    color: #d32f2f;
-                    margin: 0;
-                    font-size: 26px;
-                    letter-spacing: 1px;
-                }
-                .content {
-                    margin-top: 24px;
-                    color: #333;
-                    font-size: 16px;
-                }
-                .amount {
-                    color: #388e3c;
-                    font-weight: bold;
-                    font-size: 18px;
-                }
-                .booking-id {
-                    background: #f1f8e9;
-                    color: #33691e;
-                    padding: 4px 10px;
-                    border-radius: 5px;
-                    font-weight: 500;
-                    display: inline-block;
-                    margin: 8px 0;
-                }
-                .footer {
-                    margin-top: 32px;
-                    text-align: center;
-                    color: #888;
-                    font-size: 13px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <center>
-                    <img src="https://www.shutterstock.com/image-vector/taxi-service-logo-design-set-260nw-2330988463.jpg" alt="Andaman Cabs Logo" style="height:50px;" />
-                </center>
-                <div class="header">
-                    <h2>New Payment Received</h2>
-                </div>
-                <div class="content">
-                    <p><strong>Customer Name:</strong> ${toName}</p>
-                    <p><strong>Customer Email:</strong> ${toEmail}</p>
-                    <p><strong>Amount Paid:</strong> <span class="amount">₹${(amount / 100).toFixed(2)}</span></p>
-                    <p><strong>Payment ID:</strong> <span class="booking-id">${paymentId}</span></p>
-                    <p><strong>Payment Time:</strong> ${getCurrentISTTimestamp()}</p>
-                </div>
-                <div class="footer">
-                    &copy; ${new Date().getFullYear()} Andaman Cabs. All rights reserved.
-                </div>
-            </div>
-        </body>
-        </html>
-    `;
-
     // const emailData = {
-    //     sender: { name: 'Andaman Cabs', email: 'contact@andamancab.in' },
-    //     to: [{ email: toEmail, name: toName }],
-    //     cc: [{ email: 'contact@andamancab.in', name: 'Andaman Cabs' }],
-    //     subject: 'Payment Received - Andaman Cabs',
-    //     htmlContent,
+    //     "sender": { "email": "contact@andamancab.in", "name": "Andaman Cabs" },
+    //     "subject": `Seat Confirmation - PNR ${pnr}`,
+    //     "htmlContent": htmlContent,
+    //     "to": [{ "email": toEmail, "name": toName }]
     // };
-
 
     const emailData2 = {
         "sender": {
             "email": "contact@andamancab.in",
             "name": "Andaman Cabs"
         },
-        "subject": "Payment Received - Andaman Cabs",
+        "subject": `Seat Confirmation - PNR ${pnr}`,
         "htmlContent": htmlContent,
         "messageVersions": [
             //Definition for Message Version 1 
@@ -201,8 +128,8 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                     }
                     
                 ],
-                "htmlContent": adminHtmlContent,
-                "subject": `Payment Received by ${toName} - Andaman Cabs`
+                "htmlContent": htmlContent,
+                "subject": `Copy of Seat Confirmation - PNR ${pnr} by ${toName} for ${ferryName}`
             },
 
             // Definition for Message Version 2
@@ -226,5 +153,3 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
         throw error;
     }
 }
-
-

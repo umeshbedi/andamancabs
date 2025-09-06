@@ -1,4 +1,7 @@
-async function confirmBooking({ bookingId }) {
+import { sendSeatConfirmationEmail } from "./confirmTicketEmail";
+import { sendTicketNotConfirmedEmail } from "./notConfirmEmail";
+
+async function confirmBooking({ bookingId, toEmail, toName, date, fromLocation, toLocation }) {
   try {
     const res = await fetch("/api/makruzz/confirmBooking", {
       method: "POST",
@@ -11,9 +14,13 @@ async function confirmBooking({ bookingId }) {
 
     if (data.status === "success") {
       return data;
-      // Redirect manually
-      // window.location.href = `/successMakruzz?booking_id=${data.booking_id}&payment_id=${paymentId}&pnr=${data.pnr}&order_id=${orderId}`;
+
     } else {
+      sendTicketNotConfirmedEmail({
+        toEmail, toName, date, fromLocation, toLocation,
+        ferryName: "Makruzz",
+        error: data.message || "Failed to confirm booking"
+      })
       alert(data.message || "Failed to confirm booking");
     }
   } catch (error) {
@@ -22,7 +29,7 @@ async function confirmBooking({ bookingId }) {
   }
 }
 
-export async function bookMakruzzTicket({ adultDetails, infantDetails, billingData, selectedSeatData }) {
+export async function bookMakruzzTicket({ adultDetails, infantDetails, billingData, selectedSeatData, tripData }) {
   //save passagers details
   const passangers = [...adultDetails, ...infantDetails]
   let passengerData = {};
@@ -70,12 +77,34 @@ export async function bookMakruzzTicket({ adultDetails, infantDetails, billingDa
       if (data?.code === "200") {
         const confirmres = confirmBooking({ bookingId: data.data.booking_id })
         const confirmResult = confirmres.then(result => { return result })
-        return confirmResult;
+        // return confirmResult;
+        sendSeatConfirmationEmail({
+          toEmail: billingData.email,
+          toName: billingData.name,
+          pnr: confirmResult.pnr,
+          ferryName: "Makruzz",
+          date: selectedSeatData.travel_date,
+          fromLocation: tripData.fromIsland,
+          toLocation: tripData.toIsland,
+        })
+        
+        console.log(confirmResult)
+        return confirmResult
         // window.location.href = `/cruizes/payment/paymentMakruzz.php?price=${totalFare}&booking_id=
         // ${data.data.booking_id}&schedule_id=${jsonData.travelD_id}`;
       } else {
-        alert(`Oops! Your seat is not confirmed. Reason: ${data?.msg}` || "Something went wrong");
+        sendTicketNotConfirmedEmail({
+          toEmail: billingData.email,
+          toName: billingData.name,
+          error: data?.msg,
+          ferryName: "Makruzz",
+          date: selectedSeatData.travel_date,
+          fromLocation: tripData.fromIsland,
+          toLocation: tripData.toIsland,
+        })
       }
+      alert(`Oops! Your Makruzz seat is not confirmed. Reason: ${data?.msg}. Don't worry your deducted amount will be refunded for this ferry after confirmation.` || "Something went wrong");
+      return data
     })
     .catch(err => { console.error("Error:", err); alert(err.message) });
 
