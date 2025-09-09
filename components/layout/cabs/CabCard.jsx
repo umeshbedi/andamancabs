@@ -28,9 +28,9 @@ export default function CabCard({ type, star, label = '', title, distance, price
             </div>
 
             <div>
-                <div className='flex justify-between items-center px-3 py-2 mt-2'>
-                    <h4 className='font-bold'>{title}</h4>
+                <div className='px-3 py-2 mt-2'>
                     <Rate defaultValue={star} disabled allowHalf />
+                    <h4 className='font-bold'>{title}</h4>
 
                 </div>
                 <p className='px-3 text-[.9rem] mb-2 text-neutral-600'>{description.slice(0, 80)}...</p>

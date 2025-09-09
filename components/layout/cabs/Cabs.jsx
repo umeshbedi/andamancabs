@@ -1,11 +1,12 @@
-
+export const dynamic = "force-dynamic";
 import React from 'react'
-import dynamic from 'next/dynamic'
 import MyButton from '@/components/ui/MyButton'
 import { getAllCabPage } from '@/components/utils/actions/cabsAction'
+import CabsIsland from './CabsIsland'
+import MyTitle from '@/components/ui/MyTitle'
 
-const CabsIsland = dynamic(() => import('@/components/layout/cabs/CabsIsland'))
-const MyTitle = dynamic(() => import('@/components/ui/MyTitle'))
+// const CabsIsland = dynamic(() => import('@/components/layout/cabs/CabsIsland'))
+// const MyTitle = dynamic(() => import('@/components/ui/MyTitle'))
 
 export default async function Cabs() {
   const island = ["Port Blair", "Havelock Island", "Neil Island"]

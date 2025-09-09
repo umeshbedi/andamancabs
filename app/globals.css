@@ -257,3 +257,23 @@ input:focus {
     font-weight: bold;
   }
 }
+
+
+/* End Scoped Table Styles */
+
+/* Ferry seat selection style */
+
+.ferry-container {
+    position: relative;
+    width: 100%;
+    max-width: 487px;
+    aspect-ratio: 487 / 1280;
+}
+
+.seat-icon {
+    position: absolute;
+    z-index: 10;
+    pointer-events: auto;
+    transition: transform 0.2s ease-in-out;
+}
+

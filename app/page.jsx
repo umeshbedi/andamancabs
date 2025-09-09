@@ -1,65 +1,17 @@
-import SHeader from "@/components/skeleton/SHeader";
-import SHome from "@/components/skeleton/SHome";
+export const dynamic = "force-dynamic";
+import Slider from "@/components/common/Slider";
+import Activities from "@/components/layout/activity/Activities";
+import Cabs from "@/components/layout/cabs/Cabs";
+import Cruize from "@/components/layout/cruize/Cruize";
+import FAQ from "@/components/layout/FAQ";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
+import OurStory from "@/components/layout/OurStory";
+import SocialMedia from "@/components/layout/SocialMedia";
+import TestiMonials from "@/components/layout/Testimonials";
 import { ConfigProvider } from "antd";
 
-import dynamic from 'next/dynamic';
-// import { useEffect, useState } from "react";
-
-const Navbar = dynamic(() => import('@/components/layout/navbar/Navbar'), {
-  ssr: true, loading: () => <SHeader/>
-});
-
-const Slider = dynamic(() => import('@/components/common/Slider'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const Cabs = dynamic(() => import('@/components/layout/cabs/Cabs'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const Cruize = dynamic(() => import('@/components/layout/cruize/Cruize'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const Activities = dynamic(() => import('@/components/layout/activity/Activities'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const OurStory = dynamic(() => import('@/components/layout/OurStory'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const TestiMonials = dynamic(() => import('@/components/layout/Testimonials'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const SocialMedia = dynamic(() => import('@/components/layout/SocialMedia'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const FAQ = dynamic(() => import('@/components/layout/FAQ'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-const Footer = dynamic(() => import('@/components/layout/Footer'), {
-  ssr: true, loading: () => <SHome/>
-});
-
-
 export default async function Home() {
-  // const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, [])
-  
-  // if (loading) {
-  //   return (
-  //     <div className="w-full h-screen flex justify-center items-center">
-  //       <SHome />
-  //     </div>
-  //   );
-  // }
-
   return (
     <ConfigProvider
     theme={{

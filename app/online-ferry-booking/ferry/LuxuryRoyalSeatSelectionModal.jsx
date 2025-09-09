@@ -3,9 +3,9 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import styles from "./SeatSelectionModal.module.css";
 
-import seatGreen from "@/public/seat-green.webp";
-import seatGrey from "@/public/seat-grey.webp";
-import seatBlue from "@/public/seat-blue.webp";
+import seatGreen from "@/public/img/ferry logo/seat-green.svg";
+import seatGrey from "@/public/img/ferry logo/seat-grey.svg";
+import seatBlue from "@/public/img/ferry logo/seat-blue.svg";
 import boatSvg from "@/public/Nautika-luxury-mobile.svg";
 import { Modal } from "antd";
 import PaymentBtn from "../payment/Payment";
@@ -17,14 +17,14 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
     const [zoom, setZoom] = useState(1);
     const { setTrip0Selected, setTrip1Selected, setTrip2Selected, tripData } = useGlobalFerryContext();
 
-    const yMap = 15;
+    const yMap = 30;
     const xMap = 35
     const seatPositions = useMemo(() => ({
         // Example layout (percent coordinates relative to boat SVG container)
         // These MUST match your seating-arrangements-Nautika.png layout
         //This is for Luxury Class Nautika Ferry
         //Top Middle Center
-        "1E": { x: xMap, y: yMap }, "1F": { x: xMap + 4, y: yMap }, "1G": { x: xMap + 8, y: yMap }, "1H": { x: xMap + 12, y: yMap }, "1I": { x: xMap + 16, y: yMap },
+        "1E": { x: xMap, y: yMap }, "1F": { x: xMap + 5, y: yMap }, "1G": { x: xMap + 10, y: yMap }, "1H": { x: xMap + 15, y: yMap }, "1I": { x: xMap + 20, y: yMap },
         "2D": { x: xMap - 2.5, y: yMap + 2.5 }, "2E": { x: xMap + 2, y: yMap + 2.5 },
 
 
@@ -72,18 +72,37 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
 
     return (
         <Modal open={true} onCancel={onClose} footer={null} >
-            <div className="overflow-hidden relative">
+            <div className="overflow-scroll relative mt-4">
                 <div className='absolute z-50 top-2.5 left-2.5 flex flex-col gap-2'>
                     <button className="bg-white border w-[40px] px-2 rounded-full py-1 cursor-pointer" onClick={() => setZoom((z) => Math.min(z + 0.1, 2))}>+</button>
                     <button className="bg-white border w-[40px] px-2 rounded-full py-1 cursor-pointer" onClick={() => setZoom((z) => Math.max(z - 0.1, 0.5))}>-</button>
                 </div>
 
-                <div className="w-full relative pb-[180%]" style={{ transform: `scale(${zoom})`, transformOrigin: 'top center' }}>
-                    <Image src={boatSvg} alt="Boat layout" className="absolute inset-0 object-contain w-full h-full" />
+                <div
+                    className="ferry-container relative mx-auto"
+                    style={{
+                        width: "100%",
+                        maxWidth: "487px",
+                        aspectRatio: "487 / 1280",
+                        transform: `scale(${zoom})`,
+                        transformOrigin: "top center"
+                    }}
+                >
+                    <Image
+                        src={
+                            className === "Luxury"
+                                ? "/img/ferry logo/nautika-luxury-s-v3.png"
+                                : "/img/ferry logo/nautika-royal-s-v3.png"
+                        }
+                        alt="Boat layout"
+                        fill
+                        className="absolute inset-0 object-contain"
+                    />
 
                     {Object.keys(seatData).map((seatId) => {
                         const pos = seatPositions[seatId];
                         if (!pos) return null;
+
                         const seat = seatData[seatId];
                         const isSelected = selected.includes(seatId);
                         const imgSrc = seat.isBooked ? seatGrey : isSelected ? seatBlue : seatGreen;
@@ -93,13 +112,20 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
                                 key={seatId}
                                 src={imgSrc}
                                 alt={seatId}
-                                className="absolute cursor-pointer w-[16px] h-auto rotate-90"
-                                style={{ top: `${pos.y}%`, left: `${pos.x}%`, transform: 'translate(-50%, -50%)' }}
+                                className="absolute cursor-pointer seat-icon"
+                                style={{
+                                    top: `${pos.y}%`,
+                                    left: `${pos.x}%`,
+                                    width: "5%", 
+                                    transform: "translate(-50%, -50%)"
+                                }}
                                 onClick={() => toggleSeat(seatId)}
                             />
                         );
                     })}
                 </div>
+
+
 
             </div>
             <div className='flex sm:flex-row flex-col mt-4 w-full justify-between items-center gap-4'>
