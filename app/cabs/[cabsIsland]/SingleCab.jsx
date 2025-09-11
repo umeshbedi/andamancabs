@@ -109,6 +109,7 @@ export default function SingleCab({ thumbnail, title, price, distance, type, sta
                 open={open}
                 onCancel={() => setOpen(false)}
                 footer={[]}
+                destroyOnHidden
             >
                 <h2>Booking:</h2>
                 <Divider style={{ margin: '1%' }} />

@@ -71,7 +71,7 @@ export const menu = {
         },
         {
             "title": "Cab in Neil Island",
-            "slug": "/cabs/Cab-in-Neil-Island"
+            "slug": "/cabs/Cabs-In--Neil"
         }
     ],
 

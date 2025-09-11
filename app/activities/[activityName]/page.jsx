@@ -6,7 +6,7 @@ import { getActivityData } from '@/components/utils/actions/activityAction'
 
 export default async function Activities({params, searchParams}) {
   const res = getActivityData({ slug: params.activityName });
-  console.log("params",params.activityName)
+  // console.log("params",params.activityName)
   let tempData;
   await res.then(data => {
     // console.log("Activity Data:", data[0]);

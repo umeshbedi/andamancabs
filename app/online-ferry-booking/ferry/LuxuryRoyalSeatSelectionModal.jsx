@@ -71,7 +71,7 @@ export default function LuxuryRoyalSeatSelectionModal({ isOpen, onClose, seatDat
     if (!isOpen) return null;
 
     return (
-        <Modal open={true} onCancel={onClose} footer={null} >
+        <Modal open={true} onCancel={onClose} footer={null} destroyOnHidden>
             <div className="overflow-scroll relative mt-4">
                 <div className='absolute z-50 top-2.5 left-2.5 flex flex-col gap-2'>
                     <button className="bg-white border w-[40px] px-2 rounded-full py-1 cursor-pointer" onClick={() => setZoom((z) => Math.min(z + 0.1, 2))}>+</button>

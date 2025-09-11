@@ -93,6 +93,7 @@ export default function Ferry() {
                 footer={[
                     <Button type='primary' key={'btn'} onClick={addNewFerry}>Add</Button>,
                 ]}
+                destroyOnHidden
             >
                 <div style={{ flexDirection: 'column', display: 'flex', gap: 10, padding: '1%' }}>
                     <p>Ferry Name:</p>

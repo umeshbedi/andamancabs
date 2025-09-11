@@ -11,7 +11,7 @@ const MyButton = dynamic(() => import('@/components/ui/MyButton'))
 export default function CruizeCard({ name, image }) {
     return (
 
-        <Link href={"/online-ferry-booking"}
+        <Link href={"/online-ferry-booking"} about='blank'
             className='w-xs rounded-2xl shadow-lg bg-white hover:shadow-2xl overflow-hidden hover:-translate-y-1.5 transition-all ease-in-out duration-500 '>
             <div className='relative w-full h-[200px] rounded-2xl overflow-hidden'>
                 <Image

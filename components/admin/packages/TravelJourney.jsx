@@ -114,7 +114,7 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
 
 
 
-            <Modal open={open} onCancel={() => setOpen(false)} footer={[]}>
+            <Modal open={open} onCancel={() => setOpen(false)} footer={[]} destroyOnHidden>
                 <Form onFinish={tjEdit}>
                     {tjedit != null &&
                         <div style={{ padding: '2%' }}>

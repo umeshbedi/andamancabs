@@ -8,10 +8,15 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/navbar/Navbar";
 import OurStory from "@/components/layout/OurStory";
 import SocialMedia from "@/components/layout/SocialMedia";
-import TestiMonials from "@/components/layout/Testimonials";
+import TestiMonials from "@/components/layout/testimonilas/Testimonials";
+import { db } from "@/firebase";
 import { ConfigProvider } from "antd";
 
 export default async function Home() {
+
+  const res = await db.doc(`pages/homepage`).get();
+  const data = res.data();
+
   return (
     <ConfigProvider
     theme={{
@@ -36,7 +41,7 @@ export default async function Home() {
     }}
     >
       <Navbar />
-      <Slider />
+      <Slider sliderData={data.banner}/>
       <Cabs/>
       <Cruize />
       <Activities />

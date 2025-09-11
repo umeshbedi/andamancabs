@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { db } from '@/firebase'
 import TravelJourney from './TravelJourney'
 import AllPageBanner from './AllPageBanner'
+import { Image } from 'antd'
 
 
 export default function Hompage() {
@@ -81,35 +82,6 @@ export default function Hompage() {
       <Form style={{ border: "solid 1px lightgrey", padding: '2%' }} onFinish={addBanner}>
         <h2 style={{ color: "grey" }}><i>Add Banner Image</i></h2>
         <br />
-        <div style={{ height: banner.length > 4 ? 150 : null, overflowY: 'scroll' }}>
-          {banner.length != 0 &&
-            banner.map((item, i) => (
-              <div key={i}>
-                <p style={{ color: "grey", marginBottom: '1%', fontWeight: 400, fontSize: 16 }}><b><i>
-                  #{i + 1}. {item.heading} | {item.subHeading} | {item.image} | <span style={{ color: 'var(--primaryColor)' }}>
-                    <EditFilled onClick={() => {
-                      setOpen(true)
-                      setTimeout(() => {
-                        headingRef.current.value = item.heading;
-                        setHeading(item.heading)
-                        subHeadingRef.current.value = item.subHeading;
-                        setSubHeading(item.subHeading)
-                        imageRef.current.value = item.image
-                        setImage(item.image)
-                        setIndex(i)
-                      }, 100);
-
-                    }} />
-                  </span> |
-                  <span style={{ color: 'red' }}>
-                    <DeleteFilled
-                      onClick={() => deleteBanner(i)} />
-                  </span>
-                </i></b></p>
-              </div>
-            ))
-          }
-        </div>
         <Form.Item name={'heading'} label="Heading">
           <input required type="text" placeholder='Enter Heading...' />
         </Form.Item>
@@ -145,15 +117,49 @@ export default function Hompage() {
         <Button style={{ marginBottom: '3%' }} onClick={submit} type='primary'>Submit Banner & Meta</Button>
       </Form>
       <br />
-
+      {/* 
       <TravelJourney />
-      <AllPageBanner />
+      <AllPageBanner /> */}
+
+      <h2 style={{ color: "grey" }}>Banners</h2>
+      <div style={{ height: banner.length > 4 ? 150 : null, overflowY: 'scroll' }}>
+          {banner.length != 0 &&
+            banner.map((item, i) => (
+              <div key={i}>
+                <p style={{ color: "grey", marginBottom: '1%', fontWeight: 400, fontSize: 16 }}><b><i>
+                  #{i + 1}. {item.heading} | {item.subHeading} | <span style={{ color: 'var(--primaryColor)' }}>
+                    <EditFilled onClick={() => {
+                      setOpen(true)
+                      setTimeout(() => {
+                        headingRef.current.value = item.heading;
+                        setHeading(item.heading)
+                        subHeadingRef.current.value = item.subHeading;
+                        setSubHeading(item.subHeading)
+                        imageRef.current.value = item.image
+                        setImage(item.image)
+                        setIndex(i)
+                      }, 100);
+
+                    }} />
+                  </span> |
+                  <span style={{ color: 'red' }}>
+                    <DeleteFilled
+                      onClick={() => deleteBanner(i)} />
+                  </span>
+                </i></b></p>
+                <Image src={item.image}/>
+                <hr className='mt-3'/>
+              </div>
+            ))
+          }
+        </div>
 
       {/* Model section here */}
       <Modal
         open={open}
         onCancel={() => setOpen(false)}
         footer={[<Button key={0} type='primary' onClick={EditBanner}>Save</Button>]}
+        destroyOnHidden
       >
         <div style={{ padding: '3%' }}>
           <Form.Item name={'heading'} label="Heading">

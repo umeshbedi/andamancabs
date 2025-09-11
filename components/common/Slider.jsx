@@ -87,7 +87,7 @@ export default function Slider({ sliderData = [] }) {
                     </div>
                 </SwiperSlide>
 
-                {customData.map((item, index) => (
+                {sliderData.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div >
                             <div

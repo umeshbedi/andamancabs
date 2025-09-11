@@ -56,7 +56,7 @@ export default function TestiMonials() {
     useEffect(() => {
         testimonialdb.onSnapshot((snap) => {
             const data = snap.data()
-            
+
             if (data !== undefined) {
                 settestimonials(data.testimonials)
             }
@@ -72,24 +72,24 @@ export default function TestiMonials() {
                 <h2 style={{ color: "grey" }}><i>Add TestiMonials</i></h2>
                 <br />
                 <Form.Item name={'name'} label="Name">
-                    <input required type="text" placeholder='Enter Name of person...' />
+                    <Input required type="text" placeholder='Enter Name of person...' />
                 </Form.Item>
                 <Form.Item name={'image'} label="image">
-                        <input type="text" placeholder='Enter Image url...' />
-                    </Form.Item>
+                    <Input type="text" placeholder='Enter Image url...' />
+                </Form.Item>
                 <Form.Item name={'content'} label="Content">
-                    <Input required type="text" placeholder='Enter Content 189 character...' />
+                    <Input.TextArea required type="text" placeholder='Enter Content...' />
                 </Form.Item>
                 <Button htmlType='submit'><PlusOutlined /> Add New</Button>
             </Form>
             <div>
-            <h2 style={{ color: "grey", marginTop:30, marginBottom:30 }}><i>TestiMonials</i></h2>
+                <h2 style={{ color: "grey", marginTop: 30, marginBottom: 30 }}><i>TestiMonials</i></h2>
                 {testimonials.length != 0 &&
                     testimonials.map((item, i) => (
                         <div key={i}>
                             <Image src={item.image} width={100} height={100} />
-                            <p style={{ color: "grey", marginBottom: '1%' }}><b><i>
-                                #{i + 1}. {item.name} | {item.content} |  <span>
+                            <p className='font-bold text-gray-600'><i>
+                                #{i + 1}. {item.name} | <span className='font-normal'>{item.content}</span> |  <span>
                                     <EditFilled onClick={() => {
                                         setOpen(true)
                                         setTimeout(() => {
@@ -107,8 +107,8 @@ export default function TestiMonials() {
                                     <DeleteFilled
                                         onClick={() => deletetestimonials(i)} />
                                 </span>
-                                <Divider/>
-                            </i></b></p>
+                            </i></p>
+                            <hr className='mt-3' />
                         </div>
                     ))
                 }
@@ -119,17 +119,29 @@ export default function TestiMonials() {
                 open={open}
                 onCancel={() => setOpen(false)}
                 footer={[<Button key={0} type='primary' onClick={Edittestimonials}>Save</Button>]}
+                destroyOnHidden
             >
-                <div style={{ padding: '3%' }}>
-                    <Form.Item name={'name'} label="name">
+                <div className='flex flex-col gap-4 mt-6'>
+                    <div>
+                        <span>Name: </span>
                         <input ref={nameRef} type="text" placeholder='Enter name...' onChange={(e) => setname(e.target.value)} />
+                    </div>
+
+                    <div>
+                        <span>Image: </span>
+                        <input ref={imageRef} type="text" placeholder='Enter Image url...' onChange={(e) => setImage(e.target.value)} />
+                    </div>
+
+                    <div>
+                        <span>Content: </span>
+                        <input ref={contentRef} type="text" placeholder='Enter content...' onChange={(e) => setcontent(e.target.value)} />
+                    </div>
+                    {/* <Form.Item name={'name'} label="name">
                     </Form.Item>
                     <Form.Item name={'image'} label="image">
-                        <input ref={imageRef} type="text" placeholder='Enter Image url...' onChange={(e) => setImage(e.target.value)} />
                     </Form.Item>
                     <Form.Item name={'content'} label="Content">
-                        <input ref={contentRef} type="text" placeholder='Enter content...' onChange={(e) => setcontent(e.target.value)} />
-                    </Form.Item>
+                    </Form.Item> */}
 
                 </div>
             </Modal>

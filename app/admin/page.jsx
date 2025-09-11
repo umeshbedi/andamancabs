@@ -159,42 +159,45 @@ export default function Admin() {
   }
 
   return (
-    <>
-      <div className='flex w-full h-screen'>
-        <div className='bg-black'>
-        <MenuAdmin menuClick={(e) => onMenuClick(e)} />
+   <>
+  <div className="flex w-full h-screen">
+    {/* Sidebar */}
+    <div className="bg-black h-screen sticky top-0 w-[330px] overflow-x-hidden overflow-y-auto">
+      <MenuAdmin menuClick={(e) => onMenuClick(e)} />
+    </div>
 
-        </div>
-        
-        <div className='w-full'>
-          <Header style={{ background: 'inherit', display: 'flex', justifyContent: 'flex-end' }}>
-            <div>
-              <Dropdown.Button
-                menu={{ items }}
-                icon={<UserOutlined />}
-                placement='bottomRight'
-                size='large'
-
-              >
-                Admin
-              </Dropdown.Button>
-            </div>
-
-          </Header>
-          <div style={{ padding: '0% 2%' }}>
-            {content}
-          </div>
-        </div>
-
-      </div>
-
-      <Modal
-        open={open}
-        onCancel={() => setOpen(false)}
-        footer={[]}
+    {/* Main content */}
+    <div className="flex flex-col w-full overflow-y-auto">
+      <Header
+        style={{
+          background: "inherit",
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
       >
-        <Media />
-      </Modal>
-    </>
+        <div>
+          <Dropdown.Button
+            menu={{ items }}
+            icon={<UserOutlined />}
+            placement="bottomRight"
+            size="large"
+          >
+            Admin
+          </Dropdown.Button>
+        </div>
+      </Header>
+
+      <div style={{ padding: "0% 2%" }} className="overflow-y-auto flex-1">
+        {content}
+      </div>
+    </div>
+  </div>
+
+  <Modal open={open} onCancel={() => setOpen(false)} footer={[]} destroyOnHidden>
+    <Media />
+  </Modal>
+</>
+
+
   )
 }
