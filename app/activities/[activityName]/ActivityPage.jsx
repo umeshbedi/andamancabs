@@ -13,7 +13,7 @@ export default function ActivityPage({ data }) {
 
   return (
     <MyDiv title={""} image={newHeaderImage}>
-      <section className="w-full flex flex-col sm:flex-row justify-center gap-4 p-4 sm:p-8">
+      <section className="w-full flex flex-col sm:flex-row justify-center gap-4 p-4 sm:p-8 packageSection">
         <div className="w-[70%] sm:w-full bg-white p-[3%] flex flex-col gap-4">
           <h1>{data.title}</h1>
           <Divider style={{ margin: "0", backgroundColor: "var(--lightGreyColor)", height: 1 }} />

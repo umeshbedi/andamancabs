@@ -18,7 +18,7 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     // New states
     const [activityPlace, setActivityPlace] = useState('');
     const [price, setPrice] = useState(0);
-    const [duration, setDuration] = useState(0);
+    const [duration, setDuration] = useState('');
     const [stars, setStars] = useState(0);
 
     const [messageApi, contextHolder] = message.useMessage();
@@ -31,10 +31,10 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     var slugRef = useRef(null)
 
     // New refs
-    const activityPlaceRef = useRef(null);
-    const priceRef = useRef(null);
-    const durationRef = useRef(null);
-    const starsRef = useRef(null);
+    const activityPlaceRef = useRef();
+    const priceRef = useRef();
+    const durationRef = useRef();
+    const starsRef = useRef();
 
     function submit() {
         setLoading(true)
@@ -98,6 +98,11 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             setDuration(data.duration);
             setStars(data.stars);
 
+            priceRef.current.value = data.price;
+            activityPlaceRef.current.value = data.activityPlace;
+            durationRef.current.value = data.duration;
+            starsRef.current.value = data.stars;
+
             console.log("Index from update", index)
             console.log("all items data", allItemData)
         }
@@ -140,15 +145,15 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
 
                 {/* New Form Items */}
                 <Form.Item label="Activity Place">
-                    <input ref={activityPlaceRef} placeholder="Enter Activity Place" onChange={(e) => setActivityPlace(e.target.value)} />
+                    <input ref={activityPlaceRef} defaultValue={activityPlace} placeholder="Enter Activity Place" onChange={(e) => setActivityPlace(e.target.value)} />
                 </Form.Item>
 
                 <Form.Item label="Price">
-                    <input type='number' ref={priceRef} placeholder="Enter Price" onChange={(e) => setPrice(e.target.valueAsNumber)} />
+                    <input type='number' ref={priceRef} defaultValue={price} placeholder="Enter Price" onChange={(e) => setPrice(e.target.valueAsNumber)} />
                 </Form.Item>
 
                 <Form.Item label="Duration in Hours">
-                    <input ref={durationRef} type='number' placeholder="Enter Duration" onChange={(e) => setDuration(e.target.valueAsNumber)} />
+                    <input ref={durationRef} defaultValue={duration} placeholder="Enter Duration" onChange={(e) => setDuration(e.target.value)} />
                 </Form.Item>
 
                 <Form.Item label="Stars">
