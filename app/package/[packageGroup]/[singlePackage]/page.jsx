@@ -20,5 +20,5 @@ export default async function SinglePackage({ params, searchParams }) {
 
     // console.log(packageData)
     // return <>Package Data</>
-    return <SinglePackagePage data={packageData}/>
+    return <SinglePackagePage data={packageData} packageGroup={packageGroupData}/>
 }

@@ -10,7 +10,7 @@ export default async function Page({ params, searchParams }) {
   if(!cabpage)return notFound()
 
   const cabsData = await getAllCabs({id:cabpage.id})
-  console.log(cabsData)
+  // console.log(cabsData)
 
   return <CabPage cabpage={cabpage} cabData={cabsData}/>
 }

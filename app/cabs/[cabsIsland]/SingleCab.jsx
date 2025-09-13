@@ -74,7 +74,7 @@ export default function SingleCab({ thumbnail, title, price, distance, type, sta
                 <div style={{ width: isMobile ? "100%" : "25%", flexDirection: 'column', display: "flex", justifyContent: 'space-between', borderLeft: isMobile ? null : "1px solid #e2e8ee", marginTop: isMobile ? "2.5rem" : null }}>
                     <div style={{ flexDirection: 'column', display: 'flex', alignItems: 'center' }}>
                         <h3>Price:</h3>
-                        <h1 style={{ fontSize: '2rem' }}><span className='text-[1rem] line-through text-gray-500'>₹400</span> ₹{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</h1>
+                        <h1 style={{ fontSize: '2rem' }}><span className='text-[1rem] line-through text-gray-500'>₹{(price*1.12).toFixed(0)}</span> ₹{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</h1>
                     </div>
                     <div style={{ height: "3rem", width: '100%', background: "var(--primary)", marginTop: "1.5rem", display: 'flex', alignItems: "center", justifyContent: 'center', cursor: 'pointer', borderRadius: isMobile ? 50 : null }}
                         onClick={() => {
