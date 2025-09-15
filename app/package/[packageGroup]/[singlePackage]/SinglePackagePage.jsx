@@ -16,7 +16,7 @@ import CostSection from './CostSection'
 
 
 
-export default function SinglePackagePage({ data }) {
+export default function SinglePackagePage({ data, packageGroup }) {
 
     function Include({ icon, name }) {
         return (
@@ -42,7 +42,6 @@ export default function SinglePackagePage({ data }) {
                     <h1>{data.title}</h1>
                     <h3 id='packageDetail' ><ClockCircleFilled /> {data.subtitle}</h3>
                     <Divider style={{ margin: '2%' }} />
-                    {mobile() && data.isPrice == true && <CostSection />}
 
                     <div>
                         <h2>Includes</h2>
@@ -75,7 +74,7 @@ export default function SinglePackagePage({ data }) {
                                 key: i,
                                 label: <h4>{tj.heading}</h4>,
                                 children: <div>
-                                    <p>{tj.content}</p>
+                                    <p className='text-justify'>{tj.content}</p>
                                     <img src={tj.image} alt={tj.heading} loading='lazy' style={{ width: '100%', borderRadius: '20px', marginTop: 10 }} />
                                 </div>
                             }
@@ -92,15 +91,21 @@ export default function SinglePackagePage({ data }) {
                 </div>
 
                 <div className='w-full sm:w-[35%]'>
-                    {data.isPrice && <CostSection price={data.price} hotelName={data.hotelName} />}
+                    {data.isPrice &&
+                        <CostSection
+                            price={data.price}
+                            hotelName={data.hotelName || []}
+                            packageDetails={{ packageName: data.name, packageTitle: data.title, packageGroupName: packageGroup.name, packageSubTitle: data.subtitle }}
+                        />
+                    }
 
                     <div className='w-full border border-gray-300 bg-gray-200 rounded-3xl p-5 shadow-lg mt-5 mb-20'>
                         <h2 className='mb-5'>Need Help?</h2>
                         <div className='flex shrink-0 gap-2 items-start'>
-                            <MdSupportAgent size={50} className='-mt-2'/>
+                            <MdSupportAgent size={50} className='-mt-2' />
                             <div>
-                                <p>Call us : 011-123456789 | 123456789</p>
-                                <p>Mail us : contact@andamancabs.in</p>
+                                <p>Call us :<a href='tel:+919933237775'>+919933237775</a> | <a href="tel:+919933263867">+919933263867</a></p>
+                                <p>Mail us : <a href="mailto:contact@andamancabs.in">contact@andamancabs.in</a></p>
                             </div>
                         </div>
                     </div>

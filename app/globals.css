@@ -230,7 +230,7 @@ input:focus {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .packageSection table,
   .packageSection tbody,
   .packageSection tr,
@@ -257,6 +257,11 @@ input:focus {
     text-align: left;
     font-weight: bold;
   }
+} */
+
+.contentDiv p{
+  text-align: justify !important;
+  text-justify: inter-word;
 }
 
 

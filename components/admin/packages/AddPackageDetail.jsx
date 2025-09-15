@@ -97,12 +97,13 @@ export default function AddPackageDetail({ packageFor = "" }) {
         });
 
         const groupSearch = packageItem.find(f => f.id == selectedGroup)
-        const random = Math.floor(1000 + Math.random() * 9000)
-        const slug = `${groupSearch.name.split(" ").join("-")}/${random}-${sSPD.name.split(" ").join("-")}-${val.packageTitle.split(" ").join("-")}`
-        
+        const slug = `${groupSearch.name.split(" ").join("-")}/${sSPD.name.split(" ").join("-")}-${val.packageTitle.split(" ").join("-")}`
 
-        packagedb.doc(`${selectedGroup}`)
-            .collection("singlePackage").doc(`${selectedSinglePackage}`)
+
+        packagedb
+            .doc(`${selectedGroup}`)
+            .collection("singlePackage")
+            .doc(`${selectedSinglePackage}`)
             .update({
                 slug: `/package/${slug}`,
                 title: val.packageTitle,
@@ -248,7 +249,7 @@ export default function AddPackageDetail({ packageFor = "" }) {
         )
     }
 
-    console.log(selectedSinglePackage)
+    // console.log(selectedSinglePackage)
 
     return (
         <div>
@@ -275,7 +276,7 @@ export default function AddPackageDetail({ packageFor = "" }) {
                                 })
                             })}
                         />
-                        {selectedGroup != null &&
+                        {selectedGroup &&
                             <Space>
                                 <p>Select Package Name: </p>
                                 <Select
@@ -294,12 +295,7 @@ export default function AddPackageDetail({ packageFor = "" }) {
                     </Space>
 
 
-                    {selectedSinglePackage != null
-                        ?
-                        <AddSinglePackageDetail />
-                        :
-                        null
-                    }
+                    {selectedSinglePackage ? <AddSinglePackageDetail /> : null }
 
 
                 </>

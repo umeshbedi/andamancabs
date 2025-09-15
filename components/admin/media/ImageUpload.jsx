@@ -12,6 +12,8 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
 
 
     async function deleteImage({ id, deletehash, image }) {
+        if(confirm("Are you sure to delete this image?")==false)return;
+        
         messageApi.open({ key: 'updatable', type: 'loading', content: 'Loading...', duration: 0 })
         const res = await fetch('/api/deleteImage', {
             method: 'POST',
@@ -134,7 +136,7 @@ export default function ImageUpload({ to, groupId, packageId, packageFor }) {
             <div
                 style={{ height: 80, width: 80, display: 'flex', justifyContent: 'center', borderRadius: 10, border: 'solid .5px #d9d9d9' }} >
                 <Image src={image} height={'100%'} />
-                <div>
+                <div className='relative'>
                     <DeleteFilled style={{ color: 'red', cursor: 'pointer', position: 'absolute' }}
                         onClick={onDelete} />
 

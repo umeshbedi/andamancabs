@@ -5,16 +5,17 @@ import { getPackageData, getSinglePackage } from "@/components/utils/actions/pac
 
 export default async function SinglePackage({ params, searchParams }) {
 
-    const { packageGroup, singlePackage } = params
+    const { packageGroup, singlePackage } = await params
 
     const packageGroupSlug = packageGroup.split("-").slice(1).join("-")
     const packageGroupData = await getPackageData({slug:packageGroupSlug})
 
     if (!packageGroupData)return notFound();
-
     // console.log(packageGroupData)
+    
     const packageData = await getSinglePackage({id:packageGroupData.id, slugGroup:packageGroup, slugPackage:singlePackage})
 
+    // console.log(packageData)
     if (!packageData)return notFound();
 
 

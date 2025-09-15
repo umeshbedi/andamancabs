@@ -5,9 +5,11 @@ import { Divider } from 'antd'
 import Dates from './Dates';
 import { Modal } from 'antd';
 import PackageForm from '@/components/layout/contactForms/PackageForm';
+import { useState } from 'react';
 
 
-export default function CostSection({ price = 3000, hotelName = [] }) {
+export default function CostSection({ price = 3000, hotelName = [], packageDetails }) {
+    const [openModal, setOpenModal] = useState(false)
     return (
         <>
             <div className="w-full border border-[var(--primary)] rounded-3xl overflow-hidden shadow-lg">
@@ -37,13 +39,19 @@ export default function CostSection({ price = 3000, hotelName = [] }) {
 
                     <Dates />
 
-                    <button onClick={() => { }} className='bg-[var(--primary)] mt-5 w-full py-3 px-10 rounded-full cursor-pointer'>Enquire Now</button>
+                    <button onClick={() => {setOpenModal(true) }} className='bg-[var(--primary)] mt-5 w-full py-3 px-10 rounded-full cursor-pointer'>Enquire Now</button>
                 </div>
             </div>
 
-        {/* <Modal open>
-            <PackageForm/>
-        </Modal> */}
+        <Modal 
+        open={openModal} 
+        footer={null} 
+        onCancel={() => {setOpenModal(false)}} 
+        destroyOnHidden
+        width={"80%"}
+        >
+            <PackageForm packageDetails={packageDetails}/>
+        </Modal>
         </>
     );
 }

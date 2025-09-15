@@ -30,14 +30,14 @@ export default function ActivityCard({ name, image, price = 6500, duration, loca
 
                 <Rate defaultValue={stars} disabled allowHalf className='absolute bottom-3 left-2' />
                 <div className='flex gap-1 items-center absolute bottom-3 right-2 bg-[rgba(255,255,255,.8)] py-1 px-3 rounded-full text-[0.8rem]'>
-                    <RxLapTimer />
-                    <p>{duration} hrs</p>
+                    <RxLapTimer color='black'/>
+                    <p className='text-black'>{duration}</p>
                 </div>
             </div>
 
             <div className='px-3'>
                 <div className='px-3 py-2 mt-2'>
-                    <h4 className='font-bold line-clamp-1'>{name}</h4>
+                    <h4 className='font-bold text-black line-clamp-1'>{name}</h4>
                 </div>
                 {/* <div className='flex justify-between items-center py-2 mt-1'> */}
                 {/* <div className='flex gap-1 items-center'>
@@ -48,7 +48,7 @@ export default function ActivityCard({ name, image, price = 6500, duration, loca
                 {/* </div> */}
 
                 <div className='flex justify-between items-center py-2 mt-1'>
-                    <p className='font-bold text-[1.2rem]'><span className='line-through font-normal text-[.8rem] text-gray-400'>₹{(price * 1.2).toFixed(0)}</span> ₹{price}</p>
+                    <p className='font-bold text-[1.2rem] text-black'><span className='line-through font-normal text-[.8rem] text-gray-400'>₹{(price * 1.2).toFixed(0)}</span> ₹{price}</p>
                     <p className='py-1 px-3 rounded-full text-white bg-[black] text-[.8rem]'>20% OFF</p>
                 </div>
 
