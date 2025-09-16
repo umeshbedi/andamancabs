@@ -93,7 +93,7 @@ export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryNam
                     </table>
                     <p>Booking time: <strong>${getCurrentISTTimestamp()}</strong></p>
                     <hr/>
-                    <p>If you have any questions, feel free to contact us at <a href='mailto:contact@andamancab.in'>contact@andamancab.in</a>.</p>
+                    <p>If you have any questions, feel free to contact us at <a href='mailto:enquiryandamancabs@gmail.com'>enquiryandamancabs@gmail.com</a>.</p>
                     <p>Thank you for choosing <strong>Andaman Cabs</strong>!</p>
                 </div>
                 <div class="footer">
@@ -105,7 +105,7 @@ export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryNam
     `;
 
     // const emailData = {
-    //     "sender": { "email": "contact@andamancab.in", "name": "Andaman Cabs" },
+    //     "sender": { "email": "enquiryandamancabs@gmail.com", "name": "Andaman Cabs" },
     //     "subject": `Seat Confirmation - PNR ${pnr}`,
     //     "htmlContent": htmlContent,
     //     "to": [{ "email": toEmail, "name": toName }]
@@ -113,7 +113,7 @@ export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryNam
 
     const emailData2 = {
         "sender": {
-            "email": "contact@andamancab.in",
+            "email": "enquiryandamancabs@gmail.com",
             "name": "Andaman Cabs"
         },
         "subject": `Seat Confirmation - PNR ${pnr}`,
@@ -123,7 +123,7 @@ export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryNam
             {
                 "to": [
                     {
-                        "email": "contact@andamancab.in",
+                        "email": "enquiryandamancabs@gmail.com",
                         "name": "Andman Cabs"
                     }
                     

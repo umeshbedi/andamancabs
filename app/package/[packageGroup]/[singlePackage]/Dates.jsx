@@ -12,7 +12,7 @@ const disabledDate = current => {
 };
 
 
-export default function Dates({ getDeparture = (e) => { } }) {
+export default function Dates({ getDateRange = (e) => { } }) {
   return (
     <div className='w-full'>
       <p className='mb-1'>Select Date Range:</p>
@@ -22,8 +22,8 @@ export default function Dates({ getDeparture = (e) => { } }) {
         format="DD-MM-YYYY"
         className='w-full'
         onChange={(date, dateString) => {
-          getDeparture(dateString);
-          console.log(dateString); // Log the selected date in DD-MM-YYYY format
+          getDateRange(dateString);
+          // console.log(dateString); // Log the selected date in DD-MM-YYYY format
         }}
         disabledDate={disabledDate}
       />

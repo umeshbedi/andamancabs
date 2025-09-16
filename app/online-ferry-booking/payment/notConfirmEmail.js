@@ -93,7 +93,7 @@ export async function sendTicketNotConfirmedEmail({ toEmail, toName, error, ferr
                     <p><strong>Refund:</strong> Your payment will be refunded within <strong>3–7 working days</strong>.</p>
                     <p>Booking time: <strong>${getCurrentISTTimestamp()}</strong></p>
                     <hr/>
-                    <p>If you have any questions, feel free to contact us at <a href='mailto:contact@andamancab.in'>contact@andamancab.in</a>.</p>
+                    <p>If you have any questions, feel free to contact us at <a href='mailto:enquiryandamancabs@gmail.com'>enquiryandamancabs@gmail.com</a>.</p>
                     <p>We sincerely apologize for the inconvenience caused.</p>
                 </div>
                 <div class="footer">
@@ -105,7 +105,7 @@ export async function sendTicketNotConfirmedEmail({ toEmail, toName, error, ferr
     `;
 
     // const emailData = {
-    //     "sender": { "email": "contact@andamancab.in", "name": "Andaman Cabs" },
+    //     "sender": { "email": "enquiryandamancabs@gmail.com", "name": "Andaman Cabs" },
     //     "subject": `Ticket Not Confirmed`,
     //     "htmlContent": htmlContent,
     //     "to": [{ "email": toEmail, "name": toName }]
@@ -113,7 +113,7 @@ export async function sendTicketNotConfirmedEmail({ toEmail, toName, error, ferr
 
     const emailData2 = {
         "sender": {
-            "email": "contact@andamancab.in",
+            "email": "enquiryandamancabs@gmail.com",
             "name": "Andaman Cabs"
         },
         "subject": `Ticket is Not Confirmed`,
@@ -123,7 +123,7 @@ export async function sendTicketNotConfirmedEmail({ toEmail, toName, error, ferr
             {
                 "to": [
                     {
-                        "email": "contact@andamancab.in",
+                        "email": "enquiryandamancabs@gmail.com",
                         "name": "Andman Cabs"
                     }
                     

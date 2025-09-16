@@ -65,7 +65,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-gray-400">
               <li className="flex items-start gap-2"><FaPhoneAlt className="mt-1" /> +91 99332 37775 | +91 9933263867</li>
               <li className="flex items-start gap-2"><FaWhatsapp className="mt-1" /> WhatsApp: +91 99332 37775 | +91 9933263867</li>
-              <li className="flex items-start gap-2"><FaEnvelope className="mt-1" /> contact@andamancab.in</li>
+              <li className="flex items-start gap-2"><FaEnvelope className="mt-1" /> enquiryandamancabs@gmail.com</li>
               <li className="flex items-start gap-2"><FaMapMarkerAlt size={40} className="mt-1" /> Shop No. 01, Pulikeezu Bhavan Bargat Line, near juvenile home, DRDO TRANSIT, Nayagaon, Port Blair, Andaman and Nicobar Islands 744106</li>
             </ul>
 

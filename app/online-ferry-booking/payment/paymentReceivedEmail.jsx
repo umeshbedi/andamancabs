@@ -85,7 +85,7 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
                     <p>Time of payment: <strong>${getCurrentISTTimestamp()}</strong></p>
                     ${innerHtml}
                     <hr/>
-                    <p>If you have any questions, feel free to contact us at <a href='mailto:contact@andamancab.in'>contact@andamancab.in</a>.</p>
+                    <p>If you have any questions, feel free to contact us at <a href='mailto:enquiryandamancabs@gmail.com'>enquiryandamancabs@gmail.com</a>.</p>
                     <p>Thank you for choosing <strong>Andaman Cabs</strong>!</p>
                 </div>
                 <div class="footer">
@@ -176,9 +176,9 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
     `;
 
     // const emailData = {
-    //     sender: { name: 'Andaman Cabs', email: 'contact@andamancab.in' },
+    //     sender: { name: 'Andaman Cabs', email: 'enquiryandamancabs@gmail.com' },
     //     to: [{ email: toEmail, name: toName }],
-    //     cc: [{ email: 'contact@andamancab.in', name: 'Andaman Cabs' }],
+    //     cc: [{ email: 'enquiryandamancabs@gmail.com', name: 'Andaman Cabs' }],
     //     subject: 'Payment Received - Andaman Cabs',
     //     htmlContent,
     // };
@@ -186,7 +186,7 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
 
     const emailData2 = {
         "sender": {
-            "email": "contact@andamancab.in",
+            "email": "enquiryandamancabs@gmail.com",
             "name": "Andaman Cabs"
         },
         "subject": "Payment Received - Andaman Cabs",
@@ -196,7 +196,7 @@ export async function sendPaymentReceivedEmail({ toEmail, toName, amount, paymen
             {
                 "to": [
                     {
-                        "email": "contact@andamancab.in",
+                        "email": "enquiryandamancabs@gmail.com",
                         "name": "Andman Cabs"
                     }
                     

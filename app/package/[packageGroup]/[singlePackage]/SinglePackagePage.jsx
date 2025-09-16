@@ -95,7 +95,12 @@ export default function SinglePackagePage({ data, packageGroup }) {
                         <CostSection
                             price={data.price}
                             hotelName={data.hotelName || []}
-                            packageDetails={{ packageName: data.name, packageTitle: data.title, packageGroupName: packageGroup.name, packageSubTitle: data.subtitle }}
+                            packageDetails={{
+                                packageName: data.name,
+                                packageTitle: data.title,
+                                packageGroupName: packageGroup.name,
+                                packageSubTitle: data.subtitle
+                            }}
                         />
                     }
 

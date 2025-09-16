@@ -7,6 +7,7 @@ import { Button, Divider, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 
 import { FaStar } from "react-icons/fa";
+import CabForm from '@/components/layout/contactForms/CabForm';
 
 
 export default function SingleCab({ thumbnail, title, price, distance, type, star, description }) {
@@ -77,15 +78,7 @@ export default function SingleCab({ thumbnail, title, price, distance, type, sta
                         <h1 style={{ fontSize: '2rem' }}><span className='text-[1rem] line-through text-gray-500'>₹{(price*1.12).toFixed(0)}</span> ₹{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</h1>
                     </div>
                     <div style={{ height: "3rem", width: '100%', background: "var(--primary)", marginTop: "1.5rem", display: 'flex', alignItems: "center", justifyContent: 'center', cursor: 'pointer', borderRadius: isMobile ? 50 : null }}
-                        onClick={() => {
-                            setOpen(true);
-                            setActivityDetails({
-                                name: title,
-                                distance: distance,
-                                price: `₹${price}`
-                            })
-                        }}
-                    >
+                        onClick={() => setOpen(true)}>
                         <p style={{ fontSize: "1.2rem", color: "black" }}>Book Now</p>
                     </div>
 
@@ -110,19 +103,14 @@ export default function SingleCab({ thumbnail, title, price, distance, type, sta
                 onCancel={() => setOpen(false)}
                 footer={[]}
                 destroyOnHidden
+                width={"80%"}
+                style={{ top: 50 }}
             >
-                <h2>Booking:</h2>
-                <Divider style={{ margin: '1%' }} />
-                {/* <h1 style={{ margin: '1% 0', fontSize: '2rem' }}>{activityDetails.price}</h1> */}
-                {/* <ContactForm
-                    to={'activity'}
-                    packageName={`Cab | ${data.title}`}
-                    packageDetail={`
-          <p>Cab Name: ${activityDetails.name}</p>
-          <p>Price: ${activityDetails.price}</p>
-          <p>Distance: ${activityDetails.distance} kms</p>
-        `}
-                /> */}
+                <CabForm 
+                packageDetails={{packageTitle:title, distance:distance, wheeler:type}} 
+                price={price} 
+                closeForm={()=>setOpen(false)}
+                />
             </Modal>
 
         </div>
