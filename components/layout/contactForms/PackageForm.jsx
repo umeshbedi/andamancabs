@@ -47,7 +47,7 @@ export default function PackageForm({ packageDetails, dateRange = [null, null], 
                     console.log("Enquiry email sent!");
                     setTimeout(() => {
                         closeForm();
-                    }, 1000); 
+                    }, 2000); 
                 }
             });
             
@@ -112,15 +112,15 @@ export default function PackageForm({ packageDetails, dateRange = [null, null], 
 
                     <div className='flex gap-3 flex-wrap sm:flex-nowrap'>
                         <Form.Item label="Adults (>12Years)" name="adult" rules={[{ required: true }]}>
-                            <Input size='large' type='number' placeholder='Enter Adult Age' />
+                            <Input size='large' type='number' placeholder='Enter Adults Number' />
                         </Form.Item>
 
                         <Form.Item label="Child (5-12years)" name="child" >
-                            <Input size='large' type='number' placeholder='Enter Child Age' />
+                            <Input size='large' type='number' placeholder='Enter Childs Number' />
                         </Form.Item>
 
                         <Form.Item label="Infant (0-5years)" name="infant">
-                            <Input size='large' type='number' placeholder='Enter Infant Age' />
+                            <Input size='large' type='number' placeholder='Enter Infants Number' />
                         </Form.Item>
                     </div>
 

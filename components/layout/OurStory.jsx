@@ -6,12 +6,12 @@ import React from 'react'
 export default function OurStory() {
 
   const content = [
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    { icon: <SecurityScanOutlined />, title: 'Visit The Website', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
+    { icon: <SecurityScanOutlined />, title: 'Top Agency', description: 'Best Cab rental agency since 2015.' },
+    { icon: <SecurityScanOutlined />, title: 'Online Ferry Booking', description: '3 Step Ferry Booking since 2021 in Andaman.' },
+    { icon: <SecurityScanOutlined />, title: 'Water Sports Activities', description: 'Get Discounted Price and Offers.' },
+    { icon: <SecurityScanOutlined />, title: 'Assistance', description: 'Get Personal Assistance.' },
+    { icon: <SecurityScanOutlined />, title: 'Endless Packages', description: 'Packages for Every Budget' },
+    { icon: <SecurityScanOutlined />, title: 'Destinations', description: 'Explore every Destinations.' },
 
   ]
 
@@ -46,7 +46,7 @@ export default function OurStory() {
         <div className="flex flex-col items-center justify-center z-10 sm:w-[30%] py-15 w-full px-15 sm:pr-15 text-center bg-black text-white">
           <h1>Our Story</h1>
           <h2>Watch the Video</h2>
-          <a href='https://www.youtube.com/watch?v=H_BtXn5kccg' target='blank' className='relative w-[300px] h-[350px] mt-5 group mt-4'>
+          <a href='https://www.youtube.com/watch?v=H_BtXn5kccg' target='blank' className='relative w-[300px] h-[350px] mt-5 group'>
             <Image fill src={"/uploads/about-us.jpg"} alt='our story image' className='rounded-2xl group-hover:scale-105 transition-transform duration-500 ease-in-out'/>
             <PlayCircleFilled className='absolute top-1/2 left-1/2 text-[3rem] cursor-pointer' style={{ transform: 'translate(-50%, -50%)', color:'var(--primary)' }} />
           </a>

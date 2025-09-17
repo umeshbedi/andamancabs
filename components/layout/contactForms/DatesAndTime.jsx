@@ -9,13 +9,13 @@ const disabledDate = (current) => {
   return current && current < dayjs().endOf("day");
 };
 
-export default function DateAndTime({ value, onChange }) {
+export default function DateAndTime({ value, onChange, showTime = true }) {
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <DatePicker
-        showTime={{ format: "HH:mm" }}
+        showTime={showTime ? { format: "HH:mm" } : false}
         size="large"
-        format="DD-MM-YYYY HH:mm"
+        format={showTime?"DD-MM-YYYY HH:mm":"DD-MM-YYYY"}
         className="w-full"
         placeholder="Select Date and Time"
         // value={value ? dayjs(value) : null}   // controlled value

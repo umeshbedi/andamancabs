@@ -1,12 +1,6 @@
 
 // Helper to get current IST time in 'YYYY-MM-DD HH:mm:ss'
-function getCurrentISTTimestamp() {
-  const now = new Date();
-  const istOffset = 330; // +5:30
-  const istTime = new Date(now.getTime() + (istOffset - now.getTimezoneOffset()) * 60000);
-  const pad = n => n.toString().padStart(2, '0');
-  return `${istTime.getFullYear()}-${pad(istTime.getMonth() + 1)}-${pad(istTime.getDate())} ${pad(istTime.getHours())}:${pad(istTime.getMinutes())}:${pad(istTime.getSeconds())}`;
-}
+import { getCurrentISTTimestamp } from "@/components/utils/getCurrentISTTimeStamp";
 
 export async function cabsEnquiryEmail({
   service,

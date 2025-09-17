@@ -1,16 +1,9 @@
 import axios from 'axios';
+import { getCurrentISTTimestamp } from "@/components/utils/getCurrentISTTimeStamp";
 
 const BREVO_API_KEY = process.env.NEXT_PUBLIC_BREVO_API_KEY;
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
-// Helper to get current IST time in 'YYYY-MM-DD HH:mm:ss' format
-function getCurrentISTTimestamp() {
-    const now = new Date();
-    const istOffset = 330;
-    const istTime = new Date(now.getTime() + (istOffset - now.getTimezoneOffset()) * 60000);
-    const pad = n => n.toString().padStart(2, '0');
-    return `${istTime.getFullYear()}-${pad(istTime.getMonth() + 1)}-${pad(istTime.getDate())} ${pad(istTime.getHours())}:${pad(istTime.getMinutes())}:${pad(istTime.getSeconds())}`;
-}
 
 export async function sendSeatConfirmationEmail({ toEmail, toName, pnr, ferryName, date, fromLocation, toLocation }) {
     const htmlContent = `

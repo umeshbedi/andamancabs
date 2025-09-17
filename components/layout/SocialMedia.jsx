@@ -4,12 +4,12 @@ import { FaInstagram } from 'react-icons/fa';
 
 export default function SocialMedia() {
 const profiles = [
-    { id: 1, imgSrc: '/uploads/cruise-photos/11360.jpg', instagramUrl: 'https://instagram.com/person1' },
-    { id: 2, imgSrc: '/uploads/cruise-photos/27811.jpg', instagramUrl: 'https://instagram.com/person2' },
-    { id: 3, imgSrc: '/uploads/cruise-photos/28076.jpg', instagramUrl: 'https://instagram.com/person3' },
-    { id: 4, imgSrc: '/uploads/cruise-photos/11360.jpg', instagramUrl: 'https://instagram.com/person4' },
-    { id: 5, imgSrc: '/uploads/cruise-photos/11360.jpg', instagramUrl: 'https://instagram.com/person5' },
-    { id: 6, imgSrc: '/uploads/cruise-photos/11360.jpg', instagramUrl: 'https://instagram.com/person6' },
+    { id: 1, imgSrc: '/img/instagram/andmancab activity.jpg', instagramUrl: 'https://instagram.com/person1' },
+    { id: 2, imgSrc: '/img/instagram/Cellular jail.jpg', instagramUrl: 'https://instagram.com/person2' },
+    { id: 3, imgSrc: '/img/instagram/Happy New Year Andaman Cabs.jpg', instagramUrl: 'https://instagram.com/person3' },
+    { id: 4, imgSrc: '/img/instagram/lets-explore-andamans.jpg', instagramUrl: 'https://instagram.com/person4' },
+    { id: 5, imgSrc: '/img/instagram/perfect-andaman-journey.jpg', instagramUrl: 'https://instagram.com/person5' },
+    { id: 6, imgSrc: '/img/instagram/Rent Your Cab with the biggest Fleet.jpg', instagramUrl: 'https://instagram.com/person6' },
 ];
 
 return (
@@ -17,7 +17,7 @@ return (
         {profiles.map((profile) => (
             <a
                 key={profile.id}
-                href={profile.instagramUrl}
+                href={"https://www.instagram.com/andamancabs/"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-media-item"

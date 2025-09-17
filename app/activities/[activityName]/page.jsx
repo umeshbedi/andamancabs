@@ -1,22 +1,24 @@
 import React from 'react'
 import ActivityPage from './ActivityPage'
-import { getActivityData } from '@/components/utils/actions/activityAction'
+import { getActivityData, getSortedData } from '@/components/utils/actions/activityAction'
+import { notFound } from 'next/navigation';
 
 
 
 export default async function Activities({params, searchParams}) {
-  const res = getActivityData({ slug: params.activityName });
+  const res = await getActivityData({ slug: params.activityName });
   // console.log("params",params.activityName)
-  let tempData;
-  await res.then(data => {
-    // console.log("Activity Data:", data[0]);
-    tempData = data[0];
-  }).catch(error => {
-    console.error("Error fetching activity data:", error);
-  });
+  // console.log(res);
+
+  const activityGroup = params.activityName.split("__")[1];
+
+  if (res.length === 0) return notFound();
   
-  console.log("Activity Data:", tempData);
+  const sortedRes = await getSortedData({ slug: params.activityName });
+  
+  // console.log("sortedRes",soretedRes);
+  // console.log("Activity Data:", tempData);
   
 
-  return <ActivityPage data={tempData}/>
+  return <ActivityPage data={res[0]} sortedData={sortedRes} activityGroup={activityGroup}/>
 }

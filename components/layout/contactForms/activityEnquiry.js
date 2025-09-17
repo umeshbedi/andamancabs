@@ -1,17 +1,18 @@
 import { getCurrentISTTimestamp } from "@/components/utils/getCurrentISTTimeStamp";
 
-export async function packageEnquiryEmail({
-  packageName,
-  price,
-  name,
-  email,
-  mobile,
-  adult,
-  child,
-  infant,
-  dateRange
+// Helper to get current IST time in 'YYYY-MM-DD HH:mm:ss'
+
+export async function activityEnquiryEmail({
+    service,
+    name,
+    email,
+    price,
+    mobile,
+    childs,
+    adults,
+    date,
 }) {
-  const htmlContent = `
+    const htmlContent = `
     <html>
 
 <body style="background: #f4f8fb; font-family: poppins;">
@@ -32,14 +33,14 @@ export async function packageEnquiryEmail({
             margin: 0;
             font-size: 28px;
             letter-spacing: 1px;
-            font-weight: 700;">Package Enquiry</h2>
+            font-weight: 700;">Activity Booking Enquiry</h2>
         </div>
         <div style=" margin-top: 28px;
             color: #222;
             font-size: 16px;
             line-height: 1.7;">
             <p>Hello <b>${name}</b>,</p>
-            <p>Thank you for your enquiry! Here are your details:</p>
+            <p>Thank you for choosing your Activity! Here are your details:</p>
             <table style="width: 100%;
             margin-top: 18px;
             border-collapse: collapse;
@@ -47,9 +48,9 @@ export async function packageEnquiryEmail({
             border-radius: 8px;
             overflow: scroll;">
                 <tr>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;"><strong>Package
+                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;"><strong>Service
                             Name</strong></td>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${packageName}</td>
+                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${service}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;"><strong>Price</strong></td>
@@ -75,27 +76,23 @@ export async function packageEnquiryEmail({
                 </tr>
                 <tr>
                     <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">
-                        <strong>Adults</strong>
+                        <strong>No. Adults</strong>
                     </td>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${adult || 0}</td>
+                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${adults}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">
-                        <strong>Child</strong>
+                        <strong>No. Child</strong>
                     </td>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${child || 0}</td>
+                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${childs||0}</td>
                 </tr>
                 <tr>
                     <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">
-                        <strong>Infant</strong>
+                        <strong>Date</strong>
                     </td>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${infant || 0}</td>
+                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${date}</td>
                 </tr>
-                <tr>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;"><strong>Date
-                            Range</strong></td>
-                    <td style="padding: 10px 8px;border-bottom: 1px solid #e0e7ef;font-size: 15px;">${dateRange[0] || "-"} to ${dateRange[1] || "-"}</td>
-                </tr>
+                
             </table>
             <p style="margin-top:18px;">Booking time: <strong>${getCurrentISTTimestamp()}</strong></p>
             <hr style="margin:24px 0; border: none; border-top: 1px solid #e0e7ef;" />
@@ -115,36 +112,36 @@ export async function packageEnquiryEmail({
 </html>
   `;
 
-  const emailData = {
-    sender: { email: "enquiryandamancabs@gmail.com", name: "Andaman Cabs" },
-    subject: `Enquiry Received - ${packageName}`,
-    htmlContent,
-    messageVersions: [
-      // Admin copy
-      {
-        to: [{ email: "enquiryandamancabs@gmail.com", name: "Admin AndamanCabs" }],
-        subject: `New Enquiry - ${packageName} by ${name}`,
+    const emailData = {
+        sender: { email: "enquiryandamancabs@gmail.com", name: "Andaman Cabs" },
+        subject: `Activity Booking Received - ${service}`,
         htmlContent,
-      },
-      // User confirmation
-      {
-        to: [{ email, name }],
-        subject: `Thank you for your enquiry - ${packageName}`,
-        htmlContent,
-      },
-    ],
-  };
+        messageVersions: [
+            // Admin copy
+            {
+                to: [{ email: "enquiryandamancabs@gmail.com", name: "Admin AndamanCabs" }],
+                subject: `New Activity Booking - ${service} by ${name}`,
+                htmlContent,
+            },
+            // User confirmation
+            {
+                to: [{ email, name }],
+                subject: `Thank you for Booking Activity - ${service}`,
+                htmlContent,
+            },
+        ],
+    };
 
-  try {
-    const response = await fetch("/api/sendMail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(emailData), // 👈 directly sending emailData
-    });
-    console.log(response);
-    return response;
-  } catch (error) {
-    console.error("Error sending enquiry email:", error.response?.data || error.message);
-    throw error;
-  }
+    try {
+        const response = await fetch("/api/sendMail", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(emailData), // 👈 directly sending emailData
+        });
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error("Error sending enquiry email:", error.response?.data || error.message);
+        throw error;
+    }
 }

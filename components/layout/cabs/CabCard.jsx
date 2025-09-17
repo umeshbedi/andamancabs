@@ -1,16 +1,20 @@
 "use client"
 
+import { commaPrice } from '@/components/utils/actions/commaPrice'
 import { Modal } from 'antd'
 import { Rate } from 'antd'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import CabForm from '../contactForms/CabForm'
 
 const MyButton = dynamic(() => import('@/components/ui/MyButton'))
 
 export default function CabCard({ type, star, label = '', title, distance, price, description, thumbnail }) {
     const [isOpenViewFull, setIsOpenViewFull] = useState(false)
+
+    const [open, setOpen] = useState(false)
 
     function Card({ isclamp = true }) {
         return (
@@ -24,7 +28,7 @@ export default function CabCard({ type, star, label = '', title, distance, price
                     />
                     <p className='absolute text-[.7rem] bg-[red] text-white py-1 px-3 rounded-full top-3 left-2'>{label.toUpperCase()}</p>
 
-                    <p className='absolute text-[1.2rem] bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full top-12 left-2 font-bold'><span className='text-[.8rem] line-through'>₹ {price + 100}</span> ₹ {price}</p>
+                    <p className='absolute text-[1.2rem] bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full top-12 left-2 font-bold'><span className='text-[.8rem] line-through'>₹ {(price*1.12).toFixed(0)}</span> ₹ {commaPrice(price)}</p>
 
 
                 </div>
@@ -42,7 +46,12 @@ export default function CabCard({ type, star, label = '', title, distance, price
                             <button onClick={() => setIsOpenViewFull(true)} className='font-bold text-neutral-600 cursor-pointer'>View Full</button>
                         }
 
-                        <button className='font-semibold text-[red] cursor-pointer'>BOOK NOW</button>
+                        <button 
+                        onClick={()=>{
+                            setIsOpenViewFull(false)
+                            setOpen(true)
+                        }}
+                        className='font-semibold text-[red] cursor-pointer'>BOOK NOW</button>
 
                     </div>
                 </div>
@@ -68,8 +77,19 @@ export default function CabCard({ type, star, label = '', title, distance, price
             </Modal>
 
             {/* Modal For Contact Form   */}
-            <Modal>
-                <h1>Contact Form</h1>
+            <Modal
+                open={open}
+                onCancel={() => setOpen(false)}
+                footer={[]}
+                destroyOnHidden
+                width={"80%"}
+                style={{ top: 50 }}
+            >
+                <CabForm
+                    packageDetails={{ packageTitle: title }}
+                    price={price}
+                    closeForm={() => setOpen(false)}
+                />
             </Modal>
         </div>
     )

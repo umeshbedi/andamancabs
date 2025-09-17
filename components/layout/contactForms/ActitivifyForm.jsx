@@ -4,15 +4,13 @@ import { Space } from 'antd'
 import { Form } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import CountryCode from '@/components/lib/countryCodes.json'
-
 import { message } from 'antd';
-import { packageEnquiryEmail } from './PackageEnquiry';
 import DateAndTime from './DatesAndTime';
 import { paymentAction } from './pamentAction';
-import { cabsEnquiryEmail } from './CabsEnquiry';
+import { activityEnquiryEmail } from './activityEnquiry';
 
 
-export default function CabForm({ packageDetails = {  packageTitle: "" }, price = 0, closeForm=() => { } }) {
+export default function ActivityForm({ packageDetails = {  packageTitle: "" }, price = 0, closeForm=() => { } }) {
 
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
@@ -29,17 +27,14 @@ export default function CabForm({ packageDetails = {  packageTitle: "" }, price 
     const handleEmail = async (values) => {
         messageApi.loading('Submitting your Booking enquiry...', 0);
         try {
-            await cabsEnquiryEmail({
+            await activityEnquiryEmail({
                 service: values.packageTitle || "",
                 name: values.name,
                 email: values.email,
                 mobile: `${values.mobileCode}${values.mobileNumber}`,
-                noOfPersons: values.people,
-                child: values.child,
-                infant: values.infant,
-                dateAndTime: values.dateAndTime,
-                pickupLocation: values.pickupPlace,
-                dropLocation: values.dropPlace,
+                childs: values.childs,
+                adults: values.adults,
+                date: values.date,
                 price: price,
                 
             }).then((res) => {
@@ -49,7 +44,7 @@ export default function CabForm({ packageDetails = {  packageTitle: "" }, price 
                 } else {
                     messageApi.destroy();
                     console.log("Booking email sent!");
-                    messageApi.success('Booking submitted successfully! Check your email for confirmation.');
+                    messageApi.success('Activity Booking submitted successfully! Check your email for confirmation.');
                     setTimeout(() => {
                         closeForm();
                     }, 2000);
@@ -118,8 +113,9 @@ export default function CabForm({ packageDetails = {  packageTitle: "" }, price 
                                 const code = allValues?.mobileCode || "+91";
                                 return `${code}${allValues?.mobileNumber || ""}`;
                             }}
+                            style={{width:"100%"}}
                         >
-                            <Space.Compact>
+                            <Space.Compact >
                                 <Form.Item name="mobileCode" noStyle initialValue="+91">
                                     <Select size="large" showSearch style={{ width: 100 }} options={CountryCode} />
                                 </Form.Item>
@@ -129,12 +125,8 @@ export default function CabForm({ packageDetails = {  packageTitle: "" }, price 
                             </Space.Compact>
                         </Form.Item>
 
-                        <Form.Item label="No. of People" name="people" rules={[{ required: true }]}>
-                            <Input size='large' type='number' placeholder='Enter No. of People' />
-                        </Form.Item>
-
-                        <Form.Item label="Date and Time" name="dateAndTime" rules={[{ required: true }]}>
-                            <DateAndTime />
+                        <Form.Item label="Date" name="date" rules={[{ required: true }]} style={{width:"100%"}}>
+                            <DateAndTime showTime={false}/>
                         </Form.Item>
 
                     </div>
@@ -145,12 +137,12 @@ export default function CabForm({ packageDetails = {  packageTitle: "" }, price 
                     </div>
 
                     <div className='flex gap-3 flex-wrap sm:flex-nowrap'>
-                        <Form.Item label="Pickup Place" name="pickupPlace" rules={[{ required: true }]} style={{width:"100%"}}>
-                            <Input size='large' placeholder='Enter Pickup Place' />
+                        <Form.Item label="Adults (>12 years)" name="adults" rules={[{ required: true }]} style={{width:"100%"}}>
+                            <Input size='large' type='number' placeholder='Enter Adult number' />
                         </Form.Item>
 
-                        <Form.Item label="Drop Place" name="dropPlace" rules={[{ required: true }]} style={{width:"100%"}}>
-                           <Input size='large' placeholder='Enter Drop Place' />
+                        <Form.Item label="Childs (3-12 years)" name="childs" style={{width:"100%"}}>
+                           <Input size='large' type='number' placeholder='Enter Child number' />
                         </Form.Item>
                         
                     </div>

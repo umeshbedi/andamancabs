@@ -30,7 +30,7 @@ export default function IslandPage({ data }) {
               data-aos-anchor-placement="top-bottom"
               data-aos-duration="2000"
               key={i}
-              target="blank"
+              target="_blank"
               href={item.slug}
             >
               <div
