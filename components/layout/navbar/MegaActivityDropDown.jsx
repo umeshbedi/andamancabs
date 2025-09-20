@@ -6,7 +6,7 @@ export default async function MegaActivityDropDown() {
   const megaMenuData = await getAllActivities();
 
   return (
-    <div className="w-[820px]">
+    <div className="w-[820px] overflow-y-auto">
       <ul className=" list-none">
         <li className="auto-columns">
           <div className="content">

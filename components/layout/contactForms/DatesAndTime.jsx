@@ -13,14 +13,15 @@ export default function DateAndTime({ value, onChange, showTime = true }) {
   return (
     <div className="w-full relative">
       <DatePicker
-        showTime={showTime ? { format: "HH:mm" } : false}
+        showTime={showTime ? { format: "hh:mm A" } : false}   // <-- 12 hr with AM/PM
         size="large"
-        format={showTime?"DD-MM-YYYY HH:mm":"DD-MM-YYYY"}
+        format={showTime ? "DD-MM-YYYY hh:mm A" : "DD-MM-YYYY"}
         className="w-full"
         placeholder="Select Date and Time"
-        // value={value ? dayjs(value) : null}   // controlled value
+        // value={value ? dayjs(value, "DD-MM-YYYY hh:mm A") : null} // optional controlled value
         onChange={(date, dateString) => {
-          onChange(dateString);              // send value back to Form
+          onChange(dateString); // send value back to Form
+          // console.log(dateString);
         }}
         disabledDate={disabledDate}
       />

@@ -125,7 +125,7 @@ export default function ActivityForm({ packageDetails = {  packageTitle: "" }, p
                             </Space.Compact>
                         </Form.Item>
 
-                        <Form.Item label="Date" name="date" rules={[{ required: true }]} style={{width:"100%"}}>
+                        <Form.Item label="Date of Activity" name="date" rules={[{ required: true }]} style={{width:"100%"}}>
                             <DateAndTime showTime={false}/>
                         </Form.Item>
 

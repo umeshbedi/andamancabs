@@ -5,12 +5,12 @@ import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInst
 import { IoIosArrowDown } from 'react-icons/io';
 
 export default function Footer() {
-  
-  function MyDivider({width="[80%]"}){return <div className={`w-${width} my-3 h-[1px] bg-gray-700`}/>}
+
+  function MyDivider({ width = "[80%]" }) { return <div className={`w-${width} my-3 h-[1px] bg-gray-700`} /> }
 
   return (
     <div>
-      <svg id="wave" style={{ transform: 'rotate(0deg)', transition: '0.3s', marginBottom:"-20px" }} viewBox="0 0 1440 210" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg id="wave" style={{ transform: 'rotate(0deg)', transition: '0.3s', marginBottom: "-20px" }} viewBox="0 0 1440 210" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
             <stop stopColor="rgba(0, 0, 0, 1)" offset="0%" />
@@ -25,22 +25,30 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Cruises</h3>
             <MyDivider />
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Green Ocean 1</li>
-              <li>ITT Majestic</li>
-              <li>Nautika Lite</li>
-              <li>Green Ocean 2</li>
-              <li>Nautika</li>
-              <li>Makruzz</li>
+              <li><a href="/ferry/Makruzz">Makruzz</a></li>
+              <li><a href="/ferry/Nautika">Nautika</a></li>
+              <li><a href="ferry/Green-Ocean">Green Ocean</a></li>
+            </ul>
+            <h3 className="mt-8 font-semibold mb-4">Cab Services</h3>
+            <MyDivider />
+            <ul className="space-y-2 text-sm text-gray-400">
+              <li><a href="/cabs/Cabs-In-Port-Blair">Cabs in Port Blair</a></li>
+              <li><a href="/cabs/Cabs-In-Havelock">Cabs in Havelock Island</a></li>
+              <li><a href="/cabs/Cabs-In-Neil">Cabs in Neil Island</a></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Cab Services</h3>
+            <h3 className="font-semibold mb-4">Packages</h3>
             <MyDivider />
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Cabs in Port Blair</li>
-              <li>Cabs in Havelock Island</li>
-              <li>Cabs in Neil Island</li>
+              <li><a href="#">Andaman Adventure (4 Nights 5 Days)</a></li>
+              <li><a href="#">Andaman Family (3 Nights 4 Days)</a></li>
+              <li><a href="#">Andaman Family (5 Nights 6 Days)</a></li>
+              <li><a href="#">Andaman Budget (5 Nights 6 Days)</a></li>
+              <li><a href="#">Andaman HoneyMoon (6 Nights 7 Days)</a></li>
+              <li><a href="#">Andaman HoneyMoon (4 Nights 5 Days)</a></li>
+              <li><a href="#">Andaman HoneyMoon (3 Nights 4 Days)</a></li>
             </ul>
           </div>
 
@@ -48,14 +56,14 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">Activities</h3>
             <MyDivider />
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Parasailing in Port Blair</li>
-              <li>Boat Scuba Diving at Neil Island</li>
-              <li>Shore Scuba Diving at Havelock</li>
-              <li>Andaman Dolphin Glass Boat Ride at North Bay Coral Island</li>
-              <li>Shore Scuba Diving at North Bay Coral Island</li>
-              <li>Shore Scuba Diving at Neil Island</li>
-              <li>Trekking in Andaman Islands</li>
-              <li>Photography in Andaman</li>
+              {/* <li><a href="#">Andaman </a></li>
+              <li><a href="#">Boat Scuba Diving at Neil Island</a></li>
+              <li><a href="#">Shore Scuba Diving at Havelock</a></li>
+              <li><a href="#">Andaman Dolphin Glass Boat Ride at North Bay Coral Island</a></li>
+              <li><a href="#">Shore Scuba Diving at North Bay Coral Island</a></li>
+              <li><a href="#">Shore Scuba Diving at Neil Island</a></li>
+              <li><a href="#">Trekking in Andaman Islands</a></li>
+              <li><a href="#">Photography in Andaman</a></li> */}
             </ul>
           </div>
 
@@ -82,16 +90,16 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className='w-full flex justify-center'>
-          <MyDivider width='full'/>
+          <MyDivider width='full' />
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 text-sm text-gray-500">
-        
+
           <div className="flex items-center gap-3">
             <button className="flex items-center gap-1 border border-gray-500 px-2 py-1 rounded">English <IoIosArrowDown /></button>
             <button className="flex items-center gap-1 border border-gray-500 px-2 py-1 rounded">INR <IoIosArrowDown /></button>
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" className="h-6" />
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Mastercard" className="h-6" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="Paypal" className="h-6" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay" className="h-6" />
           </div>
 
           <div className="flex gap-4">

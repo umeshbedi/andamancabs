@@ -25,10 +25,10 @@ export default function ActivityCard({ name, image, price = 6500, duration, loca
                     className='object-cover rounded-lg '
                 />
 
-                <p className='absolute text-[0.9rem] left-2 top-3 bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full'>Certified</p>
                 <HeartFilled className='absolute text-[0.8rem] right-2 top-3 bg-white p-2 rounded-full' style={{ color: 'red' }} />
 
-                <Rate defaultValue={stars} disabled allowHalf className='absolute bottom-3 left-2' />
+                <Rate defaultValue={stars} disabled allowHalf className='absolute bottom-15 left-2' />
+                <p className='absolute text-[0.9rem] left-2 bottom-5 bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full'>Certified</p>
                 <div className='flex gap-1 items-center absolute bottom-3 right-2 bg-[rgba(255,255,255,.8)] py-1 px-3 rounded-full text-[0.8rem]'>
                     <RxLapTimer color='black'/>
                     <p className='text-black'>{duration}</p>
