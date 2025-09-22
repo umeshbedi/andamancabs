@@ -28,7 +28,7 @@ export default function CabCard({ type, star, label = '', title, distance, price
                     />
                     <p className='absolute text-[.7rem] bg-[red] text-white py-1 px-3 rounded-full top-3 left-2'>{label.toUpperCase()}</p>
 
-                    <p className='absolute text-[1.2rem] bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full top-12 left-2 font-bold'><span className='text-[.8rem] line-through'>₹ {(price*1.12).toFixed(0)}</span> ₹ {commaPrice(price)}</p>
+                    <p className='absolute text-[1.2rem] bg-[rgba(0,0,0,.5)] text-white py-1 px-3 rounded-full top-12 left-2 font-bold'><span className='text-[.8rem] line-through'>₹ {((price||0)*1.12).toFixed(0)}</span> ₹ {commaPrice(price||0)}</p>
 
 
                 </div>

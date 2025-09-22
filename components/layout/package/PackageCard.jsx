@@ -51,19 +51,19 @@ export default function PackageCard({ data }) {
                     <p className='text-sm line-clamp-1 text-black'>{data.subtitle || ""}</p>
                 </div>
 
-                <Divider style={{margin:10}}/>
+                <Divider style={{ margin: 10 }} />
 
                 <div className='flex gap-2.5'>
-                    {data.includeIcon.slice(0,4).map((item, i) => (
+                    {data.includeIcon.slice(0, 4).map((item, i) => (
                         <Include key={i} icon={item.icon} name={item.name} />
                     ))}
                 </div>
 
-                <Divider style={{margin:10}}/>
+                <Divider style={{ margin: 10 }} />
 
                 <p className='text-[.8rem] mt-2 -mb-3 text-black'>Starting From</p>
                 <div className='flex justify-between items-center py-2 mt-1'>
-                    <p className='font-bold text-[1.2rem] text-black'><span className='line-through font-normal text-[.8rem] text-gray-400'>₹{(data.price * 1.3).toFixed(0)}</span> ₹{commaPrice(data.price)}</p>
+                    <p className='font-bold text-[1.2rem] text-black'><span className='line-through font-normal text-[.8rem] text-gray-400'>₹{((data.price || 0) * 1.3).toFixed(0)}</span> ₹{commaPrice(data.price || 0)}</p>
                     <p className='py-1 px-3 rounded-full text-white bg-[black] text-[.8rem]'>30% OFF</p>
                 </div>
 

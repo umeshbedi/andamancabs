@@ -29,7 +29,7 @@ export default function PackageForm({ packageDetails, dateRange = [null, null], 
         try {
             await packageEnquiryEmail({
                 packageName: `${values.packageName || ""} (${packageDetails?.packageTitle || ""})`,
-                price: price,
+                price: (price * values.adult),
                 name: values.name,
                 email: values.email,
                 mobile: `${values.mobileCode}${values.mobileNumber}`,

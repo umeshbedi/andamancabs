@@ -26,7 +26,7 @@ export default function CostSection({ price = 3000, hotelName = [], packageDetai
                         <span className="text-sm text-black">Starting from</span>
                         <h4 className="text-black font-bold" style={{ fontSize: 30 }}>
                             <span className="font-normal text-gray-600 line-through"
-                                style={{ fontSize: 14 }}>₹{(price * 1.3).toFixed(0)}</span> ₹ {commaPrice(price)}
+                                style={{ fontSize: 14 }}>₹{((price||0) * 1.3).toFixed(0)}</span> ₹ {commaPrice(price||0)}
                             <span className="font-normal text-black"
                                 style={{ fontSize: 14 }}> /person</span>
                         </h4>

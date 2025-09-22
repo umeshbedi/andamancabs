@@ -95,6 +95,10 @@ const items = [
           key: 'terms-and-conditions',
           label: `Terms & Conditions`,
         },
+        {
+          key: 'content-disclaimer',
+          label: `Content Disclaimer`,
+        },
       ],
     },
     {

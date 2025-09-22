@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 
 import { FaStar } from "react-icons/fa";
 import CabForm from '@/components/layout/contactForms/CabForm';
+import Description from './Description';
 
 
 export default function SingleCab({ thumbnail, title, price, distance, type, star, description }) {
@@ -65,7 +66,8 @@ export default function SingleCab({ thumbnail, title, price, distance, type, sta
                     </div>
 
                     <h2 style={{ fontWeight: 600, fontSize: "1.3rem", textAlign: isMobile ? "center" : null }}>{title}</h2>
-                    <p>{description}</p>
+                    {/* <p>{description}</p> */}
+                    <Description text={description} />
                     <div style={{ width: '100%', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'yellow', marginTop: "2rem" }}>
                         <div style={{ width: "90%", height: 1, background: '#98a6b3', position: 'absolute' }} />
                         <p style={{ position: 'absolute', alignSelf: 'center', background: 'white', border: "1px solid #98a6b3", borderRadius: 50, padding: "1px 15px", color: 'grey' }}>Distance: {distance} kms</p>
