@@ -6,12 +6,12 @@ import React from 'react'
 export default function OurStory() {
 
   const content = [
-    { icon: <SecurityScanOutlined />, title: 'Top Agency', description: 'Best Cab rental agency since 2015.' },
-    { icon: <SecurityScanOutlined />, title: 'Online Ferry Booking', description: '3 Step Ferry Booking since 2021 in Andaman.' },
-    { icon: <SecurityScanOutlined />, title: 'Water Sports Activities', description: 'Get Discounted Price and Offers.' },
-    { icon: <SecurityScanOutlined />, title: 'Assistance', description: 'Get Personal Assistance.' },
-    { icon: <SecurityScanOutlined />, title: 'Endless Packages', description: 'Packages for Every Budget' },
-    { icon: <SecurityScanOutlined />, title: 'Destinations', description: 'Explore every Destinations.' },
+    { icon: "/img/icons/Icons Know About/Top Agency.svg", title: 'Top Agency', description: 'Best Cab rental agency since 2015.' },
+    { icon: "/img/icons/Icons Know About/Online Ferry Booking.svg", title: 'Online Ferry Booking', description: '3 Step Ferry Booking since 2021 in Andaman.' },
+    { icon: "/img/icons/Icons Know About/Water Sports.svg", title: 'Water Sports Activities', description: 'Get Discounted Price and Offers.' },
+    { icon: "/img/icons/Icons Know About/Assistance.svg", title: 'Assistance', description: 'Get Personal Assistance.' },
+    { icon: "/img/icons/Icons Know About/Endless Packages.svg", title: 'Endless Packages', description: 'Packages for Every Budget' },
+    { icon: "/img/icons/Icons Know About/Destinations.svg", title: 'Destinations', description: 'Explore every Destinations.' },
 
   ]
 
@@ -35,7 +35,7 @@ export default function OurStory() {
           <div className='flex flex-wrap gap-8 mt-8 text-center justify-center'>
             {content.map((item, index) => (
               <div key={index} className={`flex w-[250px] mb-5 flex-col justify-center items-center gap-2 bg-white p-4 rounded-lg shadow-lg hover:-translate-y-1.5 transition-all ease-in-out duration-500 ${index%2==0 ? 'sm:translate-y-5 sm:hover:translate-y-3.5' : ''}`}>
-                <div className='text-[3rem]'>{item.icon}</div>
+                <div className='text-[3rem]'><Image src={item.icon} width={50} height={50} className='object-contain'/></div>
                 <span className='text-lg font-semibold'>{item.title}</span>
                 <p className='text-[.9rem]'>{item.description}</p>
               </div>

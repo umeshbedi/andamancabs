@@ -6,7 +6,7 @@ export default async function MegaLocationDropDown() {
   const megaMenuData = await getAllLocation();
   // console.log(megaMenuData)
   return (
-    <div className="w-[820px]">
+    <div className="w-[820px] bg-white rounded-xl shadow-lg">
       <ul className=" list-none">
         <li className="auto-columns">
           <div className="content">
@@ -15,7 +15,7 @@ export default async function MegaLocationDropDown() {
                 <a href={"javascript:void(0)"} className="flex gap-2 bg-[var(--primary)] p-3 rounded-2xl">
                   {item.thumbnail != undefined &&
                     <div className="relative h-[30px] w-[30px] flex-shrink-0">
-                      <Image src={item.thumbnail} fill className="object-cover rounded-lg" alt={item.title} />
+                      <Image src={item.thumbnail || "/img/logos/logo-header.png"} fill className="object-cover rounded-lg" alt={item.title} />
                     </div>
                   }
                   <p className="font-bold">{item.title}</p>
@@ -23,7 +23,7 @@ export default async function MegaLocationDropDown() {
                 {item.items.map((itm, index) => (
                   <a href={itm.slug} key={index} className="flex gap-2 my-2 ml-1 hover:bg-white rounded-l-3xl">
                     <div className="relative h-[30px] w-[30px] flex-shrink-0">
-                      <Image src={itm.thumbnail} fill className="object-cover rounded-full" alt={itm.name} />
+                      <Image src={itm.thumbnail || "/img/logos/logo-header.png"} fill className="object-cover rounded-full" alt={itm.name} />
                     </div>
                     <p >{itm.name}</p>
                   </a>

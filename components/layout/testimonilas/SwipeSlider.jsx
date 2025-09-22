@@ -28,6 +28,7 @@ export default function SwipeSlider({sliderData=[]}) {
             fadeEffect={{ crossFade: true }}
             dots={undefined && false}
             speed={2000}
+            rewind
             spaceBetween={50}
             grabCursor={true}
             pagination={true}

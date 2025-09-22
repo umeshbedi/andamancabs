@@ -19,7 +19,7 @@ export default function ActivityCard({ name, image, price = 6500, duration, loca
             className='w-xs rounded-2xl shadow-lg bg-white hover:shadow-2xl overflow-hidden hover:-translate-y-1.5 transition-all ease-in-out duration-500 '>
             <div className='relative w-full h-[200px] rounded-2xl overflow-hidden'>
                 <Image
-                    src={image}
+                    src={image || "/img/logos/logo-header.png"}
                     alt={name}
                     fill
                     className='object-cover rounded-lg '

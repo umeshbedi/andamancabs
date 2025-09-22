@@ -5,8 +5,10 @@ import Cabs from "@/components/layout/cabs/Cabs";
 import Cruize from "@/components/layout/cruize/Cruize";
 import FAQ from "@/components/layout/FAQ";
 import Footer from "@/components/layout/Footer";
+import LocationPage from "@/components/layout/location/LocationPage";
 import Navbar from "@/components/layout/navbar/Navbar";
 import OurStory from "@/components/layout/OurStory";
+import PackagePage from "@/components/layout/package/PackagePage";
 import SocialMedia from "@/components/layout/SocialMedia";
 import TestiMonials from "@/components/layout/testimonilas/Testimonials";
 import { db } from "@/firebase";
@@ -44,7 +46,10 @@ export default async function Home() {
       <Slider sliderData={data.banner}/>
       <Cabs/>
       <Cruize />
+      <a target="_blank" href="/online-ferry-booking"><img src="/img/ferry logo/Final Cruise Image .webp" loading="lazy" alt="cruize banner" className="w-full mt-8"/></a>
       <Activities />
+      <PackagePage/>
+      <LocationPage />
       <OurStory />
       <TestiMonials />
       <FAQ />

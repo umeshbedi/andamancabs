@@ -40,6 +40,8 @@ export default function BookingPage() {
                     <StepsBooking />
                 </div>
             </div>
+            
+            <a target="_blank" href="/online-ferry-booking"><img src="/img/ferry logo/Final Cruise Image .webp" loading="lazy" alt="cruize banner" className="w-full mt-15"/></a>
 
         </>
     )

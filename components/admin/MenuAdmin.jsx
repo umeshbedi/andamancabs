@@ -84,6 +84,10 @@ const items = [
           label: `Cancellation Policy`,
         },
         {
+          key: 'city-limit-policy',
+          label: `City Limit Policy`,
+        },
+        {
           key: 'privacy-policy',
           label: `Privacy Policy`,
         },

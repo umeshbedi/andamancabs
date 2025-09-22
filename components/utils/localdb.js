@@ -18,7 +18,15 @@ export const menu = {
         {
             "title": "General Information",
             "slug": "/general-info"
-        }
+        },
+        {
+            "title": "Cancellation Policy",
+            "slug": "/cancellaction-policy"
+        },
+        {
+            "title": "City Limit Policy",
+            "slug": "/city-limit-policy"
+        }   
 
     ],
     "popularIslands": [

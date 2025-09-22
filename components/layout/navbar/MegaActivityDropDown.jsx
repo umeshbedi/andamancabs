@@ -6,26 +6,26 @@ export default async function MegaActivityDropDown() {
   const megaMenuData = await getAllActivities();
 
   return (
-    <div className="w-[820px] overflow-y-auto">
+    <div className="w-[1200px] -translate-x-96 bg-white rounded-xl shadow-lg">
       <ul className=" list-none">
         <li className="auto-columns">
-          <div className="content">
+          <div className="content" style={{ columnCount: 5 }}>
             {megaMenuData.map((item, i) => (
               <div key={i} className="hover:bg-yellow-200 rounded-xl pb-0.5">
                 <a href={"javascript:void(0)"} className="flex gap-2 bg-[var(--primary)] p-3 rounded-2xl">
                   {item.thumbnail != undefined &&
                     <div className="relative h-[30px] w-[30px] flex-shrink-0 items-center">
-                      <Image src={item.thumbnail} fill className="object-cover rounded-lg" alt={item.title} />
+                      <Image src={item.thumbnail || "/img/logos/logo-header.png"} fill className="object-cover rounded-lg" alt={item.title} />
                     </div>
                   }
-                  <p className=" font-bold">{item.title}</p>
+                  <p className=" font-bold line-clamp-2">{item.title}</p>
                 </a>
                 {item.items.map((itm, index) => (
                   <a href={itm.slug} key={index} className="flex gap-2 my-2 ml-1 hover:bg-white rounded-l-3xl">
                     <div className="relative h-[30px] w-[30px] flex-shrink-0">
-                      <Image src={itm.thumbnail} fill className="object-cover rounded-full" alt={itm.title} />
+                      <Image src={itm.thumbnail || "/img/logos/logo-header.png"} fill className="object-cover rounded-full" alt={itm.title} />
                     </div>
-                    <p>{itm.title}</p>
+                    <p className="line-clamp-2">{itm.title}</p>
                   </a>
                 ))}
               </div>

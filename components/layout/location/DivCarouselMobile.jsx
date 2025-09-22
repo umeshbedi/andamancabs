@@ -1,6 +1,6 @@
+"use client"
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import style from '@/styles/Home.module.css'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
@@ -10,22 +10,21 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import Image from 'next/image';
-import MyButton from '../utils/MyButton';
-import { mobile, textShadow } from '../utils/variables';
-import { sliderImages } from '../utils/localdb';
+
+const sliderImages = [
+  "/img/instagram/andmancab activity.jpg",
+  "/img/instagram/Cellular jail.png",
+  "/img/island/ross-island.webp",
+]
+import { mobile, textShadow } from '@/components/utils/variables';
 
 
 
 
 export default function DivCarouselMobile({ lightHead, darkHead, backgroundImage, sliderContent = [], button, category }) {
 
-  const [containerStyle, setContainerStyle] = useState({ width: "90%", borderRadius: "100px 0 0 100px", })
   const [subHeadStyle, setsubHeadStyle] = useState({ display: 'flex' })
   const [sliderStyle, setSliderStyle] = useState({ width: '100%' })
-  const [slides, setSlides] = useState(4.5)
-  const [center, setcenter] = useState(true)
-
-  const [buttonFocus, setButtonFocus] = useState(false)
 
   const slideRef = useRef()
   const containerRef = useRef()
@@ -36,37 +35,23 @@ export default function DivCarouselMobile({ lightHead, darkHead, backgroundImage
     setIsMobile(mobile())
   }, [isMobile])
 
+  const sliderContentLocal = [
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Havelock Island", thumbnail: sliderImages[0], slug: "/islands/havelock-island", title: "Havelock" },
+    { name: "Neil Island", thumbnail: sliderImages[1], slug: "/islands/neil-island", title: "Neil" },
+    { name: "Ross Island", thumbnail: sliderImages[2], slug: "/islands/ross-island", title: "Ross" },
+  ]
+
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        width: '100%',
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        backgroundPosition: "center bottom",
-        backgroundRepeat: 'no-repeat',
-        float: 'right',
-        position: 'relative',
-        marginBottom: isMobile ? '2.5rem' : "3.5rem"
-      }}
-    >
-      <div
-        style={{
-          ...subHeadStyle,
-          // backgroundColor: 'yellow',
-          paddingLeft: isMobile ? "2.5rem" : '4.5rem',
-          alignItems: 'center',
-          zIndex: 2,
-          paddingTop: "2rem"
-        }}
-      >
-
-        
-      </div>
-
+    <div ref={containerRef} style={{ width: '100%', float: 'right', position: 'relative' }}>
       <div style={{ display: 'flex', width: '100%', position: 'relative' }} >
-        
+
         {/* for carousel */}
         <div style={sliderStyle} >
           <Swiper
@@ -81,28 +66,18 @@ export default function DivCarouselMobile({ lightHead, darkHead, backgroundImage
             rewind
             speed={1500}
 
+
           >
             {sliderContent.map((item, index) => (
-              <SwiperSlide style={{ width: 250, height: 350 }} key={index} className='singleSwiper'>
-                <Link href={item.slug}>
-                  <div style={{ height: 350 }}>
-                    <Image src={item.thumbnail} alt={item.name} fill style={{ objectFit: 'cover', borderRadius: isMobile ? 25 : 50, position: 'absolute', zIndex: -1 }} />
-                    <h1 style={{
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: isMobile ? "1.8rem" : "2.2rem",
-                      writingMode: 'vertical-lr',
-                      transform: 'rotate(-180deg)',
-                      float: 'bottom',
-                      // background:'yellow',
-                      height: '100%',
-                      paddingTop: 20,
-                      marginLeft: 10,
-                      textShadow: textShadow
-                    }}
-                    >
-                      {category == 'destination' ? item.title : item.name}
-                    </h1>
+              <SwiperSlide style={{ width: 250, height: 350 }} key={index} className='singleSwiper shadow-xl rounded-3xl overflow-hidden'>
+                <Link target='_blank' href={item.slug}>
+                  <div style={{ height: 350 }} >
+                    <Image src={item.thumbnail} alt={item.name} fill style={{ objectFit: 'cover', position: 'absolute', zIndex: -1 }} />
+                    <div className='absolute bg-gradient-to-t from-black via-black/60 to-transparent bottom-0 p-4 w-full'>
+                      <p style={{ color: 'white', textShadow: textShadow }} className='text-center'>
+                        {item.name}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </SwiperSlide>

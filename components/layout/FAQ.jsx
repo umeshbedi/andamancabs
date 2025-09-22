@@ -16,7 +16,7 @@ const items = [
     key: '2',
     label: <p className='font-bold'>2. How can I book a cab?</p>,
     children: <p>You can book a cab through our website or by calling our customer support at Contact- +91 99332 37775 | +91 9933263867 same For WhatsApp also
-Email- enquiryandamancabs@gmail.com or by visiting our office. Advance bookings are recommended for guaranteed availability.</p>,
+      Email- enquiryandamancabs@gmail.com or by visiting our office. Advance bookings are recommended for guaranteed availability.</p>,
   },
   {
     key: '3',
@@ -58,33 +58,34 @@ Email- enquiryandamancabs@gmail.com or by visiting our office. Advance bookings 
     label: <p className='font-bold'>10. How many years of experience do the drivers have?</p>,
     children: <p>More than 7 years each driver is working in this company. Don't Worry you are in safe hands.</p>,
   },
-  
-];
-export default function FAQ({isImage = true, padding = 'px-[5%]'}) {
-  return (
-    <div className={`faqclass bg-gray-50 w-full sm:flex justify-center mb-12 ${padding}`}>
-  {isImage && (
-    <div className='relative w-full h-full'>
-      <img
-      src="/img/icons/faq.avif"
-      alt="FAQ Image"
-      className="object-contain w-full ha-auto"
-    />
-    </div>
-  )}
 
-  <Collapse
-    items={items}
-    bordered={false}
-    defaultActiveKey={['1']}
-    style={{
-      width: '100%',
-      borderRadius: '8px',
-      backgroundColor: '#f9f9f9',
-      fontSize: '1rem',
-    }}
-  />
-</div>
+];
+export default function FAQ({ isImage = true, padding = 'px-[5%]' }) {
+  return (
+    <div className={`faqclass bg-[#f9f9f9] py-5 w-full sm:flex gap-3 justify-center mb-12 ${padding}`}>
+      {isImage && (
+        <div className='relative w-full h-full mt-10 sm:mr-5'>
+          <img
+            src="/img/icons/faq.png"
+            alt="FAQ Image"
+            loading='lazy'
+            className="object-contain w-full ha-auto"
+          />
+        </div>
+      )}
+
+      <Collapse
+        items={items}
+        bordered={false}
+        defaultActiveKey={['1']}
+        style={{
+          width: '100%',
+          borderRadius: '8px',
+          backgroundColor: '#f9f9f9',
+          fontSize: '1rem',
+        }}
+      />
+    </div>
 
   );
 }

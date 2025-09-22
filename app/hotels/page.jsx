@@ -1,12 +1,13 @@
+import MyDiv from '@/components/ui/MyDiv'
 import React from 'react'
-import HeaderIMage from './HeaderIMage'
 
+export default function HotelsPage() {
 
-
-export default function Hotels() {
   return (
-    <div>
-        <HeaderIMage title={"Hotels"}/>
-    </div>
+    <MyDiv image={"/img/bgs/hotels.jpg"} title={"Hotels"}>
+        <div className='w-full h-[50vh] flex justify-center items-center'>
+            <h1 className='text-3xl font-bold'>Hotels Page Coming Soon...</h1>
+        </div>
+    </MyDiv>
   )
 }

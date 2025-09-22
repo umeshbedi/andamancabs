@@ -7,7 +7,7 @@ export default async function MegaPackageDropDown() {
   const megaMenuData = await getAllPackageGroup();
 
   return (
-    <div className="w-[820px]">
+    <div className="w-[820px] bg-white rounded-xl shadow-lg">
       <ul className="list-none">
         <li className="auto-columns">
           <div className="content">
@@ -30,7 +30,7 @@ export default async function MegaPackageDropDown() {
                       >
                         <div className="relative h-[30px] w-[30px] flex-shrink-0">
                           <Image
-                            src={itm.thumbnail.link}
+                            src={itm.thumbnail.link || "/img/logos/logo-header.png"}
                             fill
                             className="object-cover rounded-full"
                             alt={itm.title}

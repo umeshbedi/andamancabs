@@ -14,6 +14,7 @@ export default async function Navbar() {
   const allPackageData = await Promise.all(
     allPackageGroup.map(async (group, index) => {
       const packages = await getAllPackage({ id: group.id });
+      // console.log(packages)
       return {
         key: `${group.name}-${index}`,
         label: group.name,
