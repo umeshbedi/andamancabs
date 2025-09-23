@@ -11,8 +11,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { mobile, textShadow } from '../utils/variables';
 import MyButton from '../ui/MyButton';
-
-export default function Slider({ sliderData = [] }) {
+const sliderData = []
+export default function Slider({  }) {
 
     const [height, setHeight] = useState(null)
 
@@ -66,7 +66,7 @@ export default function Slider({ sliderData = [] }) {
                 <SwiperSlide>
                     <div style={{ position: 'relative', width: '100%', height: height, overflow: 'hidden' }}>
                         <video
-                            src="https://video.gumlet.io/60e563a0b502bacef88e556b/60ffa619738c1c4caeab6c90/0.mp4" // Replace with your video path
+                            src="https://res.cloudinary.com/dvgoikldl/video/upload/w_1080,q_auto,f_auto/v1758648555/Banner_Video_Andaman_Cabs_gfo2at.mp4" // Replace with your video path
                             style={{
                                 position: 'absolute',
                                 top: '50%',

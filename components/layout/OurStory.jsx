@@ -35,7 +35,7 @@ export default function OurStory() {
           <div className='flex flex-wrap gap-8 mt-8 text-center justify-center'>
             {content.map((item, index) => (
               <div key={index} className={`flex w-[250px] mb-5 flex-col justify-center items-center gap-2 bg-white p-4 rounded-lg shadow-lg hover:-translate-y-1.5 transition-all ease-in-out duration-500 ${index%2==0 ? 'sm:translate-y-5 sm:hover:translate-y-3.5' : ''}`}>
-                <div className='text-[3rem]'><Image src={item.icon} width={50} height={50} className='object-contain'/></div>
+                <div className='text-[3rem]'><Image src={item.icon} width={50} alt={item.title} height={50} className='object-contain'/></div>
                 <span className='text-lg font-semibold'>{item.title}</span>
                 <p className='text-[.9rem]'>{item.description}</p>
               </div>
