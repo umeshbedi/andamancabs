@@ -11,7 +11,7 @@ export default function Cruize() {
     return (
         <main className='mt-15'>
 
-            <MyTitle heading='Cruizes' subheading='Travel in the luxury cruise' />
+            <MyTitle heading='Cruises' subheading='Travel in the luxury cruise' />
 
             <div className='flex flex-wrap justify-center gap-10 mt-5'>
                 {cruizName.map((item, index) => (

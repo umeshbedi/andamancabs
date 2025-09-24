@@ -37,7 +37,12 @@ export default function BookingPage() {
             <br /><br />
             <div className='w-full mt-10 h-full flex flex-col items-center'>
                 <div className='w-[80%]'>
-                    <StepsBooking />
+                    <div className="w-full flex flex-col items-center justify-center py-20 border-2 rounded-2xl border-amber-400">
+                        <h2 className="text-3xl font-bold mb-4 text-gray-700">Coming Soon</h2>
+                        <p className="text-lg text-gray-500 mb-6">Online booking API integration is in progress. Stay tuned!</p>
+                        
+                    </div>
+                    {/* <StepsBooking /> */}
                 </div>
             </div>
             
