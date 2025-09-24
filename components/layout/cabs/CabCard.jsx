@@ -8,6 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import CabForm from '../contactForms/CabForm'
+import Description from '@/app/cabs/[cabsIsland]/Description'
 
 const MyButton = dynamic(() => import('@/components/ui/MyButton'))
 
@@ -39,7 +40,9 @@ export default function CabCard({ type, star, label = '', title, distance, price
                         <h4 className={`font-bold ${isclamp ? 'line-clamp-1' : ''}`}>{title}</h4>
 
                     </div>
-                    <p className={`px-3 text-[.9rem] mb-2 text-neutral-600 ${isclamp ? 'line-clamp-2' : ''}`}>{description}</p>
+
+                    <Description className={`px-3 text-[.9rem] mb-2 text-neutral-600 ${isclamp ? 'line-clamp-2' : ''}`} text={description}/>
+                    {/* <p className={`px-3 text-[.9rem] mb-2 text-neutral-600 ${isclamp ? 'line-clamp-2' : ''}`}>{description}</p> */}
 
                     <div className='flex justify-between items-center px-3 py-2 mt-2 mb-2'>
                         {isclamp &&

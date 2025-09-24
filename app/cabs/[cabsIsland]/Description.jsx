@@ -1,4 +1,4 @@
-export default function Description({ text }) {
+export default function Description({ text, className = "" }) {
   // Example text coming from DB
   // "At the sightseeing... (CLICK HERE TO READ city limits for EXCLUDES HOTELS/RESORTS)"
 
@@ -9,7 +9,7 @@ export default function Description({ text }) {
   );
 
   return (
-    <div
+    <p className={className || ""}
       dangerouslySetInnerHTML={{ __html: formattedText }}
     />
   );

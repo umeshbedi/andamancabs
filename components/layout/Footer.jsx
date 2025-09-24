@@ -120,9 +120,10 @@ export default function Footer() {
             <a href="#" className="hover:text-white">Content Disclaimer</a> |
             <a href="#" className="hover:text-white">Terms and Conditions</a> |
             <a href="#" className="hover:text-white">Privacy</a> |
-            <span>© 2023 to 2025 Andaman Cabs</span>
+            <span>©2025 Andaman Cabs</span>
           </div>
         </div>
+        <p className='text-gray-500 mt-8' style={{fontSize:".8rem"}}>All claims, disputes and litigation relating to online booking through this website anywhere from India or abroad shall be subject to jurisdiction of Courts of Andaman only. All Images shown here are for representation purpose only.</p>
       </footer>
     </div>
   );

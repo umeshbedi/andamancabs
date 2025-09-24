@@ -11,7 +11,7 @@ import { Rate } from 'antd';
 import ActivityForm from '@/components/layout/contactForms/ActitivifyForm';
 
 
-export default function ActivityCostSection({ price = 3000, rating=4.5, duration="1 hours", packageDetails }) {
+export default function ActivityCostSection({ childPrice, price = 3000, rating = 4.5, duration = "1 hours", packageDetails }) {
     const [openModal, setOpenModal] = useState(false)
     const [dateRange, setDateRange] = useState([null, null]);
     // Message API from antd
@@ -27,10 +27,18 @@ export default function ActivityCostSection({ price = 3000, rating=4.5, duration
                         <span className="text-sm text-black">Starting from</span>
                         <h4 className="text-black font-bold" style={{ fontSize: 30 }}>
                             <span className="font-normal text-gray-600 line-through"
-                                style={{ fontSize: 14 }}>₹{((price||0) * 1.2).toFixed(0)}</span> ₹ {commaPrice(price||0)}
+                                style={{ fontSize: 14 }}>₹{((price || 0) * 1.2).toFixed(0)}</span> ₹{commaPrice(price || 0)}
                             <span className="font-normal text-black"
                                 style={{ fontSize: 14 }}> /person</span>
                         </h4>
+                        {childPrice &&
+                            <h4 className="text-black font-bold" style={{ fontSize: 20 }}>
+                                ₹{commaPrice(childPrice || 0)}
+                                <span className="font-normal text-black"
+                                    style={{ fontSize: 14 }}> /child</span>
+                            </h4>
+                        }
+
                         <span className="text-sm text-black">(inclusive 5% GST)</span>
                     </div>
                     <div className="rounded-full px-3 py-1 mt-2 bg-black text-white flex justify-center items-center h-fit">
@@ -39,13 +47,13 @@ export default function ActivityCostSection({ price = 3000, rating=4.5, duration
                 </div>
                 <div className="p-5">
                     <Divider style={{ margin: 0, marginBottom: 10 }} />
-                    <div className='flex items-center gap-1 shrink-0 mb-2'><span className='font-bold'>Rating:</span> <Rate value={rating} allowHalf/></div>
+                    <div className='flex items-center gap-1 shrink-0 mb-2'><span className='font-bold'>Rating:</span> <Rate value={rating} allowHalf /></div>
                     <p ><span className='font-bold'>Duration:</span> {duration}</p>
                     <p ><span className='font-bold'>Place:</span> {packageDetails.place}</p>
                     <button onClick={() => setOpenModal(true)}
                         className='bg-[var(--primary)] mt-5 w-full py-3 px-10 rounded-full cursor-pointer'
                     >
-                        Book Now 
+                        Book Now
                     </button>
                 </div>
             </div>
@@ -59,11 +67,12 @@ export default function ActivityCostSection({ price = 3000, rating=4.5, duration
                 style={{ top: 50 }}
             >
                 <ActivityForm
-                price={price}
-                packageDetails={packageDetails}
-                closeForm={()=>setOpenModal(false)}
+                    price={price}
+                    childPrice={childPrice || 0}
+                    packageDetails={packageDetails}
+                    closeForm={() => setOpenModal(false)}
                 />
-                
+
             </Modal>
         </>
     );

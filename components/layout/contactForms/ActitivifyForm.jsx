@@ -10,7 +10,7 @@ import { paymentAction } from './pamentAction';
 import { activityEnquiryEmail } from './activityEnquiry';
 
 
-export default function ActivityForm({ packageDetails = { packageTitle: "" }, price = 0, closeForm = () => { } }) {
+export default function ActivityForm({ packageDetails = { packageTitle: "" }, childPrice, price = 0, closeForm = () => { } }) {
 
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
@@ -35,7 +35,7 @@ export default function ActivityForm({ packageDetails = { packageTitle: "" }, pr
                 childs: values.childs,
                 adults: values.adults,
                 date: values.date,
-                price: (price * values.adults),
+                price: (price * values.adults) + ((childPrice || 0) * values.childs || 0) || 0,
 
             }).then((res) => {
                 if (res.status !== 200) {
@@ -69,8 +69,18 @@ export default function ActivityForm({ packageDetails = { packageTitle: "" }, pr
                     onFinish={(e) => {
                         messageApi.loading('Processing payment. Please be patient...', 0);
                         paymentAction({
-                            amount: price *e.adults,
-                            paymentFor: "Cab Booking",
+                            amount: price * e.adults + (childPrice || 0) * e.childs || 0,
+                            paymentFor: "Activity Booking",
+                            data: {
+                                service: e.packageTitle || "",
+                                name: e.name,
+                                email: e.email,
+                                mobile: `${e.mobileCode}${e.mobileNumber}`,
+                                childs: e.childs,
+                                adults: e.adults,
+                                date: e.date,
+                                price: (price * e.adults) + ((childPrice || 0) * e.childs || 0) || 0
+                            },
                             clickEvent: (status) => {
                                 if (status === "not loading") messageApi.destroy();
                                 if (status === "payment success") handleEmail(e);

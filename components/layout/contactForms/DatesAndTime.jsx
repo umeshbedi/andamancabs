@@ -17,7 +17,7 @@ export default function DateAndTime({ value, onChange, showTime = true }) {
         size="large"
         format={showTime ? "DD-MM-YYYY hh:mm A" : "DD-MM-YYYY"}
         className="w-full"
-        placeholder="Select Date and Time"
+        placeholder={showTime ? "Select Date & Time" : "Select Date"}
         // value={value ? dayjs(value, "DD-MM-YYYY hh:mm A") : null} // optional controlled value
         onChange={(date, dateString) => {
           onChange(dateString); // send value back to Form

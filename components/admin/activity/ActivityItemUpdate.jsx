@@ -18,6 +18,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     // New states
     const [activityPlace, setActivityPlace] = useState('');
     const [price, setPrice] = useState(0);
+    // Add child price state
+    const [childPrice, setChildPrice] = useState(0);
     const [duration, setDuration] = useState('');
     const [stars, setStars] = useState(0);
 
@@ -33,6 +35,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     // New refs
     const activityPlaceRef = useRef();
     const priceRef = useRef();
+    // Add child price ref
+    const childPriceRef = useRef();
     const durationRef = useRef();
     const starsRef = useRef();
 
@@ -47,7 +51,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                 metaDescription,
                 slug: `/activities/${slug}`,
                 activityPlace, // Add new state
-                price,          // Add new state
+                price,
+                childPrice, // Add child price to db
                 duration,        // Add new state
                 stars
             })
@@ -68,7 +73,8 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             metaDescription,
             slug: `/activities/${slug}`,
             activityPlace, // Add new state
-            price,          // Add new state
+            price,
+            childPrice, // Add child price to db
             duration,
             stars        // Add new state
         };
@@ -95,10 +101,12 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             // Set new states
             setActivityPlace(data.activityPlace);
             setPrice(data.price);
+            setChildPrice(data.childPrice || 0); // Retrieve child price from db if exists
             setDuration(data.duration);
             setStars(data.stars);
 
             priceRef.current.value = data.price;
+            childPriceRef.current.value = data.childPrice || 0;
             activityPlaceRef.current.value = data.activityPlace;
             durationRef.current.value = data.duration;
             starsRef.current.value = data.stars;
@@ -148,8 +156,24 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                     <input ref={activityPlaceRef} defaultValue={activityPlace} placeholder="Enter Activity Place" onChange={(e) => setActivityPlace(e.target.value)} />
                 </Form.Item>
 
-                <Form.Item label="Price">
-                    <input type='number' ref={priceRef} defaultValue={price} placeholder="Enter Price" onChange={(e) => setPrice(e.target.valueAsNumber)} />
+                <Form.Item label="Price (Adult)">
+                    <input
+                        type='number'
+                        ref={priceRef}
+                        defaultValue={price}
+                        placeholder="Enter Adult Price"
+                        onChange={(e) => setPrice(e.target.valueAsNumber)}
+                    />
+                </Form.Item>
+
+                <Form.Item label="Price (Child)">
+                    <input
+                        type='number'
+                        ref={childPriceRef}
+                        defaultValue={childPrice}
+                        placeholder="Enter Child Price"
+                        onChange={(e) => setChildPrice(e.target.valueAsNumber)}
+                    />
                 </Form.Item>
 
                 <Form.Item label="Duration in Hours">
@@ -169,7 +193,6 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                     <JoditEditor value={about} onBlur={e => { setAbout(e) }} />
                 </div>
 
-                
 
                 <Button loading={loading} onClick={data != undefined ? editData : submit} type='primary' style={{ marginBottom: '5%' }}>{data != undefined ? "Update" : "Submit"}</Button>
 

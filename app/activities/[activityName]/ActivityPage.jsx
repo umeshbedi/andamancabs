@@ -25,7 +25,7 @@ export default function ActivityPage({ data, sortedData = [], activityGroup }) {
 
         <div className={` w-full sm:w-[35%] flex flex-col items-center mt-10`}>
 
-          <ActivityCostSection price={data.price} packageDetails={{ packageTitle: data.title, place: data.activityPlace }} rating={data.stars} duration={data.duration} />
+          <ActivityCostSection childPrice={data.childPrice} price={data.price} packageDetails={{ packageTitle: data.title, place: data.activityPlace }} rating={data.stars} duration={data.duration} />
 
           <Divider style={{ height: 1 }} />
           <h2 className="text-center mb-3">Visit Other Activities</h2>

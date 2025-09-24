@@ -1,5 +1,7 @@
 // import { sendPaymentReceivedEmail } from "./paymentReceivedEmail";
 
+import { updatePaymentStatus } from "./paymentSuccessUpdate";
+
 
 export const paymentAction = async ({ amount, paymentFor, clickEvent = (e) => { }, data }) => {
 
@@ -42,6 +44,7 @@ export const paymentAction = async ({ amount, paymentFor, clickEvent = (e) => { 
 
             if (verifyData.success) {
                 // alert("Payment Verified ✅");
+                updatePaymentStatus({ bookingId: response.razorpay_payment_id, status: "paid", data, paymentFor });
                 clickEvent("payment success")
                 
             } else {
