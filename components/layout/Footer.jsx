@@ -1,11 +1,25 @@
-export const dynamic = "force-dynamic";
+"use client"
 
-import React from 'react';
-
+import { FloatButton } from 'antd';
+import React, { useEffect } from 'react';
 import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaFacebookF, FaInstagram, FaYoutube, FaGoogle } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
 
 export default function Footer() {
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.async = true;
+    script.type = "text/javascript";
+    script.src = "https://embed.tawk.to/68cecf9f5584c21924b72fa2/1j5jtm2f2";
+    script.charset = "UTF-8";
+    script.setAttribute("crossorigin", "*");
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
 
   function MyDivider({ width = "[80%]" }) { return <div className={`w-${width} my-3 h-[1px] bg-gray-700`} /> }
 
@@ -20,7 +34,7 @@ export default function Footer() {
         </defs>
         <path style={{ transform: 'translate(0, 0px)', opacity: 1 }} fill="url(#sw-gradient-0)" d="M0,0L40,24.5C80,49,160,98,240,101.5C320,105,400,63,480,45.5C560,28,640,35,720,52.5C800,70,880,98,960,115.5C1040,133,1120,140,1200,147C1280,154,1360,161,1440,143.5C1520,126,1600,84,1680,73.5C1760,63,1840,84,1920,87.5C2000,91,2080,77,2160,70C2240,63,2320,63,2400,77C2480,91,2560,119,2640,136.5C2720,154,2800,161,2880,154C2960,147,3040,126,3120,98C3200,70,3280,35,3360,49C3440,63,3520,126,3600,126C3680,126,3760,63,3840,42C3920,21,4000,42,4080,73.5C4160,105,4240,147,4320,154C4400,161,4480,133,4560,101.5C4640,70,4720,35,4800,17.5C4880,0,4960,0,5040,10.5C5120,21,5200,42,5280,70C5360,98,5440,133,5520,133C5600,133,5680,98,5720,80.5L5760,63L5760,210L5720,210C5680,210,5600,210,5520,210C5440,210,5360,210,5280,210C5200,210,5120,210,5040,210C4960,210,4880,210,4800,210C4720,210,4640,210,4560,210C4480,210,4400,210,4320,210C4240,210,4160,210,4080,210C4000,210,3920,210,3840,210C3760,210,3680,210,3600,210C3520,210,3440,210,3360,210C3280,210,3200,210,3120,210C3040,210,2960,210,2880,210C2800,210,2720,210,2640,210C2560,210,2480,210,2400,210C2320,210,2240,210,2160,210C2080,210,2000,210,1920,210C1840,210,1760,210,1680,210C1600,210,1520,210,1440,210C1360,210,1280,210,1200,210C1120,210,1040,210,960,210C880,210,800,210,720,210C640,210,560,210,480,210C400,210,320,210,240,210C160,210,80,210,40,210L0,210Z" />
       </svg>
-      <footer className="bg-[black] text-white py-10 px-6 md:px-20">
+      <footer className="bg-[black] flex flex-col items-center text-white py-10 px-6 md:px-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8border-gray-700 pb-10 gap-2">
           <div>
             <h3 className="font-semibold mb-4">Cruises</h3>
@@ -102,6 +116,12 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Certifiations */}
+        <div className='flex flex-wrap justify-between items-center w-[90%] px-3 py-2 bg-gray-800 rounded-3xl'>
+          <p className='font-bold text-white ml-2'>Certifications</p>
+          <img src="/img/icons/Andaman Cabs Certifications.jpg" alt="Andaman Cabs Certifications" className="h-10 rounded-3xl" />
+        </div>
+
         {/* Bottom bar */}
         <div className='w-full flex justify-center'>
           <MyDivider width='full' />
@@ -123,8 +143,9 @@ export default function Footer() {
             <span>©2025 Andaman Cabs</span>
           </div>
         </div>
-        <p className='text-gray-500 mt-8' style={{fontSize:".8rem"}}>All claims, disputes and litigation relating to online booking through this website anywhere from India or abroad shall be subject to jurisdiction of Courts of Andaman only. All Images shown here are for representation purpose only.</p>
+        <p className='text-gray-500 mt-8' style={{ fontSize: ".8rem" }}>All claims, disputes and litigation relating to online booking through this website anywhere from India or abroad shall be subject to jurisdiction of Courts of Andaman only. All Images shown here are for representation purpose only.</p>
       </footer>
+    
     </div>
   );
 }

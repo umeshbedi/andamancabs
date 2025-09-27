@@ -4,9 +4,9 @@ import CruizeCard from './CruizeCard'
 
 export default function Cruize() {
     const cruizName = [
-        { name: "MAKRUZZ", image: "/uploads/cruise-photos/27811.jpg", slug: "/ferry/Makruzz" },
-        { name: "NAUTIKA", image: "/uploads/cruise-photos/11360.jpg", slug: "/ferry/Nautika" },
-        { name: "GREEN OCEAN", image: "/uploads/cruise-photos/74546.jpg", slug: "/ferry/Green-Ocean" },
+        { name: "MAKRUZZ", image: "https://res.cloudinary.com/dvgoikldl/image/upload/v1756552755/ieni6sxkiyrzvl6vqscv.jpg", slug: "/ferry/Makruzz" },
+        { name: "NAUTIKA", image: "https://res.cloudinary.com/dvgoikldl/image/upload/v1756551987/ghkbaqefuztu3nbtm8do.jpg", slug: "/ferry/Nautika" },
+        { name: "GREEN OCEAN", image: "https://res.cloudinary.com/dvgoikldl/image/upload/v1758730926/rscxsxfg3tpsrbrmvlt3.jpg", slug: "/ferry/Green-Ocean" },
     ]
     return (
         <main className='mt-15'>

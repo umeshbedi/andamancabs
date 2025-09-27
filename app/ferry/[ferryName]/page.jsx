@@ -17,7 +17,7 @@ export default async function Page({ params, searchParams }) {
     }
     
 return (
-    <MyDiv image={entry[0].image} title={"Ferry Page"} styles={{ marginTop: "3rem" }}>
+    <MyDiv image={entry[0].image} title={entry[0].name+" Cruise"} styles={{ marginTop: "3rem" }}>
         <FerryPage data={entry[0]} />
     </MyDiv>
 )
