@@ -1,12 +1,14 @@
 "use client"
+import String2Html from '@/components/ui/String2Html'
 import { db } from '@/firebase'
 import { DeleteFilled, EditFilled, PlusOutlined, SaveFilled } from '@ant-design/icons'
 import { Button, Divider, Form, Input, Modal, Space, message } from 'antd'
+import JoditEditor from 'jodit-react'
 import React, { useEffect, useRef, useState } from 'react'
 
 
 export default function TravelJourney({ groupId, packageId, data, packageFor }) {
-    
+
     const packagedb = db.collection(`${packageFor}`).doc(`${groupId}`).collection("singlePackage").doc(`${packageId}`)
 
     const [msg, showMsg] = message.useMessage()
@@ -30,7 +32,7 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
             tj.forEach(d => {
                 tempTravel.push(d)
             })
-            tempTravel.push({ heading: tjHeading, content: tjContent, image:tjImage })
+            tempTravel.push({ heading: tjHeading, content: tjContent, image: tjImage })
             packagedb.update({
                 travelJourney: tempTravel
             })
@@ -41,7 +43,7 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
 
     function tjEdit(e) {
         const tempTravel = [...tj]
-        tempTravel[tjedit.index] = { heading: e.heading, content: e.content, image:e.image }
+        tempTravel[tjedit.index] = { heading: e.heading, content: e.content, image: e.image }
         console.log(tempTravel)
         packagedb.update({
             travelJourney: tempTravel
@@ -78,7 +80,8 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
                                 <div style={{ paddingRight: '8%', textAlign: 'justify' }}>
                                     <h3>{step.heading}</h3>
                                     <p>Image:<i>{step.image}</i></p>
-                                    <p>{step.content}</p>
+                                    <String2Html id={`traveljourney${i}`} string={step.content}/>
+                                    {/* <p>{step.content}</p> */}
                                 </div>
                                 <Space style={{ position: 'absolute', right: '3%', cursor: 'pointer' }}>
                                     <EditFilled
@@ -96,16 +99,20 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
                                 </Space>
                             </Space>
                         ))}
-                        <Form.Item name={'heading'} style={{ margin: 0 }}>
-                            <Input required placeholder='Enter Heading' style={{ marginBottom: 10 }} onChange={e => setTjHeading(e.target.value)} />
-                        </Form.Item>
-                        <Form.Item name={'image'} style={{ margin: 0 }}>
-                            <Input required placeholder='Enter Image Url' style={{ marginBottom: 10 }} onChange={e => setTjImage(e.target.value)} />
-                        </Form.Item>
-                        <Form.Item name={'content'} style={{ margin: 0 }}>
-                            <Input.TextArea required rows={5} placeholder='Inner Content' style={{ marginBottom: 10 }} onChange={e => setTjContent(e.target.value)} />
-                        </Form.Item>
-                        <Button type='dashed' onClick={submit}><PlusOutlined /> Add Steps</Button>
+
+                        <div className='bg-gray-100 p-5'>
+                            <Form.Item name={'heading'} style={{ margin: 0 }}>
+                                <Input required placeholder='Enter Heading' style={{ marginBottom: 10 }} onChange={e => setTjHeading(e.target.value)} />
+                            </Form.Item>
+                            <Form.Item name={'image'} style={{ margin: 0 }}>
+                                <Input required placeholder='Enter Image Url' style={{ marginBottom: 10 }} onChange={e => setTjImage(e.target.value)} />
+                            </Form.Item>
+                            <Form.Item name={'content'} style={{ margin: 0 }}>
+                                <JoditEditor onBlur={e => setTjContent(e)} />
+                                {/* <Input.TextArea required rows={5} placeholder='Inner Content' style={{ marginBottom: 10 }}  /> */}
+                            </Form.Item>
+                            <Button type='dashed' onClick={submit} style={{ background: "var(--primary)", marginTop: "1rem" }}><PlusOutlined /> Add Steps</Button>
+                        </div>
                     </div>
                 </Form.Item>
             </Form>
@@ -125,7 +132,8 @@ export default function TravelJourney({ groupId, packageId, data, packageFor }) 
                                 <input ref={imageRef} required placeholder='Enter Image Url' style={{ marginBottom: 10, fontSize: 16 }} />
                             </Form.Item>
                             <Form.Item name={'content'} initialValue={tjedit.content} style={{ margin: 0 }}>
-                                <textarea ref={contentRef} required placeholder='Inner Content' rows={5} style={{ marginBottom: 10, width: '100%', borderRadius: 10, borderColor: "var(--lightGreyColor)", fontSize: 16 }} />
+                                <JoditEditor/>
+                                {/* <textarea ref={contentRef} required placeholder='Inner Content' rows={5} style={{ marginBottom: 10, width: '100%', borderRadius: 10, borderColor: "var(--lightGreyColor)", fontSize: 16 }} /> */}
                             </Form.Item>
                             <Button type='primary' htmlType='submit'>Save</Button>
                         </div>

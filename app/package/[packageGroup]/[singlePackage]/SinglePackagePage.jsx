@@ -5,13 +5,14 @@ import { mobile } from '@/components/utils/variables'
 import { Collapse, Divider, Skeleton } from 'antd'
 import { ClockCircleFilled } from '@ant-design/icons'
 
-
+import { CaretRightOutlined } from '@ant-design/icons';
 
 import { MdSupportAgent } from "react-icons/md";
 import String2Html from '@/components/ui/String2Html'
 
 import MyDiv from '@/components/ui/MyDiv'
 import CostSection from './CostSection'
+import Accordian from '@/components/common/Accordian'
 
 
 
@@ -65,21 +66,8 @@ export default function SinglePackagePage({ data, packageGroup }) {
                     <Divider style={{ margin: '2%' }} />
 
                     <h2 className='mb-2'>Travel Journey</h2>
-                    <Collapse
-                        size='large'
-                        defaultActiveKey={travelArr}
-                        accordion={false} style={{ background: 'none' }}
-                        items={data.travelJourney.map((tj, i) => {
-                            return {
-                                key: i,
-                                label: <h4>{tj.heading}</h4>,
-                                children: <div>
-                                    <p className='text-justify'>{tj.content}</p>
-                                    <img src={tj.image} alt={tj.heading} loading='lazy' style={{ width: '100%', borderRadius: '20px', marginTop: 10 }} />
-                                </div>
-                            }
-                        })}
-                    />
+                    <Accordian data={data.travelJourney}/>
+                    
                     <Divider style={{ margin: '2%' }} />
 
                     <h2>Inclusion</h2>
