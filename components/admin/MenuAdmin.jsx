@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react'
 import { HomeOutlined, PlusOutlined, MenuOutlined, MedicineBoxOutlined, BookOutlined, WechatFilled } from '@ant-design/icons';
-import { FaCar, FaEye, FaGoogleDrive, FaImage, FaList, FaMountain, FaNewspaper, FaShip, FaSwimmer } from 'react-icons/fa'
+import { FaCar, FaImage, FaMountain, FaNewspaper, FaShip, FaSwimmer } from 'react-icons/fa'
 import { Menu } from 'antd';
 
 export default function MenuAdmin({ menuClick }) {
@@ -20,7 +20,7 @@ const items = [
 
     {
       key: 'island',
-      icon: <FaSwimmer />,
+      icon: <FaMountain />,
       label: 'Popular Islands',
     },
 
@@ -60,7 +60,7 @@ const items = [
     },
     {
       key: 'Know',
-      label: 'Know',
+      label: 'Pages',
       icon: <FaNewspaper />,
       children: [
         {
@@ -94,6 +94,10 @@ const items = [
         {
           key: 'terms-and-conditions',
           label: `Terms & Conditions`,
+        },
+        {
+          key: 'package-terms-and-conditions',
+          label: `Package Terms and Conditions`,
         },
         {
           key: 'content-disclaimer',

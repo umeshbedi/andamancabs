@@ -25,24 +25,32 @@ export default function ActivityPage({ data, sortedData = [], activityGroup }) {
 
         <div className={` w-full sm:w-[35%] flex flex-col items-center mt-10`}>
 
-          <ActivityCostSection childPrice={data.childPrice} price={data.price} packageDetails={{ packageTitle: data.title, place: data.activityPlace }} rating={data.stars} duration={data.duration} />
+          <ActivityCostSection
+            childPrice={data.childPrice}
+            price={data.price}
+            packageDetails={{ packageTitle: data.title, place: data.activityPlace }}
+            rating={data.stars}
+            duration={data.duration}
+            adultAge={data.adultAge || ""}
+            childAge={data.childAge || ""}
+          />
 
           <Divider style={{ height: 1 }} />
           <h2 className="text-center mb-3">Visit Other Activities</h2>
           <div className='w-full flex flex-col gap-5 items-center mt-2'>
-          {sortedData.map((item, idx) => (
-            <ActivityCard
-              key={idx}
-              name={item.title}
-              image={item.thumbnail}
-              slug={item.slug+"__"+activityGroup}
-              price={item.price}
-              duration={item.duration}
-              metaDescription={item.metaDescription}
-              location={item.location}
-              stars={item.stars}
-            />
-          ))}
+            {sortedData.map((item, idx) => (
+              <ActivityCard
+                key={idx}
+                name={item.title}
+                image={item.thumbnail}
+                slug={item.slug + "__" + activityGroup}
+                price={item.price}
+                duration={item.duration}
+                metaDescription={item.metaDescription}
+                location={item.location}
+                stars={item.stars}
+              />
+            ))}
 
           </div>
 

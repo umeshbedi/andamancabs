@@ -11,7 +11,7 @@ import { Rate } from 'antd';
 import ActivityForm from '@/components/layout/contactForms/ActitivifyForm';
 
 
-export default function ActivityCostSection({ childPrice, price = 3000, rating = 4.5, duration = "1 hours", packageDetails }) {
+export default function ActivityCostSection({ childPrice, price = 3000, adultAge, childAge,rating = 4.5, duration = "1 hours", packageDetails }) {
     const [openModal, setOpenModal] = useState(false)
     const [dateRange, setDateRange] = useState([null, null]);
     // Message API from antd
@@ -71,6 +71,8 @@ export default function ActivityCostSection({ childPrice, price = 3000, rating =
                     childPrice={childPrice || 0}
                     packageDetails={packageDetails}
                     closeForm={() => setOpenModal(false)}
+                    adultAge={adultAge}
+                    childAge={childAge}
                 />
 
             </Modal>

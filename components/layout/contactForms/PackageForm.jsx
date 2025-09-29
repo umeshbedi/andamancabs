@@ -7,12 +7,14 @@ import CountryCode from '@/components/lib/countryCodes.json'
 
 import { message } from 'antd';
 import { packageEnquiryEmail } from './PackageEnquiry';
+import { Checkbox } from 'antd';
 
 
 export default function PackageForm({ packageDetails, dateRange = [null, null], price = 0, closeForm=() => { } }) {
 
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
+    const [isChecked, setIsChecked] = useState(false)
 
     useEffect(() => {
         if (packageDetails) {
@@ -122,6 +124,10 @@ export default function PackageForm({ packageDetails, dateRange = [null, null], 
                         <Form.Item label="Infant (0-5years)" name="infant">
                             <Input size='large' type='number' placeholder='Enter Infants Number' />
                         </Form.Item>
+                    </div>
+
+                    <div>
+                        <p><span><Checkbox checked={isChecked} onChange={(e)=>setIsChecked(e)}/></span> Agree with <a href='/package-terms-and-conditions'>Package Terms and Condtions</a></p>
                     </div>
 
                     <Input type='submit' value={"Submit"} style={{ background: 'teal', padding: "0.7rem 2.5rem", borderRadius: "3rem", fontSize: '1.1rem', marginTop: ".5rem", color: "white", cursor: 'pointer' }} />

@@ -66,8 +66,8 @@ export default function SinglePackagePage({ data, packageGroup }) {
                     <Divider style={{ margin: '2%' }} />
 
                     <h2 className='mb-2'>Travel Journey</h2>
-                    <Accordian data={data.travelJourney}/>
-                    
+                    <Accordian data={data.travelJourney} />
+
                     <Divider style={{ margin: '2%' }} />
 
                     <h2>Inclusion</h2>
@@ -98,7 +98,7 @@ export default function SinglePackagePage({ data, packageGroup }) {
                             <MdSupportAgent size={50} className='-mt-2' />
                             <div>
                                 <p>Call us :<a href='tel:+919933237775'>+919933237775</a> | <a href="tel:+919933263867">+919933263867</a></p>
-                                <p>Mail us : <a href="mailto:contact@andamancabs.in">contact@andamancabs.in</a></p>
+                                <p>Mail us : <a href="mailto:enquiryandamancabs@gmail.com">enquiryandamancabs@gmail.com</a></p>
                             </div>
                         </div>
                     </div>

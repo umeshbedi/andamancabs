@@ -199,9 +199,6 @@ input:focus {
   overflow: hidden;
 }
 
-.packageSection a{
-  text-decoration: underline;
-}
 
 .packageSection table th,
 .packageSection table td {

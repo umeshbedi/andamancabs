@@ -18,10 +18,13 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     // New states
     const [activityPlace, setActivityPlace] = useState('');
     const [price, setPrice] = useState(0);
-    // Add child price state
     const [childPrice, setChildPrice] = useState(0);
     const [duration, setDuration] = useState('');
     const [stars, setStars] = useState(0);
+
+    // New age states
+    const [adultAge, setAdultAge] = useState('');
+    const [childAge, setChildAge] = useState('');
 
     const [messageApi, contextHolder] = message.useMessage();
     const [loading, setLoading] = useState(false)
@@ -35,10 +38,13 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
     // New refs
     const activityPlaceRef = useRef();
     const priceRef = useRef();
-    // Add child price ref
     const childPriceRef = useRef();
     const durationRef = useRef();
     const starsRef = useRef();
+
+    // Age refs
+    const adultAgeRef = useRef();
+    const childAgeRef = useRef();
 
     function submit() {
         setLoading(true)
@@ -50,10 +56,12 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                 headerImage,
                 metaDescription,
                 slug: `/activities/${slug}`,
-                activityPlace, // Add new state
+                activityPlace,
                 price,
-                childPrice, // Add child price to db
-                duration,        // Add new state
+                childPrice,
+                adultAge,     // Save adult age
+                childAge,     // Save child age
+                duration,
                 stars
             })
         }).then((e) => {
@@ -72,11 +80,13 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             headerImage,
             metaDescription,
             slug: `/activities/${slug}`,
-            activityPlace, // Add new state
+            activityPlace,
             price,
-            childPrice, // Add child price to db
+            childPrice,
+            adultAge,     // Save adult age
+            childAge,     // Save child age
             duration,
-            stars        // Add new state
+            stars
         };
 
         setLoading(true)
@@ -98,12 +108,15 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             setMetaDescription(data.metaDescription)
             setthumbnail(data.thumbnail)
             setSlug(data.slug.split("/activities/")[1])
-            // Set new states
             setActivityPlace(data.activityPlace);
             setPrice(data.price);
-            setChildPrice(data.childPrice || 0); // Retrieve child price from db if exists
+            setChildPrice(data.childPrice || 0);
             setDuration(data.duration);
             setStars(data.stars);
+
+            // Fetch age fields from db
+            setAdultAge(data.adultAge || '');
+            setChildAge(data.childAge || '');
 
             priceRef.current.value = data.price;
             childPriceRef.current.value = data.childPrice || 0;
@@ -111,13 +124,16 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
             durationRef.current.value = data.duration;
             starsRef.current.value = data.stars;
 
+            // Update age refs
+            adultAgeRef.current.value = data.adultAge || '';
+            childAgeRef.current.value = data.childAge || '';
+
             console.log("Index from update", index)
             console.log("all items data", allItemData)
         }
     }, [data])
 
     console.log(slug)
-
 
     return (
         <div>
@@ -151,7 +167,6 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                     <input ref={thumbnailRef} defaultValue={thumbnail} placeholder='Enter Thumbnail Url' onBlur={(e) => setthumbnail(e.target.value)} />
                 </Form.Item>
 
-                {/* New Form Items */}
                 <Form.Item label="Activity Place">
                     <input ref={activityPlaceRef} defaultValue={activityPlace} placeholder="Enter Activity Place" onChange={(e) => setActivityPlace(e.target.value)} />
                 </Form.Item>
@@ -166,6 +181,16 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                     />
                 </Form.Item>
 
+                <Form.Item label="Adult Age">
+                    <input
+                        type='text'
+                        ref={adultAgeRef}
+                        defaultValue={adultAge}
+                        placeholder="Enter Adult Age"
+                        onChange={(e) => setAdultAge(e.target.value)}
+                    />
+                </Form.Item>
+
                 <Form.Item label="Price (Child)">
                     <input
                         type='number'
@@ -173,6 +198,16 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                         defaultValue={childPrice}
                         placeholder="Enter Child Price"
                         onChange={(e) => setChildPrice(e.target.valueAsNumber)}
+                    />
+                </Form.Item>
+
+                <Form.Item label="Child Age">
+                    <input
+                        type='text'
+                        ref={childAgeRef}
+                        defaultValue={childAge}
+                        placeholder="Enter Child Age"
+                        onChange={(e) => setChildAge(e.target.value)}
                     />
                 </Form.Item>
 
@@ -193,9 +228,7 @@ export default function ActivityItemUpdate({ collection, data, allItemData, inde
                     <JoditEditor value={about} onBlur={e => { setAbout(e) }} />
                 </div>
 
-
                 <Button loading={loading} onClick={data != undefined ? editData : submit} type='primary' style={{ marginBottom: '5%' }}>{data != undefined ? "Update" : "Submit"}</Button>
-
             </Form>
         </div>
     )

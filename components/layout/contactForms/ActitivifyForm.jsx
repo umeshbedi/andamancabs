@@ -10,7 +10,7 @@ import { paymentAction } from './pamentAction';
 import { activityEnquiryEmail } from './activityEnquiry';
 
 
-export default function ActivityForm({ packageDetails = { packageTitle: "" }, childPrice, price = 0, closeForm = () => { } }) {
+export default function ActivityForm({ packageDetails = { packageTitle: "" }, childPrice, price = 0, adultAge, childAge,closeForm = () => { } }) {
 
     const [form] = Form.useForm();
     const [messageApi, contextHolder] = message.useMessage();
@@ -147,11 +147,11 @@ export default function ActivityForm({ packageDetails = { packageTitle: "" }, ch
                     </div>
 
                     <div className='flex gap-3 flex-wrap sm:flex-nowrap'>
-                        <Form.Item label="Adults (>12 years)" name="adults" rules={[{ required: true }]} style={{ width: "100%" }}>
+                        <Form.Item label={`Adults (${adultAge||'>12 years'})`} name="adults" rules={[{ required: true }]} style={{ width: "100%" }}>
                             <Input size='large' type='number' placeholder='Enter Adult number' />
                         </Form.Item>
 
-                        <Form.Item label="Childs (3-12 years)" name="childs" style={{ width: "100%" }}>
+                        <Form.Item label={`Childs (${childAge||'3-12 years'})`} name="childs" style={{ width: "100%" }}>
                             <Input size='large' type='number' placeholder='Enter Child number' />
                         </Form.Item>
 
